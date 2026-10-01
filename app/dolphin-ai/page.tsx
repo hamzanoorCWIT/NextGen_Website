@@ -31,7 +31,7 @@ export default function DolphinAiPage() {
         descriptionClassName="max-w-[820px]"
         actions={[
           { href: "#context", label: "Explore the Platform", tone: "light" },
-          { href: "#demo", label: "Request Demo" },
+          { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
           src: "/figma/customer-service-hero.png",
@@ -180,7 +180,7 @@ export default function DolphinAiPage() {
               interaction and deliver accurate responses with greater speed and consistency.
             </p>
             <div className="mt-7">
-              <Pill href="#demo">Request Demo</Pill>
+              <Pill href="/request-demo">Request Demo</Pill>
             </div>
           </div>
         </div>
@@ -190,7 +190,7 @@ export default function DolphinAiPage() {
         title="Create a better way to manage customer service"
         description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
         titleClassName="max-w-[560px]"
-        actions={[{ href: "#demo", label: "Request Demo" }]}
+        actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={{
           src: "/figma/bring-your-customers.png",
           alt: "Payments, customers, and successful transactions connected in one flow",

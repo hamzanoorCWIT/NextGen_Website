@@ -18,113 +18,127 @@ function Chevron({ direction = "down" }: { direction?: "down" | "right" }) {
   );
 }
 
-type ProductLink = string | { label: string; href: string };
+type ProductLink = { label: string; href: string };
 
 const productColumns: { title: string; href: string; links: ProductLink[] }[] = [
   {
     title: "Customer Service",
     href: "/products/customer-service",
     links: [
-      { label: "Tickets", href: "/products/tickets" },
-      "Chat & WhatsApp",
-      "Calls & Campaigns",
+      { label: "Tickets", href: "/products/customer-service/tickets" },
+      { label: "Chat & WhatsApp", href: "/products/customer-service/chat-whatsapp" },
+      { label: "Calls & Campaigns", href: "/products/customer-service/calls-campaigns" },
     ],
   },
   {
     title: "Work Management",
-    href: "/products#work-management",
-    links: ["Tasks", "Projects", "Timesheets", "Attendance"],
+    href: "/products/work-management",
+    links: [
+      { label: "Tasks", href: "/products/work-management/tasks" },
+      { label: "Projects", href: "/products/work-management/projects" },
+      { label: "Timesheets", href: "/products/work-management/timesheets" },
+      { label: "Attendance", href: "/products/work-management/attendance" },
+    ],
   },
   {
     title: "CRM & Sales",
-    href: "/products#crm-sales",
-    links: ["Contacts & CRM", "Leads", "Timesheets"],
+    href: "/products/crm-sales",
+    links: [
+      { label: "Contacts & CRM", href: "/products/crm-sales/contacts-crm" },
+      { label: "Leads", href: "/products/crm-sales/leads" },
+    ],
   },
   {
     title: "Analytics and BI",
-    href: "/products#analytics",
-    links: ["Dashboard", "Power BI"],
+    href: "/products/analytics",
+    links: [
+      { label: "Dashboard", href: "/products/analytics/dashboard" },
+      { label: "Power BI", href: "/products/analytics/power-bi" },
+    ],
   },
   {
     title: "Governance & Compliance",
-    href: "/products#governance",
-    links: ["Permissions", "Approvals", "Policy Docs", "Org Hierarchy", "KYC", "API Bank"],
+    href: "/products/governance",
+    links: [
+      { label: "Permissions", href: "/products/governance/permissions" },
+      { label: "Approvals", href: "/products/governance/approvals" },
+      { label: "Policy Docs", href: "/products/governance/policy-docs" },
+      { label: "Org Hierarchy", href: "/products/governance/org-hierarchy" },
+      { label: "KYC", href: "/products/governance/kyc" },
+      { label: "API Bank", href: "/products/governance/api-bank" },
+    ],
   },
 ];
 
-const industryMenus = [
+type IndustryLink = { label: string; href: string };
+
+const industryColumns: { title: string; href: string; links: IndustryLink[] }[] = [
   {
-    id: "industry",
-    label: "By Industry",
+    title: "By Industry",
+    href: "/industries/by-industry",
     links: [
-      "Utilities",
-      "Banking & Financial",
-      "BPO & Outsourcing",
-      "Government",
-      "Telecom",
-      "Professional Services",
-      "Construction",
+      { label: "Utilities", href: "/industries/by-industry/utilities" },
+      { label: "Banking & Financial", href: "/industries/by-industry/banking-financial" },
+      { label: "BPO & Outsourcing", href: "/industries/by-industry/bpo-outsourcing" },
+      { label: "Government", href: "/industries/by-industry/government" },
+      { label: "Telecom", href: "/industries/by-industry/telecom" },
+      { label: "Professional Services", href: "/industries/by-industry/professional-services" },
+      { label: "Construction", href: "/industries/by-industry/construction" },
     ],
   },
   {
-    id: "role",
-    label: "By Role",
+    title: "By Role",
+    href: "/industries/by-role",
     links: [
-      "Support Agents",
-      "Team Leaders",
-      "Operations Managers",
-      "HR & Workforce",
-      "Finance",
-      "Compliance & Risk",
-      "IT & Administration",
-      "Executives",
-    ],
-  },
-] as const;
-
-const useCaseColumns = [
-  {
-    id: "cases-main",
-    label: "Use Case",
-    links: [
-      "Omnichannel Ticketing",
-      "WhatsApp & Chat Support",
-      "Outbound Campaigns",
-      "Lead to Opportunity",
-      "Billable Time & Cost",
-      "Attendance, Shifts & Cost",
-      "Multi-Level Approvals",
-      "Policy Acknowledgement",
+      { label: "Support Agents", href: "/industries/by-role/support-agents" },
+      { label: "Team Leaders", href: "/industries/by-role/team-leaders" },
+      { label: "Operations Managers", href: "/industries/by-role/operations-managers" },
+      { label: "HR & Workforce", href: "/industries/by-role/hr-workforce" },
+      { label: "Finance", href: "/industries/by-role/finance" },
+      { label: "Compliance & Risk", href: "/industries/by-role/compliance-risk" },
+      { label: "IT & Administration", href: "/industries/by-role/it-administration" },
+      { label: "Executives", href: "/industries/by-role/executives" },
     ],
   },
   {
-    id: "cases-more",
-    label: "",
-    links: ["KYC & Risk Monitoring", "Replace Your Stack"],
+    title: "Use Case",
+    href: "/industries/use-cases",
+    links: [
+      { label: "Omnichannel Ticketing", href: "/industries/use-cases/omnichannel-ticketing" },
+      { label: "WhatsApp & Chat Support", href: "/industries/use-cases/whatsapp-chat-support" },
+      { label: "Outbound Campaigns", href: "/industries/use-cases/outbound-campaigns" },
+      { label: "Lead to Opportunity", href: "/industries/use-cases/lead-to-opportunity" },
+      { label: "Billable Time & Cost", href: "/industries/use-cases/billable-time-cost" },
+      { label: "Attendance, Shifts & Cost", href: "/industries/use-cases/attendance-shifts-cost" },
+      { label: "Multi-Level Approvals", href: "/industries/use-cases/multi-level-approvals" },
+      { label: "Policy Acknowledgement", href: "/industries/use-cases/policy-acknowledgement" },
+    ],
   },
-] as const;
+  {
+    title: "",
+    href: "/industries/use-cases",
+    links: [
+      { label: "KYC & Risk Monitoring", href: "/industries/use-cases/kyc-risk-monitoring" },
+      { label: "Replace Your Stack", href: "/industries/use-cases/replace-your-stack" },
+    ],
+  },
+];
 
-function industrySlug(label: string) {
-  return label
-    .toLowerCase()
-    .replace(/&/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}
+type ResourceLink = { label: string; href: string };
 
-const resourceLinks = ["Docs", "Case Studies", "Comparisons", "Blog", "Security & Trust"];
-
-function resourceHref(link: string) {
-  if (link === "Docs") return "/docs";
-  if (link === "Case Studies") return "/case-studies";
-  if (link === "Comparisons") return "/comparisons";
-  if (link === "Contact Us") return "/contact";
-  return "#demo";
-}
-
-function useCaseHref(link: string) {
-  return "/industries#use-cases";
-}
+const resourceColumns: { title: string; href: string; links: ResourceLink[] }[] = [
+  {
+    title: "Resources",
+    href: "/docs",
+    links: [
+      { label: "Docs", href: "/docs" },
+      { label: "Case Studies", href: "/case-studies" },
+      { label: "Comparisons", href: "/comparisons" },
+      { label: "Blog", href: "/blog" },
+      { label: "Security & Trust", href: "/security-trust" },
+    ],
+  },
+];
 
 const promo =
   "Everything you need to manage support, customers, teams, and workflows in one connected platform.";
@@ -248,13 +262,13 @@ export function Header({ className = "" }: { className?: string }) {
 
         <div className="hidden items-center gap-2 xl:flex">
           <a
-            href="#demo"
+            href="/sign-in"
             className="inline-flex h-11 items-center rounded-full bg-white px-5 text-[15px] font-medium text-black shadow-[0_0_0_1px_rgba(0,0,0,0.06)]"
           >
             Sign In
           </a>
           <a
-            href="#demo"
+            href="/request-demo"
             className="inline-flex h-11 items-center rounded-full bg-black px-5 text-[15px] font-medium text-white"
           >
             Request Demo
@@ -278,16 +292,17 @@ export function Header({ className = "" }: { className?: string }) {
             <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 xl:grid-cols-5 xl:gap-x-6">
               {productColumns.map((column) => (
                 <div key={column.title}>
-                  <p className="mb-3 text-[16px] font-semibold tracking-[-0.01em]">{column.title}</p>
-                  {column.links.map((link) => {
-                    const label = typeof link === "string" ? link : link.label;
-                    const href = typeof link === "string" ? column.href : link.href;
-                    return (
-                      <MenuLink key={column.title + label} href={href}>
-                        {label}
-                      </MenuLink>
-                    );
-                  })}
+                  <a
+                    href={column.href}
+                    className="mb-3 block text-[16px] font-semibold tracking-[-0.01em] text-[#1a1a1a] hover:underline"
+                  >
+                    {column.title}
+                  </a>
+                  {column.links.map((link) => (
+                    <MenuLink key={column.title + link.label} href={link.href}>
+                      {link.label}
+                    </MenuLink>
+                  ))}
                 </div>
               ))}
             </div>
@@ -300,31 +315,23 @@ export function Header({ className = "" }: { className?: string }) {
           <div className="wrap grid items-start gap-10 py-10 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-16 lg:py-12">
             <Promo title="Industries" image href="/industries" cta="Explore Industries" />
             <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 xl:grid-cols-4 xl:gap-x-10">
-              {industryMenus.map((column) => (
-                <div key={column.id}>
-                  <p className="mb-3 text-[16px] font-semibold tracking-[-0.01em]">{column.label}</p>
-                  {column.links.map((link) => (
-                    <MenuLink
-                      key={link}
-                      href={column.id === "role" ? "/industries#by-role" : `/industries/${industrySlug(link)}`}
+              {industryColumns.map((column) => (
+                <div key={column.title || "use-cases-more"}>
+                  {column.title ? (
+                    <a
+                      href={column.href}
+                      className="mb-3 block text-[16px] font-semibold tracking-[-0.01em] text-[#1a1a1a] hover:underline"
                     >
-                      {link}
-                    </MenuLink>
-                  ))}
-                </div>
-              ))}
-              {useCaseColumns.map((column) => (
-                <div key={column.id}>
-                  {column.label ? (
-                    <p className="mb-3 text-[16px] font-semibold tracking-[-0.01em]">{column.label}</p>
+                      {column.title}
+                    </a>
                   ) : (
                     <p className="mb-3 text-[16px] font-semibold tracking-[-0.01em] opacity-0" aria-hidden="true">
                       &nbsp;
                     </p>
                   )}
                   {column.links.map((link) => (
-                    <MenuLink key={link} href={useCaseHref(link)}>
-                      {link}
+                    <MenuLink key={link.label} href={link.href}>
+                      {link.label}
                     </MenuLink>
                   ))}
                 </div>
@@ -339,11 +346,20 @@ export function Header({ className = "" }: { className?: string }) {
           <div className="wrap grid items-start gap-10 py-10 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-16 lg:py-12">
             <Promo title="Resources" image href="/docs" cta="Explore Resources" />
             <div className="w-full max-w-[240px]">
-              <p className="mb-3 text-[16px] font-semibold tracking-[-0.01em]">Resources</p>
-              {resourceLinks.map((link) => (
-                <MenuLink key={link} href={resourceHref(link)}>
-                  {link}
-                </MenuLink>
+              {resourceColumns.map((column) => (
+                <div key={column.title}>
+                  <a
+                    href={column.href}
+                    className="mb-3 block text-[16px] font-semibold tracking-[-0.01em] text-[#1a1a1a] hover:underline"
+                  >
+                    {column.title}
+                  </a>
+                  {column.links.map((link) => (
+                    <MenuLink key={link.label} href={link.href}>
+                      {link.label}
+                    </MenuLink>
+                  ))}
+                </div>
               ))}
             </div>
           </div>
@@ -356,20 +372,46 @@ export function Header({ className = "" }: { className?: string }) {
             <div>
               <p className="font-semibold">Product</p>
               {productColumns.map((column) => (
-                <a key={column.title} href={column.href} onClick={() => setOpen(false)} className="mt-2 block text-[#3a3a3a]">
-                  {column.title}
-                </a>
+                <div key={column.title} className="mt-2">
+                  <a href={column.href} onClick={() => setOpen(false)} className="block font-medium text-[#1a1a1a]">
+                    {column.title}
+                  </a>
+                  {column.links.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="mt-1.5 block pl-3 text-[#3a3a3a]"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
               ))}
             </div>
             <div>
               <a href="/industries" onClick={() => setOpen(false)} className="font-semibold">
                 Industries
               </a>
-              {industryMenus[0].links.map((link) => (
-                <a key={link} href={`/industries/${industrySlug(link)}`} onClick={() => setOpen(false)} className="mt-2 block text-[#3a3a3a]">
-                  {link}
-                </a>
-              ))}
+              {industryColumns
+                .filter((column) => column.title)
+                .map((column) => (
+                  <div key={column.title} className="mt-2">
+                    <a href={column.href} onClick={() => setOpen(false)} className="block font-medium text-[#1a1a1a]">
+                      {column.title}
+                    </a>
+                    {column.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        onClick={() => setOpen(false)}
+                        className="mt-1.5 block pl-3 text-[#3a3a3a]"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                ))}
             </div>
             <a href="/dolphin-ai" onClick={() => setOpen(false)}>
               Dolphin AI
@@ -379,26 +421,26 @@ export function Header({ className = "" }: { className?: string }) {
             </a>
             <div>
               <p className="font-semibold">Resources</p>
-              {resourceLinks.map((link) => (
+              {resourceColumns[0].links.map((link) => (
                 <a
-                  key={link}
-                  href={resourceHref(link)}
+                  key={link.label}
+                  href={link.href}
                   onClick={() => setOpen(false)}
                   className="mt-2 block text-[#3a3a3a]"
                 >
-                  {link}
+                  {link.label}
                 </a>
               ))}
             </div>
             <a
-              href="#demo"
+              href="/sign-in"
               onClick={() => setOpen(false)}
               className="inline-flex h-10 items-center justify-center rounded-full border border-black/10 bg-white text-black"
             >
               Sign In
             </a>
             <a
-              href="#demo"
+              href="/request-demo"
               onClick={() => setOpen(false)}
               className="inline-flex h-10 items-center justify-center rounded-full bg-black text-white"
             >

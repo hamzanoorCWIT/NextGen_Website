@@ -98,7 +98,7 @@ export function ToolsScroll({ panels }: { panels: ToolsPanel[] }) {
                 </p>
               ))}
               <div className="mt-6">
-                <Pill href={panel.href ?? "#demo"} tone="light">
+                <Pill href={panel.href ?? "/request-demo"} tone="light">
                   Explore More
                 </Pill>
               </div>
@@ -145,7 +145,7 @@ export function ToolsScroll({ panels }: { panels: ToolsPanel[] }) {
                     </p>
                   ))}
                   <div className="mt-6">
-                    <Pill href={panel.href ?? "#demo"} tone="light">
+                    <Pill href={panel.href ?? "/request-demo"} tone="light">
                       Explore More
                     </Pill>
                   </div>

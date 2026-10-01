@@ -94,7 +94,7 @@ export default function IndustryDetailsPage() {
         descriptionClassName="max-w-[820px]"
         actions={[
           { href: "#industries", label: "Explore Solutions", tone: "light" },
-          { href: "#demo", label: "Request Demo" },
+          { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
           src: "/figma/hero-1.png",
@@ -144,7 +144,7 @@ export default function IndustryDetailsPage() {
               <h3 className="mt-5 text-[20px] font-semibold tracking-[-0.02em] sm:text-[22px]">{item.title}</h3>
               <p className="mt-2 max-w-[520px] text-[14px] leading-6 text-[#1a1a1a] sm:text-[15px]">{item.body}</p>
               <div className="mt-5">
-                <Pill href={`/industries/${item.id}`}>Explore More</Pill>
+                <Pill href={`/industries/by-industry/${item.id}`}>Explore More</Pill>
               </div>
             </article>
           ))}
@@ -155,7 +155,7 @@ export default function IndustryDetailsPage() {
         title="Create a better way to manage customer service"
         description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
         titleClassName="max-w-[620px]"
-        actions={[{ href: "#demo", label: "Request Demo" }]}
+        actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={{
           src: "/figma/bring-your-customers.png",
           alt: "Payments, customers, and successful transactions connected in one flow",

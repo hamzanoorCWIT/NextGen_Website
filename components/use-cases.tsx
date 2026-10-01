@@ -16,6 +16,7 @@ const cases = [
     alt: "Policy acknowledgement workspace",
     width: 532,
     height: 351,
+    href: "/industries/use-cases/policy-acknowledgement",
   },
   {
     title: "Multi-level Approvals",
@@ -29,6 +30,7 @@ const cases = [
     alt: "Approval workspace",
     width: 375,
     height: 212,
+    href: "/industries/use-cases/multi-level-approvals",
   },
   {
     title: "Customer 360",
@@ -42,6 +44,7 @@ const cases = [
     alt: "Customer conversation workspace",
     width: 324,
     height: 213,
+    href: "/industries/use-cases/lead-to-opportunity",
   },
 ];
 
@@ -182,10 +185,10 @@ export function UseCases() {
                   ))}
                 </div>
                 <a
-                  href="#demo"
+                  href={item.href}
                   className="mt-10 inline-flex h-12 items-center rounded-full bg-black px-6 text-[15px] font-medium text-white"
                 >
-                  Request Demo
+                  Explore More
                 </a>
               </div>
               <div className="flex justify-center lg:justify-end">

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pill } from "@/components/pill";
 
 export type ProductModuleImage = {
@@ -12,6 +12,7 @@ export type ProductModuleImage = {
 };
 
 export type ProductModuleTab = {
+  id?: string;
   label: string;
   href?: string;
   active?: boolean;
@@ -23,6 +24,10 @@ export type ProductModuleAction = {
   label: string;
   tone?: "dark" | "light" | "ghost" | "ghost-dark";
 };
+
+function tabSlug(tab: ProductModuleTab) {
+  return tab.id ?? tab.label.toLowerCase().replace(/&/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
 
 export function ProductModules({
   id,
@@ -43,7 +48,20 @@ export function ProductModules({
 }) {
   const initial = tabs.findIndex((tab) => tab.active);
   const [active, setActive] = useState(initial < 0 ? 0 : initial);
-  const current = tabs[active];
+  const current = tabs[active] ?? tabs[0];
+
+  useEffect(() => {
+    const applyHash = () => {
+      const hash = window.location.hash.replace(/^#/, "");
+      if (!hash) return;
+      const index = tabs.findIndex((tab) => tabSlug(tab) === hash);
+      if (index >= 0) setActive(index);
+    };
+
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, [tabs]);
 
   return (
     <section id={id} className="bg-white pb-16 sm:pb-24">
@@ -60,13 +78,23 @@ export function ProductModules({
         <div className="mt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-10" role="tablist" aria-label={title}>
           {tabs.map((tab, index) => {
             const selected = index === active;
+            const slug = tabSlug(tab);
             return (
               <button
                 key={tab.label}
                 type="button"
                 role="tab"
+                id={slug}
                 aria-selected={selected}
-                onClick={() => setActive(index)}
+                onClick={() => {
+                  setActive(index);
+                  if (typeof window !== "undefined") {
+                    const next = `#${slug}`;
+                    if (window.location.hash !== next) {
+                      window.history.replaceState(null, "", next);
+                    }
+                  }
+                }}
                 className={`inline-flex cursor-pointer items-center gap-2 border-b-2 pb-2 text-[14px] transition-colors duration-300 sm:text-[15px] ${
                   selected ? "border-black font-medium text-black" : "border-transparent text-[#6b7280]"
                 }`}

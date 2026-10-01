@@ -247,7 +247,7 @@ export default function DocsDetailsPage() {
         title="Create a better way to manage customer service"
         description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
         titleClassName="max-w-[620px]"
-        actions={[{ href: "#demo", label: "Request Demo" }]}
+        actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={{
           src: "/figma/bring-your-customers.png",
           alt: "Payments, customers, and successful transactions connected in one flow",
