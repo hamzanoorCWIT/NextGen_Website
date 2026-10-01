@@ -203,16 +203,14 @@ body {
 /* Site-wide scroll reveal */
 .reveal-pending {
   opacity: 0;
-  transform: translate3d(0, 36px, 0);
+  transform: translate3d(0, 24px, 0);
   transition:
-    opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-    transform 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
 }
 
 .reveal-pending.reveal-fade-only {
   transform: none;
-  will-change: opacity;
 }
 
 .reveal-pending.reveal-in {
@@ -226,5 +224,85 @@ body {
     transform: none;
     transition: none;
     will-change: auto;
+  }
+}
+
+@keyframes hero-content-enter {
+  from {
+    opacity: 0;
+      transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-media-enter {
+  from {
+    opacity: 0;
+      transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-content-enter {
+    animation: hero-content-enter 1200ms cubic-bezier(0.22, 1, 0.36, 1) 180ms both;
+  }
+
+  .hero-media-enter {
+    animation: hero-media-enter 1400ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
+  }
+}
+
+/* Native scrolling keeps anchors, keyboard navigation, and touch in sync. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :where(a, button, input, select, textarea) {
+    transition: color 180ms ease, background-color 180ms ease,
+      border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  :where(a.rounded-full, button.rounded-full) {
+    transition: translate 200ms ease, box-shadow 200ms ease,
+      background-color 200ms ease, color 200ms ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    :where(a.rounded-full, button.rounded-full):not(:disabled):hover {
+      translate: 0 -2px;
+      box-shadow: 0 6px 18px rgb(17 17 17 / 12%);
+    }
+  }
+
+  :where(a.rounded-full, button.rounded-full):not(:disabled):active {
+    translate: 0 0;
+  }
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid #526b88;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
   }
 }
