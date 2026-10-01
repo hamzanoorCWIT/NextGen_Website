@@ -55,7 +55,7 @@ export function HeroBanner({
         ))}
       </div>
       <Header />
-      <div className={screenHeight ? "wrap relative pt-6 text-center sm:pt-8" : "wrap relative pt-10 pb-2 text-center sm:pt-16 xl:pt-20"}>
+      <div className={`hero-content-enter ${screenHeight ? "wrap relative pt-6 text-center sm:pt-8" : "wrap relative pt-10 pb-2 text-center sm:pt-16 xl:pt-20"}`}>
         <h1 className={`display mx-auto ${titleClassName}`}>{title}</h1>
         <p className={`lede mx-auto mt-4 text-[#111111] sm:mt-5 ${descriptionClassName}`}>{description}</p>
         {actions.length > 0 ? (
@@ -69,9 +69,9 @@ export function HeroBanner({
         ) : null}
       </div>
       {media ? (
-        <div className={screenHeight ? "relative flex min-h-0 flex-1 flex-col justify-center px-0 py-6 sm:px-4" : "relative px-0 pt-8 pb-12 sm:px-4 sm:pt-10 sm:pb-24"}>{media}</div>
+        <div className={`hero-media-enter ${screenHeight ? "relative flex min-h-0 flex-1 flex-col justify-center px-0 py-6 sm:px-4" : "relative px-0 pt-8 pb-12 sm:px-4 sm:pt-10 sm:pb-24"}`}>{media}</div>
       ) : image ? (
-        <div className="relative flex justify-center pt-8 pb-0 sm:pt-12">
+        <div className="hero-media-enter relative flex justify-center pt-8 pb-0 sm:pt-12">
           <Image
             src={image.src}
             alt={image.alt}
