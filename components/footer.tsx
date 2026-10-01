@@ -81,17 +81,88 @@ function ColumnTitle({ children }: { children: string }) {
   return <p className="border-b border-white/15 pb-3 text-[16px] font-normal">{children}</p>;
 }
 
-function LinkGroup({ label, links }: { label: string; links: string[] }) {
+function productHref(link: string) {
+  const key = link.toLowerCase();
+  if (key === "tickets") return "/products/customer-service/tickets";
+  if (key === "chat & whatsapp") return "/products/customer-service/chat-whatsapp";
+  if (key === "calls & campaigns") return "/products/customer-service/calls-campaigns";
+  if (key === "tasks") return "/products/work-management/tasks";
+  if (key === "projects") return "/products/work-management/projects";
+  if (key === "timesheets") return "/products/work-management/timesheets";
+  if (key === "attendance") return "/products/work-management/attendance";
+  if (key === "contacts & crm") return "/products/crm-sales/contacts-crm";
+  if (key === "leads") return "/products/crm-sales/leads";
+  if (key === "dashboards" || key === "dashboard") return "/products/analytics/dashboard";
+  if (key === "power bi") return "/products/analytics/power-bi";
+  if (key === "permissions") return "/products/governance/permissions";
+  if (key === "approvals") return "/products/governance/approvals";
+  if (key === "policy docs") return "/products/governance/policy-docs";
+  if (key === "org hierarchy") return "/products/governance/org-hierarchy";
+  if (key === "kyc") return "/products/governance/kyc";
+  if (key === "api bank") return "/products/governance/api-bank";
+  return "/products";
+}
+
+function industryHref(link: string) {
+  const key = link.toLowerCase().replace(/&/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const map: Record<string, string> = {
+    utilities: "/industries/by-industry/utilities",
+    "banking-financial": "/industries/by-industry/banking-financial",
+    "bop-outsourcing": "/industries/by-industry/bpo-outsourcing",
+    "bpo-outsourcing": "/industries/by-industry/bpo-outsourcing",
+    government: "/industries/by-industry/government",
+    telecom: "/industries/by-industry/telecom",
+    "professional-services": "/industries/by-industry/professional-services",
+    construction: "/industries/by-industry/construction",
+    "support-agents": "/industries/by-role/support-agents",
+    "team-leaders": "/industries/by-role/team-leaders",
+    "operations-managers": "/industries/by-role/operations-managers",
+    "hr-workforce": "/industries/by-role/hr-workforce",
+    finance: "/industries/by-role/finance",
+    "compliance-risk": "/industries/by-role/compliance-risk",
+    "it-administration": "/industries/by-role/it-administration",
+    executives: "/industries/by-role/executives",
+    "omnichannel-ticketing": "/industries/use-cases/omnichannel-ticketing",
+    whatsapp: "/industries/use-cases/whatsapp-chat-support",
+    "outbound-campaigns": "/industries/use-cases/outbound-campaigns",
+    "customer-360": "/industries/use-cases/lead-to-opportunity",
+    "lead-to-opportunity": "/industries/use-cases/lead-to-opportunity",
+    "billable-time-and-cost": "/industries/use-cases/billable-time-cost",
+    "attendance-shifts-and-overtime": "/industries/use-cases/attendance-shifts-cost",
+    "multi-level-approvals": "/industries/use-cases/multi-level-approvals",
+    "policy-acknowledgment": "/industries/use-cases/policy-acknowledgement",
+    "kyc-and-risk-monitoring": "/industries/use-cases/kyc-risk-monitoring",
+    "replace-your-stack": "/industries/use-cases/replace-your-stack",
+  };
+  return map[key] ?? `/industries/${key}`;
+}
+
+function resourceHref(link: string) {
+  if (link === "Docs") return "/docs";
+  if (link === "Case Studies") return "/case-studies";
+  if (link === "Comparisons") return "/comparisons";
+  if (link === "Contact Us") return "/contact";
+  if (link === "Blog") return "/blog";
+  if (link === "Security & trust" || link === "Security & Trust") return "/security-trust";
+  return "/docs";
+}
+
+function LinkGroup({
+  label,
+  links,
+  hrefFor,
+}: {
+  label: string;
+  links: string[];
+  hrefFor: (link: string) => string;
+}) {
   return (
     <div>
       <p className="mb-2.5 text-[11px] font-extrabold tracking-[0.06em] text-white uppercase">{label}</p>
       <ul className="space-y-1.5">
         {links.map((link) => (
           <li key={link}>
-            <a
-              href={link === "Tickets" ? "/products/tickets" : "#top"}
-              className="text-[13px] leading-5 font-normal text-white hover:text-white/70"
-            >
+            <a href={hrefFor(link)} className="text-[13px] leading-5 font-normal text-white hover:text-white/70">
               {link}
             </a>
           </li>
@@ -145,12 +216,12 @@ export function Footer() {
           <div className="mt-5 grid grid-cols-1 gap-y-7 min-[420px]:grid-cols-2 min-[420px]:gap-x-6 lg:grid-cols-2 lg:gap-x-6">
             <div className="space-y-7">
               {productsLeft.map((group) => (
-                <LinkGroup key={group.label} label={group.label} links={group.links} />
+                <LinkGroup key={group.label} label={group.label} links={group.links} hrefFor={productHref} />
               ))}
             </div>
             <div className="space-y-7">
               {productsRight.map((group) => (
-                <LinkGroup key={group.label} label={group.label} links={group.links} />
+                <LinkGroup key={group.label} label={group.label} links={group.links} hrefFor={productHref} />
               ))}
             </div>
           </div>
@@ -161,12 +232,12 @@ export function Footer() {
           <div className="mt-5 grid grid-cols-1 gap-y-7 min-[420px]:grid-cols-2 min-[420px]:gap-x-6 lg:grid-cols-2 lg:gap-x-6">
             <div className="space-y-7">
               {industriesLeft.map((group) => (
-                <LinkGroup key={group.label} label={group.label} links={group.links} />
+                <LinkGroup key={group.label} label={group.label} links={group.links} hrefFor={industryHref} />
               ))}
             </div>
             <div>
               {industriesRight.map((group) => (
-                <LinkGroup key={group.label} label={group.label} links={group.links} />
+                <LinkGroup key={group.label} label={group.label} links={group.links} hrefFor={industryHref} />
               ))}
             </div>
           </div>
@@ -177,20 +248,7 @@ export function Footer() {
           <ul className="mt-5 space-y-1.5 lg:pt-[26px]">
             {resources.map((link) => (
               <li key={link}>
-                <a
-                  href={
-                    link === "Docs"
-                      ? "/docs"
-                      : link === "Case Studies"
-                        ? "/case-studies"
-                        : link === "Comparisons"
-                          ? "/comparisons"
-                          : link === "Contact Us"
-                            ? "/contact"
-                            : "#top"
-                  }
-                  className="text-[13px] leading-5 font-normal text-white hover:text-white/70"
-                >
+                <a href={resourceHref(link)} className="text-[13px] leading-5 font-normal text-white hover:text-white/70">
                   {link}
                 </a>
               </li>

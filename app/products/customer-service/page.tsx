@@ -23,7 +23,7 @@ export default function CustomerServicePage() {
         descriptionClassName="max-w-[760px]"
         actions={[
           { href: "#simplify", label: "Explore Platform", tone: "light" },
-          { href: "#demo", label: "Request Demo" },
+          { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
           src: "/figma/customer-service-hero.png",
@@ -67,6 +67,7 @@ export default function CustomerServicePage() {
         ]}
         tabs={[
           {
+            id: "tickets",
             label: "Tickets",
             active: true,
             image: {
@@ -77,6 +78,7 @@ export default function CustomerServicePage() {
             },
           },
           {
+            id: "chat-whatsapp",
             label: "Chat & WhatsApp",
             image: {
               src: "/figma/ticket-route.png",
@@ -86,6 +88,7 @@ export default function CustomerServicePage() {
             },
           },
           {
+            id: "calls-campaigns",
             label: "Calls & Campaigns",
             image: {
               src: "/figma/product-create.png",
@@ -149,7 +152,7 @@ export default function CustomerServicePage() {
         title="Create a better way to manage customer service"
         description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
         titleClassName="max-w-[620px]"
-        actions={[{ href: "#demo", label: "Request Demo" }]}
+        actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={{
           src: "/figma/bring-your-customers.png",
           alt: "Payments, customers, and successful transactions connected in one flow",

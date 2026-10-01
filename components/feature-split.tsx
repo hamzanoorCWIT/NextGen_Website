@@ -41,7 +41,7 @@ export function FeatureSplit({
                 </h2>
                 <p className="product-body mt-4 text-[15px] leading-7 text-[#1a1a1a] sm:mt-5 sm:text-[16px]">{item.body}</p>
                 <div className="mt-8">
-                  <Pill href={item.ctaHref ?? "#demo"}>{item.ctaLabel ?? "Explore More"}</Pill>
+                  <Pill href={item.ctaHref ?? "/request-demo"}>{item.ctaLabel ?? "Explore More"}</Pill>
                 </div>
               </div>
               <div className={`min-w-0 ${imageOnLeft ? "lg:order-1" : "lg:order-2"}`}>

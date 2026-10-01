@@ -44,7 +44,7 @@ export default function PricingPage() {
         }
         titleClassName="max-w-[640px]"
         descriptionClassName="max-w-[640px]"
-        actions={[{ href: "#demo", label: "Request Demo" }]}
+        actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={{
           src: "/figma/bring-your-customers.png",
           alt: "Payments, customers, and successful transactions connected in one flow",

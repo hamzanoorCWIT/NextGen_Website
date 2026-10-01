@@ -36,6 +36,7 @@ const products: FeatureSplitItem[] = [
   {
     id: "work-management",
     title: "Work Management Products",
+    ctaHref: "/products/work-management",
     body: "Give teams a single place to organize tasks, projects, schedules, and daily operations. From individual assignments to large initiatives, keep work visible, track progress, and ensure teams stay aligned from planning to completion.",
     ...create,
     imageSide: "right",
@@ -43,6 +44,7 @@ const products: FeatureSplitItem[] = [
   {
     id: "crm-sales",
     title: "CRM & Sales",
+    ctaHref: "/products/crm-sales",
     body: "Build stronger customer relationships with complete visibility into contacts, leads, opportunities, and interactions. Connect every customer touchpoint to sales workflows so teams can capture opportunities, follow progress, and make informed decisions.",
     ...studio,
     imageSide: "left",
@@ -50,6 +52,7 @@ const products: FeatureSplitItem[] = [
   {
     id: "analytics",
     title: "Analytics & BI",
+    ctaHref: "/products/analytics",
     body: "Transform everyday business activity into meaningful insights with connected dashboards and reporting. Monitor performance, identify trends, and help teams make faster decisions using real-time operational visibility.",
     ...create,
     imageSide: "right",
@@ -57,6 +60,7 @@ const products: FeatureSplitItem[] = [
   {
     id: "governance",
     title: "Governance & Compliance",
+    ctaHref: "/products/governance",
     body: "Create stronger operational control with structured permissions, approvals, compliance tracking, and policy management. Ensure every action has clear ownership, every process follows defined rules, and every decision remains traceable.",
     ...studio,
     imageSide: "left",
@@ -86,7 +90,7 @@ export default function ProductsPage() {
         descriptionClassName="max-w-[860px]"
         actions={[
           { href: "#customer-service", label: "Explore Platform", tone: "light" },
-          { href: "#demo", label: "Request Demo" },
+          { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
           src: "/figma/hero-1.png",
@@ -100,7 +104,7 @@ export default function ProductsPage() {
         title="Create a better way to manage customer service"
         description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
         titleClassName="max-w-[620px]"
-        actions={[{ href: "#demo", label: "Request Demo" }]}
+        actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={paymentImage}
       />
       <Footer />

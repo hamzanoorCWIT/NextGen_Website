@@ -105,7 +105,7 @@ export function PricingDetails() {
                   </ul>
                   <div className="mt-8">
                     <a
-                      href="#demo"
+                      href="/request-demo"
                       className={`inline-flex h-11 items-center rounded-full px-6 text-[14px] font-medium ${
                         plan.tone === "dark"
                           ? "bg-black text-white"

@@ -32,7 +32,7 @@ const industries: FeatureSplitItem[] = [
     ...studio,
     imageSide: "left",
     ctaLabel: "Explore More",
-    ctaHref: "/industries/details",
+    ctaHref: "/industries/by-industry",
   },
   {
     id: "by-role",
@@ -41,7 +41,7 @@ const industries: FeatureSplitItem[] = [
     ...create,
     imageSide: "right",
     ctaLabel: "Explore More",
-    ctaHref: "#by-role",
+    ctaHref: "/industries/by-role",
   },
   {
     id: "use-cases",
@@ -50,7 +50,7 @@ const industries: FeatureSplitItem[] = [
     ...studio,
     imageSide: "left",
     ctaLabel: "Explore More",
-    ctaHref: "#use-cases",
+    ctaHref: "/industries/use-cases",
   },
 ];
 
@@ -71,7 +71,7 @@ export default function IndustriesPage() {
         descriptionClassName="max-w-[860px]"
         actions={[
           { href: "#by-industry", label: "Explore Platform", tone: "light" },
-          { href: "#demo", label: "Request Demo" },
+          { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
           src: "/figma/hero-1.png",
@@ -85,7 +85,7 @@ export default function IndustriesPage() {
         title="Create a better way to manage customer service"
         description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
         titleClassName="max-w-[620px]"
-        actions={[{ href: "#demo", label: "Request Demo" }]}
+        actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={paymentImage}
       />
       <Footer />

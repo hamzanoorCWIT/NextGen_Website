@@ -22,6 +22,7 @@ const industries = [
     image: "/figma/img7.png",
     width: 340,
     height: 340,
+    href: "/industries/by-role/team-leaders",
   },
   {
     title: "Banking & Financial Services",
@@ -29,6 +30,7 @@ const industries = [
     image: "/figma/img8.png",
     width: 375,
     height: 474,
+    href: "/industries/by-industry/banking-financial",
   },
   {
     title: "BPO & Outsourcing",
@@ -36,6 +38,7 @@ const industries = [
     image: "/figma/img16.png",
     width: 320,
     height: 320,
+    href: "/industries/by-industry/bpo-outsourcing",
   },
   {
     title: "Government",
@@ -43,6 +46,7 @@ const industries = [
     image: "/figma/img9.png",
     width: 150,
     height: 269,
+    href: "/industries/by-industry/government",
   },
   {
     title: "Finance",
@@ -50,6 +54,7 @@ const industries = [
     image: "/figma/img17.png",
     width: 368,
     height: 430,
+    href: "/industries/by-role/finance",
   },
   {
     title: "IT and Administration",
@@ -57,6 +62,7 @@ const industries = [
     image: "/figma/img11.png",
     width: 184,
     height: 276,
+    href: "/industries/by-role/it-administration",
   },
 ];
 
@@ -81,7 +87,7 @@ const toolsPanels: ToolsPanel[] = [
       "Organize tasks, projects, workforce activities, and operational requests while giving teams visibility into priorities and progress.",
       "Keep work visible from planning to completion so teams stay aligned across every initiative.",
     ],
-    href: "/products#work-management",
+    href: "/products/work-management",
     image: {
       src: "/figma/product-create.png",
       alt: "Work management workspace for creating and tracking campaigns",
@@ -95,7 +101,7 @@ const toolsPanels: ToolsPanel[] = [
       "Build stronger customer relationships with complete visibility into contacts, leads, opportunities, and interactions.",
       "Connect every customer touchpoint to sales workflows so teams can capture opportunities and follow progress.",
     ],
-    href: "/products#crm-sales",
+    href: "/products/crm-sales",
     image: {
       src: "/figma/product-studio.png",
       alt: "CRM workspace for generating and publishing campaign content",
@@ -109,7 +115,7 @@ const toolsPanels: ToolsPanel[] = [
       "Transform everyday business activity into meaningful insights with connected dashboards and reporting.",
       "Monitor performance, identify trends, and help teams make faster decisions with real-time operational visibility.",
     ],
-    href: "/products#analytics",
+    href: "/products/analytics",
     image: {
       src: "/figma/experience-future.png",
       alt: "Analytics workspace for campaign focus and performance insights",
@@ -123,7 +129,7 @@ const toolsPanels: ToolsPanel[] = [
       "Create stronger operational control with structured permissions, approvals, compliance tracking, and policy management.",
       "Ensure every action has clear ownership, every process follows defined rules, and every decision remains traceable.",
     ],
-    href: "/products#governance",
+    href: "/products/governance",
     image: {
       src: "/figma/bring-your-customers.png",
       alt: "Governance workflows connecting customers, teams, and approvals",
@@ -142,7 +148,7 @@ export default function Home() {
         description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
         actions={[
           { href: "#tools", label: "Explore Platform", tone: "light" },
-          { href: "#demo", label: "Request Demo" },
+          { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
           src: "/figma/hero-1.png",
@@ -238,7 +244,7 @@ export default function Home() {
               CWIT EMS adapts to different industries, teams, and operational models.
             </p>
             <a
-              href="#industries"
+              href="/industries"
               className="mt-5 inline-flex h-11 items-center rounded-full bg-white px-5 text-[14px] font-medium shadow-[inset_0_0_0_1px_rgba(0,0,0,0.1)] sm:h-12 sm:px-6 sm:text-[15px]"
             >
               View All Industries
@@ -248,7 +254,7 @@ export default function Home() {
           <div className="mx-auto mt-12 grid w-[min(1442px,100%)] gap-x-8 gap-y-12 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-[60px] lg:gap-y-16">
             {industries.map((item) => (
               <article key={item.title} className="border-t border-[#000000]/22 pt-6">
-                <div className="flex items-start gap-4">
+                <a href={item.href} className="flex items-start gap-4">
                   <div className="h-[72px] w-[72px] shrink-0 overflow-hidden rounded-[12px] lg:h-[92px] lg:w-[92px]">
                     <Image
                       src={item.image}
@@ -267,11 +273,11 @@ export default function Home() {
                       </span>
                     </h3>
                     <p className="mt-1 text-[14px] leading-5 text-[#5c6370] sm:text-[15px] sm:leading-6">{item.body}</p>
-                    <a href="#demo" className="mt-3 inline-block text-[14px] font-medium underline underline-offset-4 sm:text-[15px]">
-                      Request Demo
-                    </a>
+                    <span className="mt-3 inline-block text-[14px] font-medium underline underline-offset-4 sm:text-[15px]">
+                      Explore More
+                    </span>
                   </div>
-                </div>
+                </a>
               </article>
             ))}
           </div>
@@ -296,10 +302,10 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2 px-5 pb-5 sm:px-8 sm:pb-6 xl:py-6 xl:pr-6 xl:pl-4">
-              <Pill href="#tools" tone="ghost-dark">
+              <Pill href="/industries/by-role" tone="ghost-dark">
                 Learn More
               </Pill>
-              <Pill href="#demo">Request Demo</Pill>
+              <Pill href="/request-demo">Request Demo</Pill>
             </div>
           </article>
         </div>
@@ -313,7 +319,7 @@ export default function Home() {
             business workflows, and operational intelligence into one flexible platform.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <Pill href="#tools" tone="light">
+            <Pill href="/products" tone="light">
               Products Overview
             </Pill>
             <Pill href="/products" tone="ghost">
@@ -331,7 +337,7 @@ export default function Home() {
             improve efficiency, and deliver measurable business outcomes.
           </p>
           <div className="mt-6">
-            <Pill href="#industries" tone="light">
+            <Pill href="/industries/use-cases" tone="light">
               View All Use Cases
             </Pill>
           </div>
@@ -353,7 +359,7 @@ export default function Home() {
             one intelligent workspace.
           </p>
           <a
-            href="#industries"
+            href="/industries"
             className="mt-5 inline-flex h-11 items-center rounded-full bg-white px-5 text-[14px] font-medium shadow-[inset_0_0_0_1px_rgba(0,0,0,0.1)] sm:h-12 sm:px-6 sm:text-[15px]"
           >
             View All Industries
@@ -378,7 +384,7 @@ export default function Home() {
         description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
         actions={[
           { href: "#tools", label: "Explore Platform", tone: "ghost-dark" },
-          { href: "#demo", label: "Request Demo" },
+          { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
           src: "/figma/bring-your-customers.png",
