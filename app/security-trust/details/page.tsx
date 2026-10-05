@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 };
 
 const paymentImage = {
-  src: "/figma/bring-your-customers.png",
+  src: "/figma/cta-new.png",
   alt: "Payments, customers, and successful transactions connected in one flow",
-  width: 912,
-  height: 728,
+  width: 802,
+  height: 609,
 };
 
 export default function SecurityTrustDetailsPage() {

@@ -235,10 +235,10 @@ export default function CaseStudyDetailsPage() {
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={{
-          src: "/figma/bring-your-customers.png",
+          src: "/figma/cta-new.png",
           alt: "Payments, customers, and successful transactions connected in one flow",
-          width: 912,
-          height: 728,
+          width: 802,
+          height: 609,
         }}
       />
       <Footer />

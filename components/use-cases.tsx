@@ -12,10 +12,10 @@ const cases = [
       { value: "79%", label: "read rate" },
       { value: "3.5x", label: "more redirections than Rich SMS campaigns" },
     ],
-    image: "/figma/policy-acknowledgement.png",
+    image: "/figma/where-business-1.png",
     alt: "Policy acknowledgement workspace",
-    width: 532,
-    height: 351,
+    width: 599,
+    height: 429,
     href: "/industries/use-cases/policy-acknowledgement",
   },
   {
@@ -26,10 +26,10 @@ const cases = [
       { value: "79%", label: "read rate" },
       { value: "3.5x", label: "faster completion than email approvals" },
     ],
-    image: "/figma/img20.png",
+    image: "/figma/where-business-2.png",
     alt: "Approval workspace",
-    width: 375,
-    height: 212,
+    width: 567,
+    height: 429,
     href: "/industries/use-cases/multi-level-approvals",
   },
   {
@@ -40,10 +40,10 @@ const cases = [
       { value: "79%", label: "read rate" },
       { value: "3.5x", label: "more context in every handoff" },
     ],
-    image: "/figma/img12.png",
+    image: "/figma/where-business-3.png",
     alt: "Customer conversation workspace",
-    width: 324,
-    height: 213,
+    width: 557,
+    height: 418,
     href: "/industries/use-cases/lead-to-opportunity",
   },
 ];
@@ -94,6 +94,10 @@ export function UseCases() {
   const [frameWidth, setFrameWidth] = useState(0);
   const [index, setIndex] = useState(0);
   const [animate, setAnimate] = useState(true);
+  const [dragOffset, setDragOffset] = useState(0);
+  const drag = useRef<{ pointerId: number; startX: number; moved: boolean } | null>(null);
+  // Set after a drag so the click that follows it does not open the card link.
+  const dragged = useRef(false);
   const count = cases.length;
 
   useEffect(() => {
@@ -138,32 +142,73 @@ export function UseCases() {
     setIndex(index % count);
   }
 
+  function startDrag(event: React.PointerEvent<HTMLDivElement>) {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    dragged.current = false;
+    drag.current = { pointerId: event.pointerId, startX: event.clientX, moved: false };
+    setAnimate(false);
+    // Jump to the duplicate set so dragging right from the first card reveals the last one.
+    if (index === 0) setIndex(count);
+  }
+
+  function moveDrag(event: React.PointerEvent<HTMLDivElement>) {
+    const state = drag.current;
+    if (!state || state.pointerId !== event.pointerId) return;
+    const offset = event.clientX - state.startX;
+    if (!state.moved && Math.abs(offset) > 5) {
+      state.moved = true;
+      event.currentTarget.setPointerCapture(event.pointerId);
+    }
+    if (state.moved) setDragOffset(offset);
+  }
+
+  function endDrag(event: React.PointerEvent<HTMLDivElement>) {
+    const state = drag.current;
+    if (!state || state.pointerId !== event.pointerId) return;
+    drag.current = null;
+    const offset = state.moved ? event.clientX - state.startX : 0;
+    const threshold = Math.min(120, cardWidth * 0.15);
+    setDragOffset(0);
+    if (offset <= -threshold) showNext();
+    else if (offset >= threshold) showPrevious();
+    else setAnimate(true);
+    dragged.current = state.moved;
+  }
+
   const slides = [...cases, ...cases];
 
   return (
     <div>
       <div ref={frame} className="overflow-hidden">
         <div
-          className="flex items-stretch"
+          className="flex cursor-grab touch-pan-y items-stretch select-none active:cursor-grabbing"
           onTransitionEnd={settle}
+          onPointerDown={startDrag}
+          onPointerMove={moveDrag}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
+          onDragStart={(event) => event.preventDefault()}
+          onClickCapture={(event) => {
+            if (dragged.current) event.preventDefault();
+          }}
           style={{
             gap,
             paddingLeft: left,
-            transform: frameWidth ? `translate3d(-${index * (cardWidth + gap)}px, 0, 0)` : undefined,
+            transform: frameWidth ? `translate3d(${dragOffset - index * (cardWidth + gap)}px, 0, 0)` : undefined,
             transition: animate ? "transform 560ms cubic-bezier(0.22, 1, 0.36, 1)" : "none",
           }}
         >
           {slides.map((item, slideIndex) => (
             <article
               key={`${item.title}-${slideIndex}`}
-              className="grid shrink-0 items-start gap-8 rounded-[28px] bg-[#f4f3ef] px-5 py-8 text-black sm:px-8 sm:py-10 min-[1400px]:h-[581px] min-[1400px]:grid-cols-[minmax(0,1fr)_532px] min-[1400px]:items-start min-[1400px]:gap-10 min-[1400px]:overflow-hidden min-[1400px]:px-14 min-[1400px]:py-12"
+              className="relative grid shrink-0 items-start gap-8 rounded-[28px] bg-[#f4f3ef] px-5 py-8 text-black sm:px-8 sm:py-10 min-[1400px]:h-[581px] min-[1400px]:grid-cols-[minmax(0,1fr)_735.5329px] min-[1400px]:items-center min-[1400px]:gap-10 min-[1400px]:overflow-hidden min-[1400px]:pl-14 min-[1400px]:pr-0 min-[1400px]:py-12"
               style={{ width: cardWidth || "80%" }}
             >
               <div className="flex h-full flex-col items-start justify-center pt-1">
                 <h3 className="text-[clamp(32px,2.2vw,42px)] leading-[1.1] font-semibold tracking-[-0.035em]">
                   {item.title}
                 </h3>
-                <p className="mt-4 w-full max-w-[575px] text-[16px] leading-7 text-[#6b7078] sm:text-[17px]">
+                <p className="mt-4 w-full max-w-[575px] text-[16px] leading-7 text-black sm:text-[17px]">
                   {item.body}
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[14px] text-[#1a1a1a]">
@@ -192,14 +237,14 @@ export function UseCases() {
                 </a>
               </div>
               <div className="flex justify-center lg:justify-end">
-                <div className="h-[220px] w-full max-w-[532px] overflow-hidden rounded-[20px] border border-[#e4e4e4] shadow-[0_8px_24px_rgba(16,24,40,0.06)] sm:h-[280px] min-[1400px]:h-[351px] min-[1400px]:w-[532px]">
+                <div className="h-[220px] w-full max-w-[532px] overflow-hidden rounded-[20px] border border-[#e4e4e4] shadow-[0_8px_24px_rgba(16,24,40,0.06)] sm:h-[428.0146px] sm:w-[735.5329px] sm:max-w-full min-[1400px]:absolute min-[1400px]:top-1/2 min-[1400px]:right-0 min-[1400px]:h-[428.0146px] min-[1400px]:w-[735.5329px] min-[1400px]:max-w-none min-[1400px]:-translate-y-1/2 min-[1400px]:rounded-r-none min-[1400px]:border-r-0 min-[1400px]:shadow-[0_12px_40px_rgba(16,24,40,0.08)]">
                   <Image
                     src={item.image}
                     alt={item.alt}
-                    width={532}
-                    height={351}
-                    className="h-full w-full object-cover object-top"
-                    style={{ width: "100%", height: "100%" }}
+                    width={item.width}
+                    height={item.height}
+                    sizes="(min-width: 1400px) 736px, (min-width: 640px) 532px, 100vw"
+                    className="block h-full w-full object-cover object-left-top"
                   />
                 </div>
               </div>

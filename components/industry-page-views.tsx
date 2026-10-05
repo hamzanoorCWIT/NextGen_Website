@@ -8,10 +8,10 @@ import { Pill } from "@/components/pill";
 import type { IndustryVertical } from "@/lib/industries";
 
 const ctaImage = {
-  src: "/figma/bring-your-customers.png",
+  src: "/figma/cta-new.png",
   alt: "Payments, customers, and successful transactions connected in one flow",
-  width: 912,
-  height: 728,
+  width: 802,
+  height: 609,
 };
 
 const connectedPoints = [

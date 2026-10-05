@@ -110,11 +110,11 @@ const connected: ProductImage = {
   height: 537,
 };
 
-const csHero: ProductImage = {
-  src: "/figma/customer-service-hero.png",
-  alt: "Customer conversations on a laptop",
-  width: 1348,
-  height: 637,
+const categoryBanner: ProductImage = {
+  src: "/figma/product-cat-banner.png",
+  alt: "NextGen product workspace on a laptop",
+  width: 1662,
+  height: 677,
 };
 
 const hero1: ProductImage = {
@@ -250,7 +250,7 @@ export const productCategories: Record<string, ProductCategory> = {
     heroTitle: "Give teams one place to manage daily work",
     heroDescription:
       "CWIT EMS helps teams plan, assign, and track operational work with clear ownership, schedules, and progress across tasks, projects, timesheets, and attendance.",
-    heroImage: create,
+    heroImage: categoryBanner,
     simplifyTitle: "Simplify work management",
     simplifyDescription:
       "Connect planning, execution, and time tracking so teams stay aligned from assignment through completion.",
@@ -296,7 +296,7 @@ export const productCategories: Record<string, ProductCategory> = {
     heroTitle: "Build stronger customer relationships",
     heroDescription:
       "CWIT EMS connects contacts, leads, and sales activity so teams can follow every opportunity with the right context.",
-    heroImage: studio,
+    heroImage: categoryBanner,
     simplifyTitle: "Simplify CRM & sales",
     simplifyDescription: "Give sales and service teams one place to manage relationships and pipeline activity.",
     simplifyItems: [
@@ -340,7 +340,7 @@ export const productCategories: Record<string, ProductCategory> = {
     heroTitle: "See performance across every operation",
     heroDescription:
       "CWIT EMS brings dashboards and Power BI reporting together so leaders can monitor trends and make faster decisions.",
-    heroImage: connected,
+    heroImage: categoryBanner,
     simplifyTitle: "Simplify analytics & BI",
     simplifyDescription: "Connect day-to-day activity to the reports and dashboards your teams rely on.",
     simplifyItems: [
@@ -384,7 +384,7 @@ export const productCategories: Record<string, ProductCategory> = {
     heroTitle: "Keep every process accountable",
     heroDescription:
       "CWIT EMS strengthens operational control with permissions, approvals, policy tracking, hierarchy, KYC, and API governance.",
-    heroImage: csHero,
+    heroImage: categoryBanner,
     simplifyTitle: "Simplify governance & compliance",
     simplifyDescription: "Create clear ownership, approvals, and policy controls across the organization.",
     simplifyItems: [
