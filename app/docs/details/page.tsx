@@ -133,10 +133,10 @@ export default function DocsDetailsPage() {
             Manage customer requests, conversations, and service operations through a unified platform. CWIT EMS connects tickets, messaging channels, calls, and customer information so teams can respond faster, collaborate better, and deliver consistent support experiences.
           </p>
 
-          <div className="mt-8 overflow-hidden rounded-[28px] sm:mt-10">
+          <div className="mt-8 overflow-hidden rounded-[12px] sm:mt-10">
             <Image
-              src="/figma/doc-details-banner.png"
-              alt="Customer conversations, topics, and suggested replies on one workspace"
+              src="/figma/docs-detail-banner.png"
+              alt="CWIT EMS dashboard on a tablet with task status, revenue, and compliance insights"
               width={1407}
               height={647}
               priority
@@ -176,11 +176,11 @@ export default function DocsDetailsPage() {
           </div>
           <div className="flex justify-center lg:justify-end">
             <Image
-              src="/figma/docs-overview.png"
-              alt="A messaging conversation that recommends a recipe and shows the ingredients"
-              width={384}
-              height={278}
-              className="h-auto w-full rounded-[28px] object-contain"
+              src="/figma/overview.png"
+              alt="Customer support tickets with conversation history and AI assistance"
+              width={719}
+              height={474}
+              className="h-auto w-full rounded-[12px] object-contain"
               style={{ width: "min(100%, 640px)", height: "auto" }}
             />
           </div>
@@ -197,7 +197,7 @@ export default function DocsDetailsPage() {
           </div>
           <div className="mt-12 grid justify-items-center gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-[28px]">
             {capabilities.map((item) => (
-              <article key={item.title} className="flex w-full max-w-[462px] flex-col rounded-[24px] bg-white p-7 text-[#111111] sm:p-8 lg:h-[450px] lg:w-[462px]">
+              <article key={item.title} className="flex w-full max-w-[462px] flex-col rounded-[12px] bg-white p-7 text-[#111111] sm:p-8 lg:h-[450px] lg:w-[462px]">
                 <h3 className="text-[22px] font-semibold tracking-[-0.02em]">{item.title}</h3>
                 <p className="mt-3 text-[14px] leading-6 text-[#111111]">{item.body}</p>
                 <ul className="mt-auto space-y-3 pt-8">
@@ -232,10 +232,10 @@ export default function DocsDetailsPage() {
           </div>
           <div className="flex justify-center lg:justify-end">
             <Image
-              src="/figma/connected.png"
-              alt="A message API example beside delivery statistics showing a 98 percent delivery rate"
-              width={815}
-              height={537}
+              src="/figma/benefits.png"
+              alt="Customer conversations from email, WhatsApp, Messenger, and chat in one inbox"
+              width={778}
+              height={514}
               className="h-auto w-full object-contain"
               style={{ width: "min(100%, 640px)", height: "auto" }}
             />

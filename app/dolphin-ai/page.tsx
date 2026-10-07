@@ -34,10 +34,10 @@ export default function DolphinAiPage() {
           { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
-          src: "/figma/customer-service-hero.png",
-          alt: "Dolphin AI on a laptop, identifying a discount request and drafting a suggested reply",
-          width: 1348,
-          height: 637,
+          src: "/figma/ticket-banner.png",
+          alt: "A laptop showing an inbox of customer and team messages",
+          width: 1136,
+          height: 548,
         }}
       />
 
@@ -78,7 +78,7 @@ export default function DolphinAiPage() {
             </p>
           </div>
           <div className="mt-12 grid items-stretch gap-4 sm:mt-14 lg:grid-cols-2 lg:gap-5">
-            <article className="flex flex-col rounded-[28px] bg-white p-7 text-[#111] sm:p-9 lg:h-[696px]">
+            <article className="flex flex-col rounded-[12px] bg-white p-7 text-[#111] sm:p-9 lg:h-[696px]">
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10">
                 <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
                   <path d="M10.2 1.5 4.2 10h4.1l-1 6.5 6.5-9.2H9.6l.6-5.8Z" fill="currentColor" />
@@ -96,10 +96,10 @@ export default function DolphinAiPage() {
                 ))}
               </ul>
             </article>
-            <div className="relative h-[360px] overflow-hidden rounded-[28px] bg-[#f3e6c8] sm:h-[480px] lg:h-[696px]">
+            <div className="relative h-[360px] overflow-hidden rounded-[12px] bg-[#f3e6c8] sm:h-[480px] lg:h-[696px]">
               <Image
-                src="/figma/manual-handling.png"
-                alt="A suggested NexaHome setup video shown over a customer conversation"
+                src="/figma/handling.png"
+                alt="Dolphin AI classifying an internet support request by category, priority, department, and intent"
                 fill
                 sizes="(min-width: 1024px) 700px, 100vw"
                 className="object-cover object-center"
@@ -162,11 +162,11 @@ export default function DolphinAiPage() {
       <section className="bg-[#FAFAFA] py-16 sm:py-24">
         <div className="content-1442 grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <Image
-            src="/figma/built-for-every.png"
-            alt="A guide about the state of RCS in customer communications"
+            src="/figma/built-team.png"
+            alt="Team hierarchy showing administrator and manager roles"
             width={815}
             height={537}
-            className="h-auto w-full rounded-[28px] object-contain"
+            className="h-auto w-full rounded-[12px] object-contain"
             style={{ width: "min(100%, 815px)", height: "auto" }}
           />
           <div>

@@ -13,7 +13,7 @@ export default function SignInPage() {
     <div className="min-h-dvh bg-white">
       <div className="grid min-h-dvh lg:grid-cols-2">
         <aside className="hidden min-h-dvh p-4 lg:block xl:p-5">
-          <div className="relative h-full min-h-[calc(100dvh-2rem)] overflow-hidden rounded-[28px] xl:min-h-[calc(100dvh-2.5rem)] xl:rounded-[32px]">
+          <div className="relative h-full min-h-[calc(100dvh-2rem)] overflow-hidden rounded-[12px] xl:min-h-[calc(100dvh-2.5rem)] xl:rounded-[12px]">
             <Image
               src="/figma/sign-in-bg.png"
               alt=""

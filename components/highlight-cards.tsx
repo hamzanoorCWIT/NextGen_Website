@@ -67,7 +67,7 @@ export function HighlightCards({
         </div>
         <div className={`mt-12 grid gap-4 sm:mt-14 sm:gap-5 ${columns}`}>
           {items.map((item) => {
-            const className = `flex flex-col rounded-[22px] p-6 no-underline sm:p-8 ${dark ? "bg-black text-white" : "bg-[#f5f6f8] text-inherit"} ${card}`;
+            const className = `flex flex-col rounded-[12px] p-6 no-underline sm:p-8 ${dark ? "bg-black text-white" : "bg-[#f5f6f8] text-inherit"} ${card}`;
             const content = (
               <>
                 {item.icon || preset?.icon ? <Bolt /> : <p className={`text-[14px] ${dark ? "text-white/60" : "text-[#9aa0a8]"}`}>{item.label}</p>}

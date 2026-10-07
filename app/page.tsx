@@ -282,7 +282,7 @@ export default function Home() {
             ))}
           </div>
 
-          <article className="mt-12 grid overflow-hidden rounded-[20px] border border-[#e6e8ee] sm:mt-16 xl:h-[212px] xl:grid-cols-[404px_minmax(0,1fr)_auto]">
+          <article className="mt-12 grid overflow-hidden rounded-[12px] border border-[#e6e8ee] sm:mt-16 xl:h-[212px] xl:grid-cols-[404px_minmax(0,1fr)_auto]">
             <div className="relative h-[200px] sm:h-[212px] xl:h-full">
               <Image
                 src="/figma/manage-entire.png"
@@ -371,7 +371,7 @@ export default function Home() {
             alt="Campaign workspace for creating ads, choosing a focus, and generating a campaign"
             width={1092}
             height={711}
-            className="mx-auto h-auto w-full max-w-[1060px] rounded-[20px] object-contain shadow-[0_20px_60px_rgba(16,24,40,0.08)] sm:rounded-[28px]"
+            className="mx-auto h-auto w-full max-w-[1060px] rounded-[12px] object-contain shadow-[0_20px_60px_rgba(16,24,40,0.08)] sm:rounded-[12px]"
             style={{ width: "min(100%, 1060px)", height: "auto" }}
           />
         </div>

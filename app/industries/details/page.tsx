@@ -131,8 +131,8 @@ export default function IndustryDetailsPage() {
       <section id="industries" className="bg-[#FAFAFA] py-8 sm:py-16">
         <div className="content-1426 grid gap-5 sm:grid-cols-2 sm:gap-6">
           {industries.map((item) => (
-            <article key={item.id} id={item.id} className="flex scroll-mt-24 flex-col rounded-[24px] border border-[#ececec] bg-white p-4 shadow-[0_1px_2px_rgba(16,24,40,0.04)] sm:p-5">
-              <div className="overflow-hidden rounded-2xl bg-[#f6f7f9]">
+            <article key={item.id} id={item.id} className="flex scroll-mt-24 flex-col rounded-[12px] border border-[#ececec] bg-white p-4 shadow-[0_1px_2px_rgba(16,24,40,0.04)] sm:p-5">
+              <div className="overflow-hidden rounded-[12px] bg-[#f6f7f9]">
                 <Image
                   src={item.image}
                   alt={item.imageAlt}

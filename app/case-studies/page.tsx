@@ -37,10 +37,10 @@ export default function CaseStudiesPage() {
           { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
-          src: "/figma/hero-1.png",
+          src: "/figma/industries-banner.png",
           alt: "NextGen workspace on a laptop",
-          width: 1266,
-          height: 584,
+          width: 1635,
+          height: 674,
         }}
       />
 
@@ -59,7 +59,7 @@ export default function CaseStudiesPage() {
             {stories.map((story, index) => (
               <article
                 key={`${story.title}-${index}`}
-                className="flex flex-col rounded-[22px] border border-black/10 bg-white p-6 sm:p-7"
+                className="flex flex-col rounded-[12px] border border-black/10 bg-white p-6 sm:p-7"
               >
                 <div className="flex flex-wrap gap-2">
                   <span className="inline-flex h-8 items-center rounded-full bg-black px-3.5 text-[13px] font-medium text-white">

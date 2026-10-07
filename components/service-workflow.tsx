@@ -26,7 +26,7 @@ export function ServiceWorkflow({
           <p className="mx-auto mt-4 max-w-[640px] text-[15px] leading-7 text-white/75 sm:text-[16px]">{description}</p>
         </div>
         <div className="mt-12 grid items-stretch gap-5 lg:grid-cols-2">
-          <article className="rounded-[22px] bg-white p-6 text-[#111111] sm:p-8">
+          <article className="rounded-[12px] bg-white p-6 text-[#111111] sm:p-8">
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#f4f5f7]">
               <svg width="16" height="16" viewBox="0 0 18 18" aria-hidden="true">
                 <path d="M10.2 1.5 4.2 10h4.1l-1 6.5 6.5-9.2H9.6l.6-5.8Z" fill="currentColor" />
@@ -41,7 +41,7 @@ export function ServiceWorkflow({
               ))}
             </ol>
           </article>
-          <div className="overflow-hidden rounded-[22px]">
+          <div className="overflow-hidden rounded-[12px]">
             <Image
               src={image.src}
               alt={image.alt}

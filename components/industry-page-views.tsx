@@ -14,6 +14,13 @@ const ctaImage = {
   height: 609,
 };
 
+const defaultImages = {
+  experience: { src: "/figma/ticket-details.png", alt: "A conversation offering recipe choices and a shopping list", width: 900, height: 390 },
+  workflow: { src: "/figma/ticket-route.png", alt: "A RockBank message asking a customer to confirm a suspicious charge", width: 520, height: 552 },
+  insights: { src: "/figma/ticket-priorities.png", alt: "A Mountain Resort chat offering lift wait times and slope photos", width: 900, height: 500 },
+  connected: { src: "/figma/connected.png", alt: "A code sample beside a statistics chart and a 98% delivery rate", width: 815, height: 537 },
+};
+
 const connectedPoints = [
   "Handle customer requests across all channels.",
   "Streamline workflows, approvals, and processes.",
@@ -24,6 +31,10 @@ const connectedPoints = [
 
 export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
   const [heroLead, heroRest] = page.heroTitle.split(" with ");
+  const experience = page.experienceImage ?? defaultImages.experience;
+  const workflow = page.workflowImage ?? defaultImages.workflow;
+  const insights = page.insightsImage ?? defaultImages.insights;
+  const connected = page.connectedImage ?? defaultImages.connected;
 
   return (
     <div id="top" className="site">
@@ -75,10 +86,10 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
             id: "channels",
             title: "Deliver better customer experiences across every channel",
             body: page.experienceBody,
-            image: "/figma/ticket-details.png",
-            imageAlt: "A conversation offering recipe choices and a shopping list",
-            imageWidth: 900,
-            imageHeight: 390,
+            image: experience.src,
+            imageAlt: experience.alt,
+            imageWidth: experience.width,
+            imageHeight: experience.height,
             imageSide: "right",
             ctaLabel: "Request Demo",
             ctaHref: "/request-demo",
@@ -87,10 +98,10 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
             id: "workflows",
             title: "Turn complex processes into simple, connected workflows",
             body: page.workflowBody,
-            image: "/figma/ticket-route.png",
-            imageAlt: "A RockBank message asking a customer to confirm a suspicious charge",
-            imageWidth: 520,
-            imageHeight: 552,
+            image: workflow.src,
+            imageAlt: workflow.alt,
+            imageWidth: workflow.width,
+            imageHeight: workflow.height,
             imageSide: "left",
             ctaLabel: "Request Demo",
             ctaHref: "/request-demo",
@@ -99,10 +110,10 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
             id: "insights",
             title: "Understand performance with insights that drive action",
             body: page.insightsBody,
-            image: "/figma/ticket-priorities.png",
-            imageAlt: "A Mountain Resort chat offering lift wait times and slope photos",
-            imageWidth: 900,
-            imageHeight: 500,
+            image: insights.src,
+            imageAlt: insights.alt,
+            imageWidth: insights.width,
+            imageHeight: insights.height,
             imageSide: "right",
             ctaLabel: "Request Demo",
             ctaHref: "/request-demo",
@@ -140,12 +151,12 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
           </div>
           <div className="flex justify-center lg:justify-end">
             <Image
-              src="/figma/connected.png"
-              alt="A code sample beside a statistics chart and a 98% delivery rate"
-              width={815}
-              height={537}
+              src={connected.src}
+              alt={connected.alt}
+              width={connected.width}
+              height={connected.height}
               className="h-auto w-full object-contain"
-              style={{ width: "min(100%, 815px)", height: "auto" }}
+              style={{ width: `min(100%, ${connected.width}px)`, height: "auto" }}
             />
           </div>
         </div>

@@ -19,8 +19,8 @@ const platforms = [
     image: {
       src: "/figma/platform-1.png",
       alt: "CWIT EMS connected customer operations workspace",
-      width: 1199,
-      height: 752,
+      width: 1495,
+      height: 1052,
     },
   },
   {
@@ -28,10 +28,10 @@ const platforms = [
     title: "Zendesk",
     body: "A platform focused on helping organizations manage customer interactions across multiple channels — ticketing, messaging, email, voice, SMS, live chat.",
     image: {
-      src: "/figma/platform-2.png",
-      alt: "Zendesk customer service platform on a tablet",
-      width: 736,
-      height: 920,
+      src: "/figma/platform-2-new.png",
+      alt: "Zendesk customer service platform",
+      width: 1461,
+      height: 1076,
     },
   },
 ];
@@ -92,10 +92,10 @@ export default function ComparisonDetailsPage() {
           { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
-          src: "/figma/hero-1.png",
-          alt: "NextGen workspace on a laptop",
-          width: 1266,
-          height: 584,
+          src: "/figma/product-cat-banner.png",
+          alt: "Customer conversations on a laptop, with topic, task, and suggested-reply cards",
+          width: 1662,
+          height: 677,
         }}
       />
 
@@ -114,9 +114,9 @@ export default function ComparisonDetailsPage() {
             {platforms.map((platform) => (
               <article
                 key={platform.title}
-                className="flex flex-col overflow-hidden rounded-[28px] bg-[#f5f6f8] lg:h-[679px]"
+                className="flex flex-col overflow-hidden rounded-[12px] bg-[#f5f6f8] lg:h-[679px]"
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-t-[28px] sm:aspect-auto sm:h-[360px] lg:aspect-auto lg:h-[514px]">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-t-[12px] sm:aspect-auto sm:h-[360px] lg:aspect-auto lg:h-[514px]">
                   <Image
                     src={platform.image.src}
                     alt={platform.image.alt}
@@ -149,7 +149,7 @@ export default function ComparisonDetailsPage() {
             </p>
           </div>
 
-          <div className="mt-12 overflow-x-auto rounded-[24px] sm:mt-14">
+          <div className="mt-12 overflow-x-auto rounded-[12px] sm:mt-14">
             <div className="min-w-[520px]">
             <div className="grid grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)] bg-[#f0f1f3] px-5 py-4 text-[14px] font-semibold text-[#111111] sm:px-8 sm:text-[15px]">
               <span>Capability</span>
@@ -190,11 +190,11 @@ export default function ComparisonDetailsPage() {
           </div>
           <div className="flex justify-center lg:justify-end">
             <Image
-              src="/figma/product-create.png"
-              alt="Soraya campaign workspace for creating marketing content"
-              width={730}
-              height={456}
-              className="h-auto w-full rounded-[28px] object-contain"
+              src="/figma/why-teams.png"
+              alt="CWIT EMS ticket workspace with customer conversations and Dolphin AI analysis"
+              width={1545}
+              height={1018}
+              className="h-auto w-full rounded-[12px] object-contain"
               style={{ width: "min(100%, 730px)", height: "auto" }}
             />
           </div>

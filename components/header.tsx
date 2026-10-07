@@ -184,7 +184,7 @@ function Promo({
             alt=""
             width={360}
             height={233}
-            className="mt-8 h-auto w-full rounded-2xl object-contain"
+            className="mt-8 h-auto w-full rounded-[12px] object-contain"
             style={{ height: "auto" }}
           />
         </>
@@ -196,10 +196,10 @@ function Promo({
           >
             {cta}
           </a>
-          <div className="mt-6 h-[210px] rounded-[18px] bg-[#e4e7ec]" />
+          <div className="mt-6 h-[210px] rounded-[12px] bg-[#e4e7ec]" />
         </>
       ) : (
-        <div className="mt-6 h-[210px] rounded-[18px] bg-[#e4e7ec]" />
+        <div className="mt-6 h-[210px] rounded-[12px] bg-[#e4e7ec]" />
       )}
     </div>
   );
