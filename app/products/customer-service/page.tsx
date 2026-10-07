@@ -26,10 +26,10 @@ export default function CustomerServicePage() {
           { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
-          src: "/figma/customer-service-hero.png",
+          src: "/figma/product-cat-banner.png",
           alt: "Customer conversations on a laptop, with topic, task, and suggested-reply cards",
-          width: 1348,
-          height: 637,
+          width: 1662,
+          height: 677,
         }}
       />
 
@@ -71,30 +71,30 @@ export default function CustomerServicePage() {
             label: "Tickets",
             active: true,
             image: {
-              src: "/figma/cs-tickets.png",
+              src: "/figma/product-tab-1.png",
               alt: "Ticket inbox with an open conversation about a battery that is not charging",
-              width: 471,
-              height: 298,
+              width: 1013,
+              height: 683,
             },
           },
           {
             id: "chat-whatsapp",
             label: "Chat & WhatsApp",
             image: {
-              src: "/figma/ticket-route.png",
+              src: "/figma/product-tab-2.png",
               alt: "A chat message confirming a suspicious charge",
-              width: 520,
-              height: 552,
+              width: 948,
+              height: 617,
             },
           },
           {
             id: "calls-campaigns",
             label: "Calls & Campaigns",
             image: {
-              src: "/figma/product-create.png",
+              src: "/figma/product-tab-3.png",
               alt: "A campaign workspace for creating a customer message",
-              width: 730,
-              height: 456,
+              width: 948,
+              height: 617,
             },
           },
         ]}
@@ -115,10 +115,10 @@ export default function CustomerServicePage() {
           { title: "Performance is measured" },
         ]}
         image={{
-          src: "/figma/cs-workflow.png",
+          src: "/figma/customer-products.png",
           alt: "A shared draft and customer conversation assigned to Aurora Miller",
-          width: 355,
-          height: 360,
+          width: 685,
+          height: 696,
         }}
       />
 
@@ -154,10 +154,10 @@ export default function CustomerServicePage() {
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={{
-          src: "/figma/bring-your-customers.png",
+          src: "/figma/cta-new.png",
           alt: "Payments, customers, and successful transactions connected in one flow",
-          width: 912,
-          height: 728,
+          width: 802,
+          height: 609,
         }}
       />
       <Footer />

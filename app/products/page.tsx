@@ -10,27 +10,16 @@ export const metadata: Metadata = {
     "Manage customer conversations, daily operations, sales pipelines, business intelligence, and governance workflows from one unified platform.",
 };
 
-const studio = {
-  image: "/figma/product-studio.png",
-  imageAlt: "Sanaya workspace for generating and publishing a campaign image",
-  imageWidth: 720,
-  imageHeight: 427,
-};
-
-const create = {
-  image: "/figma/product-create.png",
-  imageAlt: "Sanaya workspace for choosing what campaign to create",
-  imageWidth: 730,
-  imageHeight: 456,
-};
-
 const products: FeatureSplitItem[] = [
   {
     id: "customer-service",
     title: "Customer Service Products",
     ctaHref: "/products/customer-service",
     body: "Bring tickets, chats, calls, and customer interactions together in a unified workspace designed for faster resolution and better collaboration. Give service teams complete visibility into every conversation, customer journey, and support activity from one connected platform.",
-    ...studio,
+    image: "/figma/product-1.png",
+    imageAlt: "Customer service workspace",
+    imageWidth: 677,
+    imageHeight: 683,
     imageSide: "left",
   },
   {
@@ -38,7 +27,10 @@ const products: FeatureSplitItem[] = [
     title: "Work Management Products",
     ctaHref: "/products/work-management",
     body: "Give teams a single place to organize tasks, projects, schedules, and daily operations. From individual assignments to large initiatives, keep work visible, track progress, and ensure teams stay aligned from planning to completion.",
-    ...create,
+    image: "/figma/product-2.png",
+    imageAlt: "Work management workspace",
+    imageWidth: 677,
+    imageHeight: 682,
     imageSide: "right",
   },
   {
@@ -46,7 +38,10 @@ const products: FeatureSplitItem[] = [
     title: "CRM & Sales",
     ctaHref: "/products/crm-sales",
     body: "Build stronger customer relationships with complete visibility into contacts, leads, opportunities, and interactions. Connect every customer touchpoint to sales workflows so teams can capture opportunities, follow progress, and make informed decisions.",
-    ...studio,
+    image: "/figma/product-3.png",
+    imageAlt: "CRM and sales workspace",
+    imageWidth: 677,
+    imageHeight: 683,
     imageSide: "left",
   },
   {
@@ -54,7 +49,10 @@ const products: FeatureSplitItem[] = [
     title: "Analytics & BI",
     ctaHref: "/products/analytics",
     body: "Transform everyday business activity into meaningful insights with connected dashboards and reporting. Monitor performance, identify trends, and help teams make faster decisions using real-time operational visibility.",
-    ...create,
+    image: "/figma/product-4.png",
+    imageAlt: "Analytics and BI workspace",
+    imageWidth: 677,
+    imageHeight: 682,
     imageSide: "right",
   },
   {
@@ -62,16 +60,19 @@ const products: FeatureSplitItem[] = [
     title: "Governance & Compliance",
     ctaHref: "/products/governance",
     body: "Create stronger operational control with structured permissions, approvals, compliance tracking, and policy management. Ensure every action has clear ownership, every process follows defined rules, and every decision remains traceable.",
-    ...studio,
+    image: "/figma/product-5.png",
+    imageAlt: "Governance and compliance workspace",
+    imageWidth: 677,
+    imageHeight: 682,
     imageSide: "left",
   },
 ];
 
 const paymentImage = {
-  src: "/figma/bring-your-customers.png",
+  src: "/figma/cta-new.png",
   alt: "Payments, customers, and successful transactions connected in one flow",
-  width: 912,
-  height: 728,
+  width: 802,
+  height: 609,
 };
 
 export default function ProductsPage() {
@@ -93,10 +94,10 @@ export default function ProductsPage() {
           { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
-          src: "/figma/hero-1.png",
+          src: "/figma/product-banner.png",
           alt: "NextGen workspace on a laptop",
-          width: 1266,
-          height: 584,
+          width: 1136,
+          height: 548,
         }}
       />
       <FeatureSplit items={products} bandClassName="bg-[#FAFAFA]" />

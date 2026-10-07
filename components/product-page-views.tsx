@@ -11,10 +11,10 @@ import { Testimonials } from "@/components/testimonials";
 import { getSiblingModules, type ProductCategory, type ProductSubcategoryPage } from "@/lib/products";
 
 const ctaImage = {
-  src: "/figma/bring-your-customers.png",
+  src: "/figma/cta-new.png",
   alt: "Payments, customers, and successful transactions connected in one flow",
-  width: 912,
-  height: 728,
+  width: 802,
+  height: 609,
 };
 
 export function ProductCategoryPageView({ page }: { page: ProductCategory }) {

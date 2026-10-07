@@ -19,49 +19,49 @@ const industries = [
   {
     title: "Team Leader",
     body: "Track performance, manage escalations, and ensure smooth daily operations.",
-    image: "/figma/img7.png",
-    width: 340,
-    height: 340,
+    image: "/figma/industries-roles-1.png",
+    width: 480,
+    height: 270,
     href: "/industries/by-role/team-leaders",
   },
   {
     title: "Banking & Financial Services",
     body: "Enhance customer service and compliance while ensuring secure.",
-    image: "/figma/img8.png",
-    width: 375,
-    height: 474,
+    image: "/figma/industries-roles-2.png",
+    width: 1536,
+    height: 1024,
     href: "/industries/by-industry/banking-financial",
   },
   {
     title: "BPO & Outsourcing",
     body: "Manage customer operations efficiently with omnichannel support, SLA.",
-    image: "/figma/img16.png",
-    width: 320,
-    height: 320,
+    image: "/figma/industries-roles-3.png",
+    width: 940,
+    height: 788,
     href: "/industries/by-industry/bpo-outsourcing",
   },
   {
     title: "Government",
     body: "Streamline citizen services and internal operations with clear workflows.",
-    image: "/figma/img9.png",
-    width: 150,
-    height: 269,
+    image: "/figma/industries-roles-4.png",
+    width: 480,
+    height: 270,
     href: "/industries/by-industry/government",
   },
   {
     title: "Finance",
     body: "Streamline approval workflows, handle requests, and improve financial control.",
-    image: "/figma/img17.png",
-    width: 368,
-    height: 430,
+    image: "/figma/industries-roles-5.png",
+    width: 2000,
+    height: 1318,
     href: "/industries/by-role/finance",
   },
   {
     title: "IT and Administration",
     body: "Handle support, service requests, user access, and operations from.",
-    image: "/figma/img11.png",
-    width: 184,
-    height: 276,
+    image: "/figma/industries-roles-6.png",
+    width: 480,
+    height: 320,
     href: "/industries/by-role/it-administration",
   },
 ];
@@ -75,10 +75,10 @@ const toolsPanels: ToolsPanel[] = [
     ],
     href: "/products/customer-service",
     image: {
-      src: "/figma/tools-built.png",
+      src: "/figma/tools-1.png",
       alt: "Customer service tools, including account verification and a support specialist",
-      width: 780,
-      height: 478,
+      width: 768,
+      height: 436,
     },
   },
   {
@@ -89,10 +89,10 @@ const toolsPanels: ToolsPanel[] = [
     ],
     href: "/products/work-management",
     image: {
-      src: "/figma/product-create.png",
+      src: "/figma/tools-2.png",
       alt: "Work management workspace for creating and tracking campaigns",
-      width: 730,
-      height: 456,
+      width: 754,
+      height: 445,
     },
   },
   {
@@ -103,10 +103,10 @@ const toolsPanels: ToolsPanel[] = [
     ],
     href: "/products/crm-sales",
     image: {
-      src: "/figma/product-studio.png",
+      src: "/figma/tools-3.png",
       alt: "CRM workspace for generating and publishing campaign content",
-      width: 720,
-      height: 427,
+      width: 746,
+      height: 408,
     },
   },
   {
@@ -117,10 +117,10 @@ const toolsPanels: ToolsPanel[] = [
     ],
     href: "/products/analytics",
     image: {
-      src: "/figma/experience-future.png",
+      src: "/figma/tools-4.png",
       alt: "Analytics workspace for campaign focus and performance insights",
-      width: 1060,
-      height: 698,
+      width: 792,
+      height: 436,
     },
   },
   {
@@ -131,10 +131,10 @@ const toolsPanels: ToolsPanel[] = [
     ],
     href: "/products/governance",
     image: {
-      src: "/figma/bring-your-customers.png",
+      src: "/figma/tools-5.png",
       alt: "Governance workflows connecting customers, teams, and approvals",
-      width: 912,
-      height: 728,
+      width: 742,
+      height: 425,
     },
   },
 ];
@@ -151,10 +151,10 @@ export default function Home() {
           { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
-          src: "/figma/hero-1.png",
+          src: "/figma/home-banner.png",
           alt: "NextGen workspace on a laptop",
-          width: 1266,
-          height: 584,
+          width: 1288,
+          height: 594,
         }}
       />
 
@@ -285,11 +285,11 @@ export default function Home() {
           <article className="mt-12 grid overflow-hidden rounded-[20px] border border-[#e6e8ee] sm:mt-16 xl:h-[212px] xl:grid-cols-[404px_minmax(0,1fr)_auto]">
             <div className="relative h-[200px] sm:h-[212px] xl:h-full">
               <Image
-                src="/figma/industries-manage-your-entire.png"
+                src="/figma/manage-entire.png"
                 alt=""
                 fill
                 sizes="404px"
-                className="object-cover object-[center_58%]"
+                className="object-cover object-center"
               />
             </div>
             <div className="flex flex-col justify-center px-5 py-5 sm:px-8 sm:py-6">
@@ -367,10 +367,10 @@ export default function Home() {
         </div>
         <div className="wrap mt-8 sm:mt-12">
           <Image
-            src="/figma/experience-future.png"
+            src="/figma/future-intelligent.png"
             alt="Campaign workspace for creating ads, choosing a focus, and generating a campaign"
-            width={1060}
-            height={698}
+            width={1092}
+            height={711}
             className="mx-auto h-auto w-full max-w-[1060px] rounded-[20px] object-contain shadow-[0_20px_60px_rgba(16,24,40,0.08)] sm:rounded-[28px]"
             style={{ width: "min(100%, 1060px)", height: "auto" }}
           />
@@ -387,10 +387,10 @@ export default function Home() {
           { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
-          src: "/figma/bring-your-customers.png",
+          src: "/figma/cta-new.png",
           alt: "Payments, customers, and successful transactions connected in one flow",
-          width: 912,
-          height: 728,
+          width: 802,
+          height: 609,
         }}
       />
 

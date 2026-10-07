@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { CtaSection } from "@/components/cta-section";
+import Image from "next/image";
 import { Footer } from "@/components/footer";
-import { HeroBanner } from "@/components/hero-banner";
-import { HighlightCards } from "@/components/highlight-cards";
+import { Header } from "@/components/header";
+import styles from "./security-trust.module.css";
 
 export const metadata: Metadata = {
   title: "Security & Trust | NextGen Contact Centre",
@@ -10,86 +10,109 @@ export const metadata: Metadata = {
     "Learn how CWIT EMS protects data, controls access, and keeps operations auditable across every team.",
 };
 
-const paymentImage = {
-  src: "/figma/bring-your-customers.png",
-  alt: "Payments, customers, and successful transactions connected in one flow",
-  width: 912,
-  height: 728,
-};
+const layers = [
+  {
+    title: "Identity & Access Control",
+    description: "Control who can access your organization, what they can see, and what actions they can perform.",
+    items: ["Role-based permissions", "Controlled user access", "Organization-level access management", "Approval-based workflows", "Access controls for sensitive operations"],
+  },
+  {
+    title: "Data Protection",
+    description: "Protect business and customer information throughout its lifecycle.",
+    items: ["Data protection in transit", "Secure data storage", "Controlled access to business information", "Protection of sensitive customer and operational data"],
+  },
+  {
+    title: "Audit & Accountability",
+    description: "Maintain visibility into important activity across your organization.",
+    items: ["Activity tracking", "User and system actions", "Operational history", "Traceable changes", "Audit-ready records"],
+  },
+  {
+    title: "Governance & Compliance",
+    description: "Give organizations the controls they need to manage policies, responsibilities, and operational processes.",
+    items: ["Policy documentation", "Permissions management", "Approval workflows", "Organizational hierarchy", "Governance controls"],
+  },
+];
+
+const operations = [
+  ["Customer Service", "Control access to tickets, conversations, customer information, and service workflows."],
+  ["Work Management", "Manage permissions across tasks, projects, assignments, and approvals."],
+  ["Analytics", "Control access to dashboards, reports, and operational information."],
+  ["Integrations", "Connect external systems while maintaining controlled access to integrated data and workflows."],
+];
+
+function SecurityList({ items, checks = false }: { items: string[]; checks?: boolean }) {
+  return (
+    <ul className={checks ? styles.checks : styles.bullets}>
+      {items.map((item) => (
+        <li key={item}>
+          {checks && <span className={styles.check} aria-hidden="true"><Image src="/figma/bullets-tick.png" alt="" width={16} height={16} /></span>}
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function SecurityTrustPage() {
   return (
     <div id="top" className="site">
-      <HeroBanner
-        title="Security and trust built into every workflow"
-        description="Protect customer data, control access by role, and keep approvals, policies, and operational activity auditable across the platform."
-        titleClassName="max-w-[980px]"
-        descriptionClassName="max-w-[820px]"
-        actions={[
-          { href: "#controls", label: "Explore Controls", tone: "light" },
-          { href: "/request-demo", label: "Request Demo" },
-        ]}
-        image={{
-          src: "/figma/hero-1.png",
-          alt: "NextGen workspace on a laptop",
-          width: 1266,
-          height: 584,
-        }}
-      />
+      <Header />
+      <main className={styles.content}>
+        <section className={styles.intro}>
+          <h1>Your data. Protected by design.</h1>
+          <p>CWIT EMS is built to help organizations manage customer interactions, operational workflows, and business information with security and control at every layer.<br />From access management and permissions to data protection, auditability, and operational governance, security is built into how the platform is designed and managed.</p>
+        </section>
 
-      <HighlightCards
-        id="controls"
-        variant="numbered"
-        tone="dark"
-        title="Controls that keep operations safe and accountable."
-        description="Use practical security controls to protect data, manage access, and keep every operational action auditable."
-        items={[
-          {
-            label: "01",
-            title: "Role-based Access",
-            body: "Give every team the tools and data they need without exposing sensitive controls.",
-            href: "/security-trust/details",
-          },
-          {
-            label: "02",
-            title: "Approval Governance",
-            body: "Run multi-level approvals with clear owners, history, and policy alignment.",
-            href: "/security-trust/details",
-          },
-          {
-            label: "03",
-            title: "Policy Controls",
-            body: "Publish policies, collect acknowledgements, and keep compliance evidence ready.",
-            href: "/security-trust/details",
-          },
-          {
-            label: "04",
-            title: "Audit Trails",
-            body: "Track changes, ownership, and operational decisions with complete history.",
-            href: "/security-trust/details",
-          },
-          {
-            label: "05",
-            title: "KYC & Risk",
-            body: "Run KYC checks and risk monitoring with accountable review workflows.",
-            href: "/security-trust/details",
-          },
-          {
-            label: "06",
-            title: "Secure Administration",
-            body: "Manage permissions, integrations, and configuration from a controlled workspace.",
-            href: "/security-trust/details",
-          },
-        ]}
-      />
+        <section className={styles.layers} aria-labelledby="security-layers">
+          <h2 id="security-layers">Security at every layer</h2>
+          {layers.map((layer) => (
+            <div className={styles.group} key={layer.title}>
+              <h3>{layer.title}</h3>
+              <p>{layer.description}</p>
+              <SecurityList items={layer.items} />
+            </div>
+          ))}
+        </section>
 
-      <CtaSection
-        title="Create a better way to manage customer service"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
-        titleClassName="max-w-[620px]"
-        actions={[{ href: "/request-demo", label: "Request Demo" }]}
-        image={paymentImage}
-      />
+        <section className={styles.section} aria-labelledby="controlled-access">
+          <h2 id="controlled-access">Built for controlled access</h2>
+          <p>Give every team the access they need — and nothing more.<br />CWIT EMS supports structured permissions so organizations can define access according to roles, responsibilities, and operational requirements.</p>
+          <SecurityList checks items={[
+            "Role-based access — Assign permissions according to user responsibilities.",
+            "Controlled administration — Manage access to sensitive functions and organizational data.",
+            "Approval workflows — Keep important operational actions subject to defined approval processes.",
+            "Organizational structure — Align access and responsibilities with your organization’s hierarchy.",
+          ]} />
+        </section>
+
+        <section className={styles.section} aria-labelledby="information-protection">
+          <h2 id="information-protection" className={styles.protectionTitle}>Protect the information behind every interaction</h2>
+          <p>Customer conversations contain sensitive information. Keep it controlled.<br />CWIT EMS brings customer interactions, tickets, communications, and operational data into a controlled environment designed around secure access and responsible data handling.</p>
+          <SecurityList checks items={[
+            "Customer information — Keep customer and contact information within controlled workflows.",
+            "Communication data — Manage service conversations and interactions through authorized users.",
+            "Operational information — Control access to internal tasks, projects, reports, and workflows.",
+            "Business records — Maintain traceable records across operational activity.",
+          ]} />
+        </section>
+
+        <section className={styles.section} aria-labelledby="operations-security">
+          <h2 id="operations-security">Security across your operations</h2>
+          <p>Security shouldn’t stop at the login screen.<br />Customer service is connected to teams, workflows, integrations, analytics, and business systems. CWIT EMS extends governance across these operational areas so organizations can maintain control as work moves through the platform.</p>
+          {operations.map(([title, description]) => (
+            <div className={styles.operation} key={title}>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </div>
+          ))}
+        </section>
+
+        <section className={styles.section} aria-labelledby="visibility-accountability">
+          <h2 id="visibility-accountability">Designed for visibility and accountability</h2>
+          <p>Know what happened, who acted, and where the work stands.<br />Operational visibility helps organizations investigate activity, maintain accountability, and understand changes across their environment.</p>
+          <SecurityList items={["User activity records", "Workflow history", "Assignment tracking", "Approval history", "Operational changes", "Traceable customer-service activity"]} />
+        </section>
+      </main>
       <Footer />
     </div>
   );
