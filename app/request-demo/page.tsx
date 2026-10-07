@@ -14,7 +14,7 @@ export default function RequestDemoPage() {
     <div id="top" className="site">
       <Header className="border-b border-black/20" />
       <main className="px-4 py-16 sm:px-6 sm:py-24">
-        <div className="mx-auto w-full max-w-[560px] rounded-[28px] bg-[#ececed] p-7 sm:rounded-[32px] sm:p-10">
+        <div className="mx-auto w-full max-w-[560px] rounded-[12px] bg-[#ececed] p-7 sm:rounded-[12px] sm:p-10">
           <h1 className="text-[clamp(32px,4vw,44px)] leading-[1.1] font-semibold tracking-[-0.04em] text-[#111111]">
             Request Demo
           </h1>

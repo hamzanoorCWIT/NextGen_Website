@@ -10,26 +10,15 @@ export const metadata: Metadata = {
     "CWIT EMS adapts to the way your organization operates, with configurable solutions for every industry, role, and use case.",
 };
 
-const studio = {
-  image: "/figma/product-studio.png",
-  imageAlt: "Sanaya workspace for generating and publishing a campaign image",
-  imageWidth: 720,
-  imageHeight: 427,
-};
-
-const create = {
-  image: "/figma/product-create.png",
-  imageAlt: "Sanaya workspace for choosing what campaign to create",
-  imageWidth: 730,
-  imageHeight: 456,
-};
-
 const industries: FeatureSplitItem[] = [
   {
     id: "by-industry",
     title: "By Industry",
     body: "Every industry has unique challenges, workflows, and service expectations. CWIT EMS adapts to the way your organization operates with configurable solutions for customer service, business processes, compliance, and operational management.",
-    ...studio,
+    image: "/figma/industry-1.png",
+    imageAlt: "Industry solutions workspace",
+    imageWidth: 719,
+    imageHeight: 474,
     imageSide: "left",
     ctaLabel: "Explore More",
     ctaHref: "/industries/by-industry",
@@ -38,7 +27,10 @@ const industries: FeatureSplitItem[] = [
     id: "by-role",
     title: "By Role",
     body: "Different teams need different levels of visibility, control, and collaboration. CWIT EMS empowers support teams, managers, operations leaders, and executives with tools designed around their daily workflows and business goals.",
-    ...create,
+    image: "/figma/industry-2.png",
+    imageAlt: "Role-based team workspace",
+    imageWidth: 719,
+    imageHeight: 474,
     imageSide: "right",
     ctaLabel: "Explore More",
     ctaHref: "/industries/by-role",
@@ -47,7 +39,10 @@ const industries: FeatureSplitItem[] = [
     id: "use-cases",
     title: "Use Cases",
     body: "From managing customer conversations and service requests to automating approvals, tracking performance, and improving decision-making, CWIT EMS helps organizations streamline critical processes across every department.",
-    ...studio,
+    image: "/figma/industry-3.png",
+    imageAlt: "Use case workflows workspace",
+    imageWidth: 719,
+    imageHeight: 474,
     imageSide: "left",
     ctaLabel: "Explore More",
     ctaHref: "/industries/use-cases",
@@ -74,10 +69,10 @@ export default function IndustriesPage() {
           { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
-          src: "/figma/hero-1.png",
+          src: "/figma/industries-banner.png",
           alt: "NextGen workspace on a laptop",
-          width: 1266,
-          height: 584,
+          width: 1635,
+          height: 674,
         }}
       />
       <FeatureSplit items={industries} bandClassName="bg-[#FAFAFA]" />

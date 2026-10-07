@@ -17,6 +17,11 @@ export type IndustryVertical = {
   insightsBody: string;
   connectedTitle: string;
   heroImage: ProductImage;
+  /** Optional per-page overrides for the three feature sections and the connected-operations image. */
+  experienceImage?: ProductImage;
+  workflowImage?: ProductImage;
+  insightsImage?: ProductImage;
+  connectedImage?: ProductImage;
 };
 
 export type IndustryPage = IndustryVertical;
@@ -56,11 +61,11 @@ const csTickets: ProductImage = {
   height: 298,
 };
 
-const hero1: ProductImage = {
-  src: "/figma/hero-1.png",
+const heroBanner: ProductImage = {
+  src: "/figma/ticket-banner.png",
   alt: "NextGen workspace on a laptop",
-  width: 1266,
-  height: 584,
+  width: 1136,
+  height: 548,
 };
 
 const catalogImages = [csTickets, create, ticketDetails, studio, ticketRoute] as const;
@@ -96,7 +101,7 @@ function vertical(
     workflowBody: `From service requests to internal approvals, CWIT EMS helps ${adjective} teams automate repetitive processes, route work efficiently, and keep every department aligned with clear ownership and visibility.`,
     insightsBody: `Monitor service operations, workforce activity, and business performance through connected dashboards and reporting. CWIT EMS gives ${adjective} leaders the visibility needed to make informed decisions and improve daily operations.`,
     connectedTitle: `Connected operations for modern ${adjective} organizations`,
-    heroImage: hero1,
+    heroImage: heroBanner,
   };
 }
 
@@ -148,48 +153,69 @@ export const useCaseChildren = [
 ] as const;
 
 export const byIndustryCards: IndustryCatalogCard[] = [
-  card(
-    "utilities",
-    "Utilities",
-    "Manage customer services, field operations, and internal workflows with connected communication, request management, and real-time operational visibility.",
-    0,
-  ),
-  card(
-    "banking-financial",
-    "Banking & Financial Services",
-    "Deliver secure and reliable customer experiences with structured workflows, compliance processes, approvals, and complete control over service operations.",
-    1,
-  ),
-  card(
-    "bpo-outsourcing",
-    "BPO & Outsourcing",
-    "Handle high-volume customer operations efficiently with omnichannel communication, workforce coordination, performance tracking, and automated workflows.",
-    2,
-  ),
-  card(
-    "government",
-    "Government",
-    "Improve citizen services and internal operations through transparent processes, centralized communication, approvals, and accountable service delivery.",
-    3,
-  ),
-  card(
-    "telecom",
-    "Telecom",
-    "Support complex customer interactions with connected channels, faster service management, intelligent workflows, and real-time operational visibility.",
-    0,
-  ),
-  card(
-    "professional-services",
-    "Professional Services",
-    "Deliver secure and reliable customer experiences with structured workflows, compliance processes, approvals, and complete control over service operations.",
-    2,
-  ),
-  card(
-    "construction",
-    "Construction",
-    "Coordinate projects, teams, approvals, and operational activities with structured workflows built for complex business environments.",
-    4,
-  ),
+  {
+    id: "utilities",
+    title: "Utilities",
+    body: "Manage customer services, field operations, and internal workflows with connected communication, request management, and real-time operational visibility.",
+    image: "/figma/by-industry-1.png",
+    imageAlt: "Utilities workspace",
+    width: 706,
+    height: 234,
+  },
+  {
+    id: "banking-financial",
+    title: "Banking & Financial Services",
+    body: "Deliver secure and reliable customer experiences with structured workflows, compliance processes, approvals, and complete control over service operations.",
+    image: "/figma/by-industry-2.png",
+    imageAlt: "Banking and Financial Services workspace",
+    width: 706,
+    height: 234,
+  },
+  {
+    id: "bpo-outsourcing",
+    title: "BPO & Outsourcing",
+    body: "Handle high-volume customer operations efficiently with omnichannel communication, workforce coordination, performance tracking, and automated workflows.",
+    image: "/figma/by-industry-3.png",
+    imageAlt: "BPO and Outsourcing workspace",
+    width: 706,
+    height: 234,
+  },
+  {
+    id: "government",
+    title: "Government",
+    body: "Improve citizen services and internal operations through transparent processes, centralized communication, approvals, and accountable service delivery.",
+    image: "/figma/by-industry-4.png",
+    imageAlt: "Government workspace",
+    width: 706,
+    height: 234,
+  },
+  {
+    id: "telecom",
+    title: "Telecom",
+    body: "Support complex customer interactions with connected channels, faster service management, intelligent workflows, and real-time operational visibility.",
+    image: "/figma/by-industry-5.png",
+    imageAlt: "Telecom workspace",
+    width: 706,
+    height: 234,
+  },
+  {
+    id: "professional-services",
+    title: "Professional Services",
+    body: "Deliver secure and reliable customer experiences with structured workflows, compliance processes, approvals, and complete control over service operations.",
+    image: "/figma/by-industry-6.png",
+    imageAlt: "Professional Services workspace",
+    width: 706,
+    height: 234,
+  },
+  {
+    id: "construction",
+    title: "Construction",
+    body: "Coordinate projects, teams, approvals, and operational activities with structured workflows built for complex business environments.",
+    image: "/figma/by-industry-7.png",
+    imageAlt: "Construction workspace",
+    width: 706,
+    height: 234,
+  },
 ];
 
 export const byRoleCards: IndustryCatalogCard[] = [
@@ -238,7 +264,11 @@ export const industryVerticals: Record<string, IndustryVertical> = {
     insightsBody:
       "Monitor service operations, workforce activity, and business performance through connected dashboards and reporting. CWIT EMS gives utility leaders the visibility needed to make informed decisions and improve daily operations.",
     connectedTitle: "Connected operations for modern utility providers",
-    heroImage: hero1,
+    heroImage: heroBanner,
+    experienceImage: { src: "/figma/utilities-1.png", alt: "Utility customer conversations across channels", width: 719, height: 474 },
+    workflowImage: { src: "/figma/utilities-2.png", alt: "Utility service request workflow", width: 719, height: 474 },
+    insightsImage: { src: "/figma/utilities-3.png", alt: "Utility performance dashboard", width: 719, height: 474 },
+    connectedImage: { src: "/figma/connected-utility.png", alt: "Connected utility operations overview", width: 815, height: 537 },
   },
   "banking-financial": vertical(
     "banking-financial",

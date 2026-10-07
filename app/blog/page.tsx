@@ -74,7 +74,7 @@ export default function BlogPage() {
       <section id="articles" className="bg-[#FAFAFA] py-8 sm:py-16">
         <div className="content-1426 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
-            <article key={post.title} className="flex min-h-[280px] flex-col rounded-[22px] bg-white p-6 sm:p-7">
+            <article key={post.title} className="flex min-h-[280px] flex-col rounded-[12px] bg-white p-6 sm:p-7">
               <p className="text-[12px] font-semibold tracking-[0.06em] text-[#667085] uppercase">{post.category}</p>
               <h2 className="mt-4 text-[20px] leading-snug font-semibold tracking-[-0.02em]">{post.title}</h2>
               <p className="mt-3 flex-1 text-[15px] leading-7 text-[#3a3a3a]">{post.body}</p>

@@ -29,7 +29,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <aside className="overflow-hidden rounded-[28px] bg-[#f3f4f6] lg:min-h-[560px]">
+            <aside className="overflow-hidden rounded-[12px] bg-[#f3f4f6] lg:min-h-[560px]">
               <div className="px-6 pt-7 pb-5 sm:px-8 sm:pt-10 sm:pb-6">
                 <h2 className="max-w-[260px] text-[20px] leading-[1.25] font-semibold tracking-[-0.03em] text-[#111111] sm:text-[26px]">
                   Want to reach out directly?
@@ -83,7 +83,7 @@ export default function ContactPage() {
 
       <section className="bg-white pb-12 sm:pb-16 lg:pb-24" aria-label="Office location map">
         <div className="content-1442">
-          <div className="overflow-hidden rounded-[20px] sm:rounded-[24px]">
+          <div className="overflow-hidden rounded-[12px] sm:rounded-[12px]">
             <iframe
               title="CWIT office location map"
               src="https://www.google.com/maps?q=24.7585,46.6515&z=13&output=embed"

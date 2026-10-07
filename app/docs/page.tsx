@@ -30,10 +30,10 @@ export default function DocsPage() {
           { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
-          src: "/figma/hero-1.png",
+          src: "/figma/industries-banner.png",
           alt: "NextGen workspace on a laptop",
-          width: 1266,
-          height: 584,
+          width: 1635,
+          height: 674,
         }}
       />
 

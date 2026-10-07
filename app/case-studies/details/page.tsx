@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { CountUp } from "@/components/count-up";
 import { CtaSection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -21,10 +22,10 @@ const challengePoints = [
 ];
 
 const metrics = [
-  { value: "40%", label: "Faster request handling" },
-  { value: "60%", label: "Improved workflow visibility" },
-  { value: "35%", label: "Reduction in manual processes" },
-  { value: "90%", label: "Operational tracking accuracy" },
+  { value: 40, label: "Faster request handling" },
+  { value: 60, label: "Improved workflow visibility" },
+  { value: 35, label: "Reduction in manual processes" },
+  { value: 90, label: "Operational tracking accuracy" },
 ];
 
 const shareLinks = [
@@ -122,10 +123,10 @@ export default function CaseStudyDetailsPage() {
             Connect customer requests, internal workflows, and operational reporting through one unified platform. This case study shows how teams simplified service delivery and improved visibility across growing operations with CWIT EMS.
           </p>
 
-          <div className="mt-8 overflow-hidden rounded-[28px] sm:mt-10">
+          <div className="mt-8 overflow-hidden rounded-[12px] sm:mt-10">
             <Image
-              src="/figma/doc-details-banner.png"
-              alt="Customer conversations, topics, and suggested replies on one workspace"
+              src="/figma/docs-detail-banner.png"
+              alt="CWIT EMS dashboard on a tablet with task status, revenue, and compliance insights"
               width={1407}
               height={647}
               priority
@@ -165,10 +166,10 @@ export default function CaseStudyDetailsPage() {
               [Company Name] manages complex customer interactions and operational processes requiring reliable workflows, faster communication, and better visibility across teams.
             </p>
           </div>
-          <div className="mt-10 overflow-hidden rounded-[28px]">
+          <div className="mt-10 overflow-hidden rounded-[12px]">
             <Image
-              src="/figma/about-organization.png"
-              alt="Smart speaker setup guide with Read the guide and Get help actions"
+              src="/figma/about-org.png"
+              alt="NextGen Contact Centre office building"
               width={1415}
               height={532}
               className="h-auto w-full object-contain"
@@ -182,10 +183,10 @@ export default function CaseStudyDetailsPage() {
         <div className="content-1442 grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div className="flex justify-center lg:justify-start">
             <Image
-              src="/figma/case-challenge.png"
-              alt="RockBank chat confirming a suspicious charge"
-              width={410}
-              height={320}
+              src="/figma/managin-complexity.png"
+              alt="Customer contacts workspace with a complete view of interactions, tickets, projects, and follow-ups"
+              width={719}
+              height={474}
               className="h-auto w-full object-contain"
               style={{ width: "min(100%, 640px)", height: "auto" }}
             />
@@ -219,7 +220,9 @@ export default function CaseStudyDetailsPage() {
           <div className="mt-12 grid gap-8 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {metrics.map((item) => (
               <div key={item.label} className="text-center">
-                <p className="text-[clamp(48px,5vw,72px)] leading-none font-medium tracking-[-0.04em] text-[#111111]">{item.value}</p>
+                <p className="text-[clamp(48px,5vw,72px)] leading-none font-medium tracking-[-0.04em] text-[#111111]">
+                  <CountUp value={item.value} suffix="%" />
+                </p>
                 <p className="mt-4 text-[15px] leading-6 text-[#111111] sm:text-[16px]">{item.label}</p>
               </div>
             ))}

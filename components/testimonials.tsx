@@ -102,7 +102,7 @@ export function Testimonials() {
           {visible.map((quote, offset) => (
             <article
               key={quote.company + quote.name}
-              className={`flex flex-col items-start rounded-[16px] border border-[#e6e6e6] bg-white p-5 sm:p-6 ${
+              className={`flex flex-col items-start rounded-[12px] border border-[#e6e6e6] bg-white p-5 sm:p-6 ${
                 offset === 1 ? "hidden md:flex" : offset === 2 ? "hidden xl:flex" : ""
               }`}
             >

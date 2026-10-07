@@ -201,7 +201,7 @@ export function UseCases() {
           {slides.map((item, slideIndex) => (
             <article
               key={`${item.title}-${slideIndex}`}
-              className="relative grid shrink-0 items-start gap-8 rounded-[28px] bg-[#f4f3ef] px-5 py-8 text-black sm:px-8 sm:py-10 min-[1400px]:h-[581px] min-[1400px]:grid-cols-[minmax(0,1fr)_735.5329px] min-[1400px]:items-center min-[1400px]:gap-10 min-[1400px]:overflow-hidden min-[1400px]:pl-14 min-[1400px]:pr-0 min-[1400px]:py-12"
+              className="relative grid shrink-0 items-start gap-8 rounded-[12px] bg-[#f4f3ef] px-5 py-8 text-black sm:px-8 sm:py-10 min-[1400px]:h-[581px] min-[1400px]:grid-cols-[minmax(0,1fr)_735.5329px] min-[1400px]:items-center min-[1400px]:gap-10 min-[1400px]:overflow-hidden min-[1400px]:pl-14 min-[1400px]:pr-0 min-[1400px]:py-12"
               style={{ width: cardWidth || "80%" }}
             >
               <div className="flex h-full flex-col items-start justify-center pt-1">
@@ -237,7 +237,7 @@ export function UseCases() {
                 </a>
               </div>
               <div className="flex justify-center lg:justify-end">
-                <div className="h-[220px] w-full max-w-[532px] overflow-hidden rounded-[20px] border border-[#e4e4e4] shadow-[0_8px_24px_rgba(16,24,40,0.06)] sm:h-[428.0146px] sm:w-[735.5329px] sm:max-w-full min-[1400px]:absolute min-[1400px]:top-1/2 min-[1400px]:right-0 min-[1400px]:h-[428.0146px] min-[1400px]:w-[735.5329px] min-[1400px]:max-w-none min-[1400px]:-translate-y-1/2 min-[1400px]:rounded-r-none min-[1400px]:border-r-0 min-[1400px]:shadow-[0_12px_40px_rgba(16,24,40,0.08)]">
+                <div className="h-[220px] w-full max-w-[532px] overflow-hidden rounded-[12px] border border-[#e4e4e4] shadow-[0_8px_24px_rgba(16,24,40,0.06)] sm:h-[428.0146px] sm:w-[735.5329px] sm:max-w-full min-[1400px]:absolute min-[1400px]:top-1/2 min-[1400px]:right-0 min-[1400px]:h-[428.0146px] min-[1400px]:w-[735.5329px] min-[1400px]:max-w-none min-[1400px]:-translate-y-1/2 min-[1400px]:rounded-r-none min-[1400px]:border-r-0 min-[1400px]:shadow-[0_12px_40px_rgba(16,24,40,0.08)]">
                   <Image
                     src={item.image}
                     alt={item.alt}

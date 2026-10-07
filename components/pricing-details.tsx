@@ -75,15 +75,15 @@ export function PricingDetails() {
             </button>
           </div>
 
-          <div className="mt-10 rounded-[28px] bg-[#f3f1ec] p-2.5 sm:p-3">
+          <div className="mt-10 rounded-[12px] bg-[#f3f1ec] p-2.5 sm:p-3">
             <div className="grid gap-2 lg:grid-cols-3 lg:gap-0">
               {plans.map((plan, index) => (
                 <article
                   key={plan.name}
                   className={`flex flex-col px-5 py-6 sm:px-7 sm:py-8 ${
                     index === 0 ? "bg-transparent" : "bg-white"
-                  } ${index === 1 ? "rounded-[22px] lg:rounded-l-[22px] lg:rounded-r-none" : ""} ${
-                    index === 2 ? "rounded-[22px] lg:rounded-l-none lg:rounded-r-[22px]" : ""
+                  } ${index === 1 ? "rounded-[12px] lg:rounded-l-[12px] lg:rounded-r-none" : ""} ${
+                    index === 2 ? "rounded-[12px] lg:rounded-l-none lg:rounded-r-[12px]" : ""
                   }`}
                 >
                   <div className="flex items-center gap-3">

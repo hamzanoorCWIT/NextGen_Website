@@ -136,7 +136,7 @@ export function ProductSubcategoryPageView({ page }: { page: ProductSubcategoryP
             {page.captureCards.map((card) => (
               <article
                 key={card.title}
-                className="flex min-h-[280px] flex-col rounded-[22px] bg-[#f6f4f1] p-6 text-[#111111] sm:min-h-[320px] sm:p-7"
+                className="flex min-h-[280px] flex-col rounded-[12px] bg-[#f6f4f1] p-6 text-[#111111] sm:min-h-[320px] sm:p-7"
               >
                 <h3 className="max-w-[420px] text-[18px] leading-snug font-semibold tracking-[-0.02em] sm:text-[20px]">{card.title}</h3>
                 <p className="mt-4 text-[15px] leading-7 text-[#3a3a3a]">{card.body}</p>

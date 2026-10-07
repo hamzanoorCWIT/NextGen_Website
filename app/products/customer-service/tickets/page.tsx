@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CtaSection } from "@/components/cta-section";
 import { FeatureSplit } from "@/components/feature-split";
 import { Footer } from "@/components/footer";
@@ -21,16 +22,6 @@ const checklist = [
   "Assign and involve team members",
 ];
 
-const agents = [
-  { name: "Claude", color: "#f97316" },
-  { name: "Codex", color: "#7c3aed" },
-  { name: "Sierra", color: "#16a34a" },
-  { name: "Decagon", color: "#111111" },
-  { name: "Forethought", color: "#64748b" },
-];
-
-const topics = ["General Q&A", "Billing", "Orders", "Compliance", "Technical", "Sales", "VIP", "Urgent"];
-
 export default function TicketsPage() {
   return (
     <div id="top" className="site">
@@ -50,10 +41,10 @@ export default function TicketsPage() {
           { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
-          src: "/figma/hero-1.png",
+          src: "/figma/ticket-banner.png",
           alt: "A laptop showing an inbox of customer and team messages",
-          width: 1266,
-          height: 584,
+          width: 1136,
+          height: 548,
         }}
       />
 
@@ -87,10 +78,10 @@ export default function TicketsPage() {
             id: "request-details",
             title: "Complete Request Details",
             body: "Capture the context behind every request with structured fields for subject, message, attachments, and internal notes. Give teams the information they need before taking action.",
-            image: "/figma/ticket-details.png",
-            imageAlt: "A recipe conversation with ingredient choices and a shopping list",
-            imageWidth: 900,
-            imageHeight: 390,
+            image: "/figma/ticket-1.png",
+            imageAlt: "Ticket with complete request details",
+            imageWidth: 719,
+            imageHeight: 474,
             imageSide: "right",
             ctaLabel: "Request Demo",
             ctaHref: "/request-demo",
@@ -99,10 +90,10 @@ export default function TicketsPage() {
             id: "route",
             title: "Categorize and route automatically",
             body: "Organize tickets by purpose, category, department, and source. Ensure every request reaches the right team with clear ownership from the start.",
-            image: "/figma/ticket-route.png",
-            imageAlt: "A RockBank message asking a customer to confirm a suspicious charge",
-            imageWidth: 520,
-            imageHeight: 552,
+            image: "/figma/ticket-2.png",
+            imageAlt: "Tickets categorized and routed automatically",
+            imageWidth: 719,
+            imageHeight: 474,
             imageSide: "left",
             ctaLabel: "Request Demo",
             ctaHref: "/request-demo",
@@ -111,10 +102,10 @@ export default function TicketsPage() {
             id: "priorities",
             title: "Set priorities and deadlines",
             body: "Define ticket priority, SLA requirements, and response expectations early in the workflow. Help teams focus on urgent requests and maintain service standards.",
-            image: "/figma/ticket-priorities.png",
-            imageAlt: "A Mountain Resort chat offering lift wait times and slope photos",
-            imageWidth: 900,
-            imageHeight: 500,
+            image: "/figma/ticket-3.png",
+            imageAlt: "Ticket priorities and deadlines",
+            imageWidth: 719,
+            imageHeight: 474,
             imageSide: "right",
             ctaLabel: "Request Demo",
             ctaHref: "/request-demo",
@@ -145,129 +136,63 @@ export default function TicketsPage() {
           </div>
 
           <div className="mt-12 grid items-stretch gap-4 sm:grid-cols-2 sm:gap-5">
-            <article className="flex min-h-[420px] flex-col rounded-[22px] bg-[#f6f4f1] p-6 text-[#111111] sm:min-h-[480px] sm:p-7">
+            <article className="flex min-h-[420px] flex-col overflow-hidden rounded-[12px] bg-[#f6f4f1] p-6 pt-9 pl-9 text-[#111111] sm:min-h-[480px] sm:p-7 sm:pt-12 sm:pl-12">
               <h3 className="max-w-[420px] text-[18px] leading-snug font-semibold tracking-[-0.02em] sm:text-[20px]">
                 Capture messages, notes, and essential request information in one place.
               </h3>
-              <div className="mt-6 flex flex-1 gap-3 rounded-2xl border border-black/5 bg-white p-4 shadow-[0_8px_24px_rgba(16,24,40,0.06)]">
-                <div className="flex w-8 shrink-0 flex-col items-center gap-3 pt-1 text-[#c4c8d0]" aria-hidden="true">
-                  <span className="h-4 w-4 rounded-sm border border-current" />
-                  <span className="h-4 w-4 rounded-full border border-current" />
-                  <span className="h-4 w-4 rounded-sm border border-current" />
-                  <span className="mt-auto h-4 w-4 rounded-full bg-[#7c3aed]" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[15px] font-semibold">Create Playbook</p>
-                  <label className="mt-4 block text-[12px] text-[#6b7280]">Name</label>
-                  <p className="mt-1 rounded-lg bg-[#f5f6f8] px-3 py-2.5 text-[13px] text-[#9aa0a8]">Enter a name for this Playbook</p>
-                  <label className="mt-3 block text-[12px] text-[#6b7280]">Description</label>
-                  <p className="mt-1 rounded-lg bg-[#f5f6f8] px-3 py-2.5 text-[13px] text-[#9aa0a8]">Describe when this Playbook applies</p>
-                  <label className="mt-3 block text-[12px] text-[#6b7280]">Instructions</label>
-                  <p className="mt-1 rounded-lg bg-[#f5f6f8] px-3 py-2.5 text-[13px] text-[#9aa0a8]">
-                    Describe the steps to follow and when to hand off to a human.
-                  </p>
-                  <p className="mt-5 text-center text-[13px] text-[#6b7280]">Upload .md file</p>
-                </div>
+              <div className="-mr-6 -mb-6 mt-6 flex flex-1 items-end justify-end sm:-mr-7 sm:-mb-7">
+                <Image
+                  src="/figma/capture-1.png"
+                  alt="Creating a playbook with name, description, and instructions"
+                  width={704}
+                  height={502}
+                  className="h-auto w-full translate-x-[5.26%] translate-y-[7.57%]"
+                />
               </div>
             </article>
 
-            <article className="flex min-h-[420px] flex-col rounded-[22px] bg-[#f6f4f1] p-6 text-[#111111] sm:min-h-[480px] sm:p-7">
+            <article className="flex min-h-[420px] flex-col overflow-hidden rounded-[12px] bg-[#f6f4f1] p-6 pt-9 pl-9 text-[#111111] sm:min-h-[480px] sm:p-7 sm:pt-12 sm:pl-12">
               <h3 className="max-w-[420px] text-[18px] leading-snug font-semibold tracking-[-0.02em] sm:text-[20px]">
                 Classify requests by purpose, source, department, and priority.
               </h3>
-              <div className="mt-6 flex flex-1 flex-col items-center justify-center rounded-2xl border border-black/5 bg-white px-5 py-8 text-center shadow-[0_8px_24px_rgba(16,24,40,0.06)]">
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fff1e8] text-[#f97316]" aria-hidden="true">
-                  <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-                    <path d="M4 12.2 13 4.5l9 7.7V22a1 1 0 0 1-1 1h-5.2v-6.2H10.2V23H5a1 1 0 0 1-1-1v-9.8Z" fill="currentColor" />
-                  </svg>
-                </span>
-                <p className="mt-5 max-w-[280px] text-[16px] leading-snug font-semibold">What conversations should this agent handle?</p>
-                <p className="mt-5 w-full max-w-[320px] rounded-full border border-black/10 px-4 py-2.5 text-left text-[13px] text-[#111111]">
-                  Refunds and payment questions
-                </p>
-                <div className="mt-4 flex max-w-[360px] flex-wrap justify-center gap-2">
-                  {topics.map((topic) => (
-                    <span key={topic} className="rounded-full bg-[#f3f4f6] px-3 py-1.5 text-[12px] text-[#3a3a3a]">
-                      {topic}
-                    </span>
-                  ))}
-                </div>
+              <div className="-mb-6 mt-6 flex flex-1 items-end justify-center sm:-mb-7">
+                <Image
+                  src="/figma/capture-2.png"
+                  alt="Classifying the conversations an agent handles"
+                  width={666}
+                  height={513}
+                  className="h-auto w-full translate-y-[7.41%]"
+                />
               </div>
             </article>
 
-            <article className="flex min-h-[420px] flex-col rounded-[22px] bg-[#f6f4f1] p-6 text-[#111111] sm:min-h-[480px] sm:p-7">
+            <article className="flex min-h-[420px] flex-col overflow-hidden rounded-[12px] bg-[#f6f4f1] p-6 pt-9 pl-9 text-[#111111] sm:min-h-[480px] sm:p-7 sm:pt-12 sm:pl-12">
               <h3 className="max-w-[440px] text-[18px] leading-snug font-semibold tracking-[-0.02em] sm:text-[20px]">
                 Set expectations and track response commitments from creation.
               </h3>
-              <div className="mt-6 flex flex-1 flex-col rounded-2xl border border-black/5 bg-white p-4 shadow-[0_8px_24px_rgba(16,24,40,0.06)] sm:p-5">
-                <div className="flex items-center justify-between gap-3 text-[13px]">
-                  <span className="font-medium">Assign to</span>
-                  <span className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-3 py-1.5 text-[#111111]">
-                    Select agent
-                    <span aria-hidden="true" className="text-[10px] text-[#6b7280]">▼</span>
-                  </span>
-                </div>
-                <div className="mt-4 rounded-xl border border-black/10 p-3">
-                  <p className="flex items-center gap-2 rounded-lg bg-[#f5f6f8] px-3 py-2 text-[13px] text-[#9aa0a8]">
-                    <span aria-hidden="true">⌕</span>
-                    Search agents
-                  </p>
-                  <ul className="mt-3 space-y-2.5">
-                    {agents.map((agent) => (
-                      <li key={agent.name} className="flex items-center gap-2.5 text-[14px]">
-                        <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: agent.color }} aria-hidden="true" />
-                        {agent.name}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="-mr-6 -mb-6 mt-6 flex flex-1 items-end justify-end sm:-mr-7 sm:-mb-7">
+                <Image
+                  src="/figma/capture-3.png"
+                  alt="Assigning a ticket to an agent"
+                  width={664}
+                  height={540}
+                  className="h-auto w-full translate-x-[5.57%] translate-y-[6.85%]"
+                />
               </div>
             </article>
 
-            <article className="flex min-h-[420px] flex-col rounded-[22px] bg-[#f6f4f1] p-6 text-[#111111] sm:min-h-[480px] sm:p-7">
+            <article className="flex min-h-[420px] flex-col overflow-hidden rounded-[12px] bg-[#f6f4f1] p-6 pt-9 pl-9 text-[#111111] sm:min-h-[480px] sm:p-7 sm:pt-12 sm:pl-12">
               <h3 className="max-w-[440px] text-[18px] leading-snug font-semibold tracking-[-0.02em] sm:text-[20px]">
                 Assign tickets to the right people and teams instantly.
               </h3>
-              <div className="mt-6 flex flex-1 gap-3 rounded-2xl border border-black/5 bg-white p-4 shadow-[0_8px_24px_rgba(16,24,40,0.06)] sm:p-5">
-                <div className="hidden w-8 shrink-0 flex-col items-center gap-3 pt-8 text-[#d0d5dd] sm:flex" aria-hidden="true">
-                  <span className="h-4 w-4 rounded-sm border border-current" />
-                  <span className="h-4 w-4 rounded-sm border border-current" />
-                  <span className="h-4 w-4 rounded-full border border-current" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div>
-                      <p className="flex items-center gap-2 text-[15px] font-semibold">
-                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-[#ede9fe] text-[11px] text-[#7c3aed]" aria-hidden="true">
-                          ◆
-                        </span>
-                        Onboarding agent
-                      </p>
-                      <p className="mt-2 inline-flex rounded-md bg-[#f3f4f6] px-2 py-1 text-[12px] text-[#4b5563]">
-                        Aug 10, 2026 → Aug 17, 2026
-                      </p>
-                    </div>
-                    <p className="text-[11px] text-[#9aa0a8]">Last updated 10 seconds ago</p>
-                  </div>
-                  <div className="mt-6 grid grid-cols-[1fr_auto] items-center gap-4">
-                    <div>
-                      <p className="text-[12px] font-medium text-[#6b7280]">Key metrics</p>
-                      <p className="mt-3 text-[12px] text-[#6b7280]">CSAT rating (avg)</p>
-                      <p className="text-[32px] leading-none font-semibold tracking-[-0.03em]">4.8</p>
-                      <p className="mt-4 text-[12px] text-[#6b7280]">Conversations resolved (%)</p>
-                      <p className="text-[32px] leading-none font-semibold tracking-[-0.03em]">98%</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-[12px] font-medium text-[#6b7280]">Reply quality</p>
-                      <div className="mx-auto mt-3 flex h-[108px] w-[108px] items-center justify-center rounded-full border-[12px] border-[#22c55e]">
-                        <span>
-                          <span className="block text-[10px] text-[#6b7280]">Total replies</span>
-                          <span className="text-[22px] leading-none font-semibold">60</span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="-mb-6 mt-6 flex flex-1 items-end justify-center sm:-mb-7">
+                <Image
+                  src="/figma/capture-4.png"
+                  alt="Agent performance with key metrics and reply quality"
+                  width={666}
+                  height={515}
+                  className="h-auto w-full translate-y-[7.38%]"
+                />
               </div>
             </article>
           </div>
@@ -325,36 +250,14 @@ export default function TicketsPage() {
               <Pill href="/request-demo">Request Demo</Pill>
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-[560px] lg:mx-0 lg:max-w-none">
-            <div className="ml-auto w-[86%] rounded-2xl bg-[#1b1b1b] p-4 text-white shadow-[0_18px_40px_rgba(16,24,40,0.12)] sm:p-5">
-              <div className="flex flex-wrap gap-2 text-[11px] text-white/70">
-                {["PHP", "NODE", "RUBY", "PYTHON", "JAVA", "GO", "C#"].map((lang) => (
-                  <span key={lang} className="rounded-md bg-white/10 px-2 py-1">
-                    {lang}
-                  </span>
-                ))}
-              </div>
-              <p className="mt-5 font-mono text-[12px] leading-6 text-emerald-300/90 sm:text-[13px]">
-                curl --request POST \
-                <br />
-                &nbsp;&nbsp;https://api.example.net/v3/messages
-              </p>
-            </div>
-            <div className="relative z-10 -mt-16 grid w-[92%] grid-cols-2 gap-4 rounded-[22px] bg-white p-4 shadow-[0_18px_50px_rgba(16,24,40,0.14)] sm:p-6">
-              <div>
-                <p className="text-[13px] font-medium">Statistics</p>
-                <svg viewBox="0 0 160 90" className="mt-3 h-28 w-full" aria-hidden="true">
-                  <path d="M4 58 C 24 18, 40 68, 58 38 S 90 8, 110 46 140 28, 156 20" fill="none" stroke="#111" strokeWidth="2.4" />
-                  <path d="M4 72 C 30 52, 48 64, 70 38 S 110 58, 156 30" fill="none" stroke="#f43f5e" strokeWidth="2.4" />
-                </svg>
-              </div>
-              <div className="text-center">
-                <p className="text-[13px] font-medium">Delivery rate</p>
-                <div className="mx-auto mt-4 flex h-28 w-28 items-center justify-center rounded-full border-[12px] border-[#fb7185]">
-                  <span className="text-[26px] font-semibold tracking-[-0.03em]">98%</span>
-                </div>
-              </div>
-            </div>
+          <div className="mx-auto w-full max-w-[560px] lg:mx-0 lg:max-w-none">
+            <Image
+              src="/figma/capture-complete.png"
+              alt="Ticket statistics and delivery rate dashboard"
+              width={810}
+              height={514}
+              className="h-auto w-full"
+            />
           </div>
         </div>
       </section>
@@ -373,10 +276,10 @@ export default function TicketsPage() {
             id: "chat-whatsapp",
             label: "Chat & WhatsApp",
             image: {
-              src: "/figma/ticket-route.png",
-              alt: "A chat message confirming a suspicious charge",
-              width: 520,
-              height: 552,
+              src: "/figma/product-tab-2.png",
+              alt: "Chat and WhatsApp conversations workspace",
+              width: 948,
+              height: 617,
             },
           },
           {
@@ -384,10 +287,10 @@ export default function TicketsPage() {
             label: "Calls & Campaigns",
             active: true,
             image: {
-              src: "/figma/product-create.png",
-              alt: "A campaign workspace for creating a customer message",
-              width: 730,
-              height: 456,
+              src: "/figma/product-tab-3.png",
+              alt: "Calls and campaigns workspace",
+              width: 948,
+              height: 617,
             },
           },
         ]}

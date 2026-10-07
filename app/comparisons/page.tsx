@@ -79,10 +79,10 @@ export default function ComparisonsPage() {
           { href: "/request-demo", label: "Request Demo" },
         ]}
         image={{
-          src: "/figma/hero-1.png",
+          src: "/figma/home-banner.png",
           alt: "NextGen workspace on a laptop",
-          width: 1266,
-          height: 584,
+          width: 1288,
+          height: 594,
         }}
       />
 
@@ -101,7 +101,7 @@ export default function ComparisonsPage() {
             {platforms.map((platform) => (
               <article
                 key={platform.title}
-                className="flex min-h-[300px] flex-col rounded-[24px] bg-black p-7 text-white sm:min-h-[340px] sm:p-8"
+                className="flex min-h-[300px] flex-col rounded-[12px] bg-black p-7 text-white sm:min-h-[340px] sm:p-8"
               >
                 <ChatIcon />
                 <h3 className="mt-8 text-[28px] leading-[1.15] font-semibold tracking-[-0.03em] sm:text-[32px]">

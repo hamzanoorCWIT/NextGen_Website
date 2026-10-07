@@ -27,6 +27,13 @@ type Props = {
   baseHref?: string;
 };
 
+const heroImage = {
+  src: "/figma/ticket-banner.png",
+  alt: "A laptop showing an inbox of customer and team messages",
+  width: 1136,
+  height: 548,
+};
+
 const ctaImage = {
   src: "/figma/cta-new.png",
   alt: "Payments, customers, and successful transactions connected in one flow",
@@ -55,12 +62,7 @@ export function IndustryCatalogPageView({
           { href: `#${cardsId}`, label: "Explore Solutions", tone: "light" },
           { href: "/request-demo", label: "Request Demo" },
         ]}
-        image={{
-          src: "/figma/hero-1.png",
-          alt: "A laptop showing an inbox of customer and team messages",
-          width: 1266,
-          height: 584,
-        }}
+        image={heroImage}
       />
 
       <HighlightCards
@@ -77,15 +79,20 @@ export function IndustryCatalogPageView({
             <article
               key={item.id}
               id={item.id}
-              className="flex scroll-mt-24 flex-col rounded-[24px] border border-[#ececec] bg-white p-4 shadow-[0_1px_2px_rgba(16,24,40,0.04)] sm:p-5"
+              className="flex scroll-mt-24 flex-col rounded-[12px] border border-[#ececec] bg-white p-4 shadow-[0_1px_2px_rgba(16,24,40,0.04)] sm:p-5"
             >
-              <div className="overflow-hidden rounded-2xl bg-[#f6f7f9]">
+              <div className="overflow-hidden rounded-[12px] bg-[#f6f7f9]">
                 <Image
                   src={item.image}
                   alt={item.imageAlt}
                   width={item.width}
                   height={item.height}
-                  className="h-[200px] w-full object-cover object-top sm:h-[240px]"
+                  // Wide banner-style images (e.g. By Industry) show uncropped; others fill a fixed-height frame.
+                  className={
+                    item.width / item.height > 2
+                      ? "h-auto w-full"
+                      : "h-[200px] w-full object-cover object-top sm:h-[240px]"
+                  }
                 />
               </div>
               <h3 className="mt-5 text-[20px] font-semibold tracking-[-0.02em] sm:text-[22px]">{item.title}</h3>
