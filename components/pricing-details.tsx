@@ -20,19 +20,19 @@ const features = [
 const plans = [
   {
     name: "Starter",
-    description: "Perfect for small teams looking to organize customer interactions and streamline daily operations.",
+    description: "A practical starting point for small teams looking to organize customer interactions and bring everyday work into one shared space.",
     price: 0,
     tone: "light" as const,
   },
   {
     name: "Professional",
-    description: "Designed for teams that need smarter workflows, collaboration, and deeper operational insights.",
+    description: "Designed for teams that need smarter workflows, better collaboration, and a clearer view of day-to-day operations.",
     price: 56,
     tone: "dark" as const,
   },
   {
     name: "Enterprise",
-    description: "Designed for teams that need smarter workflows, collaboration, and deeper operational insights.",
+    description: "Built for organizations managing broader operational needs, with a connected workspace for teams, processes, and customer service.",
     price: 110,
     tone: "dark" as const,
   },
@@ -56,6 +56,10 @@ export function PricingDetails() {
       <section className="bg-white py-16 sm:py-24">
         <div className="content-1442">
           <h2 className="section-title text-center">Built To Scale With Your Business</h2>
+          <p className="mx-auto mt-4 max-w-[680px] text-center text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">
+            Choose the level of support and functionality that suits your team today, with room to grow as your
+            operations evolve.
+          </p>
           <div className="mt-7 flex justify-center gap-2">
             <button
               type="button"
@@ -122,7 +126,10 @@ export function PricingDetails() {
         </div>
       </section>
 
-      <FaqSection />
+      <FaqSection
+        title="Frequently Asked Questions"
+        description="Find answers to common questions about choosing products, understanding pricing, and selecting a plan for your organization."
+      />
     </>
   );
 }

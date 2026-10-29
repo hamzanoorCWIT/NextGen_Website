@@ -11,15 +11,14 @@ import { ProductModules } from "@/components/product-modules";
 export const metadata: Metadata = {
   title: "Tickets | NextGen Contact Centre",
   description:
-    "Manage incoming requests, internal issues, and service cases in one organized workspace. Assign ownership, track progress, and manage SLAs.",
+    "Bring customer requests, conversations, and updates into one organized workspace. NextGen Tickets helps teams take ownership, respond with context, and move every issue toward a clear resolution.",
 };
 
 const checklist = [
-  "Complete customer interaction history",
-  "Response & resolution tracking",
-  "Complete ticket journey",
-  "Smart summaries & reply suggestions",
-  "Assign and involve team members",
+  { title: "Connected conversations", body: "Keep customer communication alongside the request it belongs to." },
+  { title: "Consistent ticket details", body: "Give teams a reliable view of status, priority, classification, and ownership." },
+  { title: "Visible progress", body: "See the latest activity and understand what needs to happen next." },
+  { title: "Accountable handoffs", body: "Keep responsibility clear when requests move between people or departments." },
 ];
 
 export default function TicketsPage() {
@@ -33,7 +32,7 @@ export default function TicketsPage() {
             start to resolution.
           </>
         }
-        description="Manage incoming requests, internal issues, and service cases in one organized workspace. Assign ownership, track progress, manage SLAs, and keep every interaction connected to the ticket."
+        description="Bring customer requests, conversations, and updates into one organized workspace. NextGen Tickets helps teams take ownership, respond with context, and move every issue toward a clear resolution."
         titleClassName="max-w-[980px]"
         descriptionClassName="max-w-[820px]"
         actions={[
@@ -52,22 +51,22 @@ export default function TicketsPage() {
         id="views"
         variant="numbered"
         title="Every ticket, organized the way your team works."
-        description="Manage every request from a single workspace with flexible views built for different workflows. Review ticket details in a structured table, or move work visually through Kanban stages to track ownership, progress, and resolution."
+        description="Choose the view that fits the task at hand. Follow incoming requests, review ticket details, and see what needs attention without losing the context behind each conversation."
         items={[
           {
             label: "01",
-            title: "Table View",
-            body: "Monitor status, priority, SLA, assignees, department, and customer details while customizing columns to fit your team's workflow.",
+            title: "List View",
+            body: "Scan tickets, compare key details, and find the requests that need action across your team.",
           },
           {
             label: "02",
-            title: "Card View",
-            body: "Tickets adapts to your team's style, whether you prefer structured records or visual workflows.",
+            title: "Grid View",
+            body: "See tickets in a compact, visual layout that makes priorities and ownership easier to review.",
           },
           {
             label: "03",
             title: "Kanban View",
-            body: "Organize tickets by status and help teams identify what needs attention, what's in progress, and what's resolved.",
+            body: "Track requests through workflow stages so everyone can see what is waiting, moving, or completed.",
           },
         ]}
       />
@@ -76,8 +75,8 @@ export default function TicketsPage() {
         items={[
           {
             id: "request-details",
-            title: "Complete Request Details",
-            body: "Capture the context behind every request with structured fields for subject, message, attachments, and internal notes. Give teams the information they need before taking action.",
+            title: "Everything about a request, in one place.",
+            body: "Keep the conversation, contact information, assignee, status, priority, and related activity together. Give your team the context to respond accurately without switching between disconnected records.",
             image: "/figma/ticket-1.png",
             imageAlt: "Ticket with complete request details",
             imageWidth: 719,
@@ -88,8 +87,8 @@ export default function TicketsPage() {
           },
           {
             id: "route",
-            title: "Categorize and route automatically",
-            body: "Organize tickets by purpose, category, department, and source. Ensure every request reaches the right team with clear ownership from the start.",
+            title: "Categorize and route automatically.",
+            body: "Organize requests by purpose, department, and priority, then route work to the right team. Consistent classification helps reduce manual sorting and keeps ownership clear as new tickets arrive.",
             image: "/figma/ticket-2.png",
             imageAlt: "Tickets categorized and routed automatically",
             imageWidth: 719,
@@ -100,8 +99,8 @@ export default function TicketsPage() {
           },
           {
             id: "priorities",
-            title: "Set priorities and deadlines",
-            body: "Define ticket priority, SLA requirements, and response expectations early in the workflow. Help teams focus on urgent requests and maintain service standards.",
+            title: "Make urgent work impossible to miss.",
+            body: "Set priorities, monitor response and resolution targets, and give teams a clear view of approaching deadlines. Keep critical requests visible before they become overdue.",
             image: "/figma/ticket-3.png",
             imageAlt: "Ticket priorities and deadlines",
             imageWidth: 719,
@@ -121,8 +120,7 @@ export default function TicketsPage() {
                 Capture every request with complete information.
               </h2>
               <p className="mt-4 max-w-[640px] text-[15px] leading-7 text-white/75 sm:text-[16px]">
-                Every ticket starts with the right information. Capture details, assign ownership, define priorities, and
-                organize requests with structured fields that help teams resolve issues faster.
+                Record the essential details behind every customer issue, from the first message to the final resolution. A shared ticket record makes follow-up, collaboration, and review easier.
               </p>
             </div>
             <div className="flex shrink-0 flex-wrap gap-3">
@@ -138,8 +136,9 @@ export default function TicketsPage() {
           <div className="mt-12 grid items-stretch gap-4 sm:grid-cols-2 sm:gap-5">
             <article className="flex min-h-[420px] flex-col overflow-hidden rounded-[12px] bg-[#f6f4f1] p-6 pt-9 pl-9 text-[#111111] sm:min-h-[480px] sm:p-7 sm:pt-12 sm:pl-12">
               <h3 className="max-w-[420px] text-[18px] leading-snug font-semibold tracking-[-0.02em] sm:text-[20px]">
-                Capture messages, notes, and essential request information in one place.
+                Keep conversations connected
               </h3>
+              <p className="mt-4 text-[15px] leading-7 text-[#3a3a3a]">Bring customer messages and replies together so teams can follow the full discussion and respond with context.</p>
               <div className="-mr-6 -mb-6 mt-6 flex flex-1 items-end justify-end sm:-mr-7 sm:-mb-7">
                 <Image
                   src="/figma/capture-1.png"
@@ -153,8 +152,9 @@ export default function TicketsPage() {
 
             <article className="flex min-h-[420px] flex-col overflow-hidden rounded-[12px] bg-[#f6f4f1] p-6 pt-9 pl-9 text-[#111111] sm:min-h-[480px] sm:p-7 sm:pt-12 sm:pl-12">
               <h3 className="max-w-[420px] text-[18px] leading-snug font-semibold tracking-[-0.02em] sm:text-[20px]">
-                Classify requests by purpose, source, department, and priority.
+                Understand the request at a glance
               </h3>
+              <p className="mt-4 text-[15px] leading-7 text-[#3a3a3a]">See ticket status, ownership, classification, and other essential details in one structured view.</p>
               <div className="-mb-6 mt-6 flex flex-1 items-end justify-center sm:-mb-7">
                 <Image
                   src="/figma/capture-2.png"
@@ -168,8 +168,9 @@ export default function TicketsPage() {
 
             <article className="flex min-h-[420px] flex-col overflow-hidden rounded-[12px] bg-[#f6f4f1] p-6 pt-9 pl-9 text-[#111111] sm:min-h-[480px] sm:p-7 sm:pt-12 sm:pl-12">
               <h3 className="max-w-[440px] text-[18px] leading-snug font-semibold tracking-[-0.02em] sm:text-[20px]">
-                Set expectations and track response commitments from creation.
+                See updates and internal progress
               </h3>
+              <p className="mt-4 text-[15px] leading-7 text-[#3a3a3a]">Follow replies, activity, and changes as a ticket moves between people and stages.</p>
               <div className="-mr-6 -mb-6 mt-6 flex flex-1 items-end justify-end sm:-mr-7 sm:-mb-7">
                 <Image
                   src="/figma/capture-3.png"
@@ -183,8 +184,9 @@ export default function TicketsPage() {
 
             <article className="flex min-h-[420px] flex-col overflow-hidden rounded-[12px] bg-[#f6f4f1] p-6 pt-9 pl-9 text-[#111111] sm:min-h-[480px] sm:p-7 sm:pt-12 sm:pl-12">
               <h3 className="max-w-[440px] text-[18px] leading-snug font-semibold tracking-[-0.02em] sm:text-[20px]">
-                Assign tickets to the right people and teams instantly.
+                Keep team handoffs clear
               </h3>
+              <p className="mt-4 text-[15px] leading-7 text-[#3a3a3a]">Give the next assignee the information needed to continue work without starting over.</p>
               <div className="-mb-6 mt-6 flex flex-1 items-end justify-center sm:-mb-7">
                 <Image
                   src="/figma/capture-4.png"
@@ -202,23 +204,23 @@ export default function TicketsPage() {
       <HighlightCards
         variant="icon"
         title="Every ticket follows a clear path to resolution."
-        description="From assignment to escalation, Tickets keeps every request moving through a defined workflow. Route issues, manage ownership, track status changes, and ensure teams always know what needs attention next."
+        description="Replace fragmented follow-ups with a consistent workflow. From the moment a request arrives to the point it is resolved, each stage remains visible to the people responsible."
         items={[
           {
-            title: "Assign & route",
-            body: "Send every ticket to the right team with clear ownership.",
+            title: "A request arrives",
+            body: "Capture the incoming issue and create a ticket with the customer conversation and relevant details.",
           },
           {
-            title: "Prioritize work",
-            body: "Highlight urgent requests and focus teams where they matter most.",
+            title: "Priorities are set",
+            body: "Classify the request, assign ownership, and set the priority and response expectations.",
           },
           {
-            title: "Track progress",
-            body: "Monitor every stage from creation to completion.",
+            title: "Work progresses",
+            body: "Track responses, collaborate across teams, and update the ticket as the issue is handled.",
           },
           {
-            title: "Collaborate easily",
-            body: "Keep teams connected while maintaining accountability.",
+            title: "Resolution is confirmed",
+            body: "Record the outcome and close the request with a traceable history of the work completed.",
           },
         ]}
       />
@@ -227,19 +229,21 @@ export default function TicketsPage() {
         <div className="content-1426 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
             <h2 className="max-w-[520px] text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">
-              Capture every request with complete information.
+              Complete context. Clearer ownership. Better resolution.
             </h2>
             <p className="mt-4 max-w-[520px] text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">
-              Every ticket starts with the right information. Capture details, assign ownership, define priorities, and
-              organize requests with structured fields that help teams resolve issues faster.
+              Make every ticket easier to understand and manage with connected conversations, structured details, visible priorities, and a complete activity history.
             </p>
             <ul className="mt-6 space-y-3">
               {checklist.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[15px] sm:text-[16px]">
+                <li key={item.title} className="flex items-start gap-3 text-[15px] sm:text-[16px]">
                   <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black text-[11px] text-white" aria-hidden="true">
                     ✓
                   </span>
-                  {item}
+                  <div>
+                    <h3 className="font-semibold">{item.title}</h3>
+                    <p className="mt-1 text-[15px] leading-7 text-[#3a3a3a]">{item.body}</p>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -266,7 +270,7 @@ export default function TicketsPage() {
         id="modules"
         indicator="check"
         title="More Customer Service Products"
-        description="Everything your customer service team needs"
+        description="Connect Tickets with other customer service capabilities in NextGen to manage conversations and requests through a more consistent team workflow."
         actions={[
           { href: "/products", label: "Products Overview", tone: "ghost-dark" },
           { href: "#modules", label: "All Modules" },
@@ -301,15 +305,10 @@ export default function TicketsPage() {
           <>
             Build a ticket management
             <br className="hidden lg:block" /> process that works for your
-            <br className="hidden lg:block" /> organization
+            <br className="hidden lg:block" /> organization.
           </>
         }
-        description={
-          <>
-            CWIT EMS connects customer support, work management, CRM, analytics, and
-            <br className="hidden lg:block" /> governance into one intelligent workspace.
-          </>
-        }
+        description="Bring people, requests, and workflows together in one connected environment. NextGen helps your team stay organized, act on the right priorities, and deliver a more consistent customer service experience."
         titleClassName="max-w-[640px]"
         descriptionClassName="max-w-[640px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}

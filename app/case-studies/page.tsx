@@ -17,19 +17,53 @@ const paymentImage = {
   height: 609,
 };
 
-const stories = Array.from({ length: 6 }, () => ({
-  industry: "Utilities",
-  modules: "Tickets | Chat | Analytics",
-  title: "Modernizing customer service operations with CWIT EMS",
-  body: "Connect customer requests, internal workflows, and operational reporting through one unified platform.",
-}));
+const modules = "Tickets | Chat | Analytics";
+
+const stories = [
+  {
+    industry: "Utilities",
+    modules,
+    title: "Connecting utility requests with field-service follow-through",
+    body: "Bring incoming service issues, ticket assignments, and customer updates into one connected process so support teams can coordinate with field staff and follow every request through resolution.",
+  },
+  {
+    industry: "Banking & Financial Services",
+    modules,
+    title: "Keeping customer service and approvals aligned",
+    body: "Organize customer inquiries alongside internal reviews, ownership, and documented decisions to help service and operations teams collaborate with clearer accountability.",
+  },
+  {
+    industry: "BPO & Outsourcing",
+    modules,
+    title: "Giving high-volume support teams a shared view",
+    body: "Centralize customer conversations, distribute work across agents, and make queues and service performance easier for team leaders to monitor across campaigns and clients.",
+  },
+  {
+    industry: "Government",
+    modules,
+    title: "Making citizen service easier to track",
+    body: "Connect citizen requests, departmental handoffs, and service histories in a structured workspace designed to make responsibilities clearer and progress easier to follow.",
+  },
+  {
+    industry: "Telecom",
+    modules,
+    title: "Bringing telecom support channels together",
+    body: "Keep service issues, customer history, and internal escalations connected as teams respond to inquiries across channels and coordinate faster follow-up.",
+  },
+  {
+    industry: "Professional Services",
+    modules,
+    title: "Connecting client requests with project delivery",
+    body: "Link client communications to tasks, project responsibilities, and progress updates, helping teams manage ongoing relationships without losing context between departments.",
+  },
+];
 
 export default function CaseStudiesPage() {
   return (
     <div id="top" className="site">
       <HeroBanner
-        title="See how teams run better with CWIT EMS"
-        description="Explore real customer stories that show how organizations improve service delivery, simplify operations, and connect every team on one platform."
+        title="See how teams build better operations with CWIT EMS"
+        description="Explore practical examples of how connected customer service, work management, CRM, analytics, and governance can help organizations coordinate work, improve visibility, and deliver more consistent service."
         titleClassName="max-w-[980px]"
         descriptionClassName="max-w-[820px]"
         actions={[
@@ -48,10 +82,11 @@ export default function CaseStudiesPage() {
         <div className="content-1442">
           <div className="mx-auto max-w-[820px] text-center">
             <h2 className="text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
-              Featured success story
+              Stories of connected work, from request to resolution
             </h2>
             <p className="mx-auto mt-4 max-w-[680px] text-[15px] leading-7 text-[#111111] sm:text-[16px]">
-              Discover how organizations simplify complex processes, improve service delivery, and create more connected operations with CWIT EMS.
+              Explore six potential customer stories showing how teams in different environments could bring service
+              conversations, ownership, workflows, and reporting together in CWIT EMS.
             </p>
           </div>
 
@@ -85,8 +120,8 @@ export default function CaseStudiesPage() {
       </section>
 
       <CtaSection
-        title="Create a better way to manage customer service"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title="Bring every customer and team interaction into one workspace"
+        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance so your organization can manage requests, coordinate responsibilities, and see progress across teams from one connected platform."
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={paymentImage}

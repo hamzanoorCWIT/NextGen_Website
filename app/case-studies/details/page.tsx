@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { CountUp } from "@/components/count-up";
 import { CtaSection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -9,23 +8,66 @@ import { Testimonials } from "@/components/testimonials";
 export const metadata: Metadata = {
   title: "Modernizing customer service operations | Case Studies",
   description:
-    "See how organizations manage complex customer interactions and operational processes with CWIT EMS.",
+    "See how a unified approach to customer requests, internal workflows, and operational reporting can help service teams work with clearer ownership, consistent processes, and greater visibility from first contact to resolution.",
 };
 
 const articleTitle = "Modernizing customer service operations with CWIT EMS";
 
 const challengePoints = [
-  "Multiple communication channels",
-  "Manual request handling",
-  "Limited workflow visibility",
-  "Difficulty tracking performance",
+  {
+    title: "Multiple communication channels",
+    body: "Conversations and requests were spread across separate channels, making it difficult for teams to follow a complete customer history.",
+  },
+  {
+    title: "Manual request handling",
+    body: "Repeated data entry and manual handoffs increased administrative work and introduced opportunities for missed updates.",
+  },
+  {
+    title: "Limited workflow visibility",
+    body: "Managers lacked a consolidated view of request ownership, progress, overdue items, and outstanding service obligations.",
+  },
+  {
+    title: "Difficulty tracking performance",
+    body: "Fragmented records made it harder to compare team workloads, monitor response and resolution progress, and identify recurring issues.",
+  },
 ];
 
-const metrics = [
-  { value: 40, label: "Faster request handling" },
-  { value: 60, label: "Improved workflow visibility" },
-  { value: 35, label: "Reduction in manual processes" },
-  { value: 90, label: "Operational tracking accuracy" },
+const approachSteps = [
+  {
+    title: "Capture and organize requests",
+    body: "Create a consistent record for incoming requests, including customer context, status, priorities, and relevant conversation history.",
+  },
+  {
+    title: "Route work with ownership",
+    body: "Assign requests to the appropriate team or agent, maintain a clear handoff trail, and keep follow-up actions attached to the same record.",
+  },
+  {
+    title: "Track performance in context",
+    body: "Use Dashboards to monitor service activity, open work, ageing items, and operational bottlenecks across teams.",
+  },
+  {
+    title: "Support accountable operations",
+    body: "Maintain recorded activity, role-based access, and consistent workflows so managers can review how work moves from start to resolution.",
+  },
+];
+
+const measurementAreas = [
+  {
+    title: "Request handling speed",
+    body: "Measure changes in the time needed to register, route, and progress incoming requests.",
+  },
+  {
+    title: "Workflow visibility",
+    body: "Measure how consistently managers can identify request status, ownership, and outstanding actions.",
+  },
+  {
+    title: "Manual processing effort",
+    body: "Compare repetitive administrative steps and manual handoffs before and after workflow consolidation.",
+  },
+  {
+    title: "Operational tracking accuracy",
+    body: "Assess the completeness and consistency of request histories, assignments, timestamps, and performance records.",
+  },
 ];
 
 const shareLinks = [
@@ -120,7 +162,7 @@ export default function CaseStudyDetailsPage() {
           </div>
 
           <p className="mt-6 w-[min(1407px,100%)] text-[15px] leading-7 text-[#111111] sm:text-[16px]">
-            Connect customer requests, internal workflows, and operational reporting through one unified platform. This case study shows how teams simplified service delivery and improved visibility across growing operations with CWIT EMS.
+            See how a unified approach to customer requests, internal workflows, and operational reporting can help service teams work with clearer ownership, consistent processes, and greater visibility from first contact to resolution.
           </p>
 
           <div className="mt-8 overflow-hidden rounded-[12px] sm:mt-10">
@@ -163,7 +205,7 @@ export default function CaseStudyDetailsPage() {
               About the organization
             </h2>
             <p className="text-[15px] leading-7 text-[#111111] sm:text-[16px]">
-              [Company Name] manages complex customer interactions and operational processes requiring reliable workflows, faster communication, and better visibility across teams.
+              This illustrative case study follows a growing service organization managing customer requests across multiple channels and departments. As workloads expanded, its teams needed a more consistent way to coordinate service delivery, track accountability, and maintain an accurate view of ongoing work.
             </p>
           </div>
           <div className="mt-10 overflow-hidden rounded-[12px]">
@@ -196,13 +238,16 @@ export default function CaseStudyDetailsPage() {
               Managing complexity across growing operations
             </h2>
             <p className="mt-5 max-w-[480px] text-[15px] leading-7 text-[#111111] sm:text-[16px]">
-              Before CWIT EMS, teams faced challenges managing customer requests, coordinating internal processes, and maintaining visibility across different operational activities.
+              With requests arriving through different channels and work passing between teams, disconnected processes made daily operations harder to manage. The organization aimed to create one reliable workflow without losing the context behind each customer interaction.
             </p>
-            <ul className="mt-8 space-y-4">
+            <ul className="mt-8 space-y-5">
               {challengePoints.map((point) => (
-                <li key={point} className="flex items-center gap-3 text-[15px] leading-6 text-[#111111]">
+                <li key={point.title} className="flex items-start gap-3 text-[15px] leading-6 text-[#111111]">
                   <Tick />
-                  <span>{point}</span>
+                  <span>
+                    <span className="block font-semibold">{point.title}</span>
+                    <span className="mt-1 block max-w-[480px]">{point.body}</span>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -211,19 +256,37 @@ export default function CaseStudyDetailsPage() {
       </section>
 
       <section className="bg-white py-16 sm:py-24">
-        <div className="content-1579">
+        <div className="content-1442">
           <h2 className="mx-auto max-w-[760px] text-center text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
-            Measurable improvements after
-            <br />
-            implementation
+            Bringing service delivery into one connected workflow
           </h2>
+          <p className="mx-auto mt-5 max-w-[820px] text-center text-[15px] leading-7 text-[#111111] sm:text-[16px]">
+            The proposed approach brings customer interactions into Tickets, connects requests to responsible teams, and uses defined workflows to guide each case forward. Dashboards provide operational visibility while Permissions and governance controls help maintain clear access and accountability.
+          </p>
           <div className="mt-12 grid gap-8 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {metrics.map((item) => (
-              <div key={item.label} className="text-center">
-                <p className="text-[clamp(48px,5vw,72px)] leading-none font-medium tracking-[-0.04em] text-[#111111]">
-                  <CountUp value={item.value} suffix="%" />
-                </p>
-                <p className="mt-4 text-[15px] leading-6 text-[#111111] sm:text-[16px]">{item.label}</p>
+            {approachSteps.map((item) => (
+              <div key={item.title}>
+                <h3 className="text-[18px] font-semibold tracking-[-0.02em] text-[#111111]">{item.title}</h3>
+                <p className="mt-3 text-[15px] leading-6 text-[#111111]">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 sm:py-24">
+        <div className="content-1442">
+          <h2 className="mx-auto max-w-[760px] text-center text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
+            Measuring improvements after implementation
+          </h2>
+          <p className="mx-auto mt-5 max-w-[820px] text-center text-[15px] leading-7 text-[#111111] sm:text-[16px]">
+            Success should be evaluated against an agreed baseline and measurement period. The following outcomes are the proposed measurement areas for this case study, not verified results.
+          </p>
+          <div className="mt-12 grid gap-8 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+            {measurementAreas.map((item) => (
+              <div key={item.title}>
+                <h3 className="text-[18px] font-semibold tracking-[-0.02em] text-[#111111]">{item.title}</h3>
+                <p className="mt-3 text-[15px] leading-6 text-[#111111]">{item.body}</p>
               </div>
             ))}
           </div>
@@ -233,8 +296,8 @@ export default function CaseStudyDetailsPage() {
       <Testimonials />
 
       <CtaSection
-        title="Create a better way to manage customer service"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title="Build a customer service process that grows with your organization"
+        description="Bring Tickets, customer conversations, workflow management, reporting, and governance into a connected workspace. Give teams the context to respond effectively and managers the visibility to improve service delivery as operational needs evolve."
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={{

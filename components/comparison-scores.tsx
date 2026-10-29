@@ -6,43 +6,22 @@ const scoreCards = [
   {
     category: "Ticket Management",
     rows: [
-      { label: "CWIT EMS", score: 9.4, tone: "dark" as const },
-      { label: "Zendesk", score: 9.1, tone: "light" as const },
+      { label: "CWIT EMS", score: 7.3, tone: "dark" as const },
+      { label: "Zendesk", score: 7.1, tone: "light" as const },
     ],
   },
   {
     category: "WhatsApp & Messaging",
     rows: [
-      { label: "CWIT EMS", score: 9.3, tone: "dark" as const },
-      { label: "Zendesk", score: 7.5, tone: "light" as const },
+      { label: "CWIT EMS", score: 7.2, tone: "dark" as const },
+      { label: "Zendesk", score: 5.8, tone: "light" as const },
     ],
   },
   {
     category: "Calls & Campaigns",
     rows: [
-      { label: "CWIT EMS", score: 9.1, tone: "dark" as const },
-      { label: "Zendesk", score: 6.0, tone: "light" as const },
-    ],
-  },
-  {
-    category: "Workflow Automation",
-    rows: [
-      { label: "CWIT EMS", score: 9.2, tone: "dark" as const },
-      { label: "Zendesk", score: 7.8, tone: "light" as const },
-    ],
-  },
-  {
-    category: "Dashboards & Reporting",
-    rows: [
-      { label: "CWIT EMS", score: 9.0, tone: "dark" as const },
-      { label: "Zendesk", score: 8.2, tone: "light" as const },
-    ],
-  },
-  {
-    category: "Permissions & Governance",
-    rows: [
-      { label: "CWIT EMS", score: 9.5, tone: "dark" as const },
-      { label: "Zendesk", score: 7.0, tone: "light" as const },
+      { label: "CWIT EMS", score: 7.1, tone: "dark" as const },
+      { label: "Zendesk", score: 4.7, tone: "light" as const },
     ],
   },
 ];
@@ -113,9 +92,11 @@ export function ComparisonScores() {
     <section className="bg-black pt-[clamp(48px,5.6vw,108px)] pb-[clamp(48px,5.2vw,100px)] text-white">
       <div className="mx-auto w-[calc(100%-40px)] max-w-[1442px] md:w-[74%]">
         <div className="mx-auto max-w-[760px] text-center">
-          <h2 className="text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em]">See how they compare.</h2>
+          <h2 className="text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em]">See how the scores compare</h2>
           <p className="mx-auto mt-[clamp(10px,1.1vw,20px)] text-[clamp(10px,1vw,18px)] leading-normal text-white/90">
-            See how CWIT EMS and Zendesk compare across key capabilities.
+            Explore category-level ratings for CWIT EMS and Zendesk to understand the differences shown in the
+            comparison. Scores provide a starting point for evaluation and should be viewed alongside feature
+            coverage, workflow needs, and the source and date of the rating methodology.
           </p>
         </div>
 
@@ -148,7 +129,11 @@ export function ComparisonScores() {
           ))}
         </div>
 
-        <div className="mt-[clamp(30px,3.1vw,60px)] flex justify-center gap-[clamp(4px,0.4vw,8px)]">
+        <div
+          className={`mt-[clamp(30px,3.1vw,60px)] justify-center gap-[clamp(4px,0.4vw,8px)] ${
+            scoreCards.length > 3 ? "flex" : "hidden"
+          }`}
+        >
           <button
             type="button"
             aria-label="Previous comparisons"

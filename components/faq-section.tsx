@@ -28,13 +28,24 @@ const faqs = [
   },
 ];
 
-export function FaqSection({ className = "" }: { className?: string }) {
+export function FaqSection({
+  className = "",
+  title = "FAQs",
+  description,
+}: {
+  className?: string;
+  title?: string;
+  description?: string;
+}) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section className={`bg-white pb-12 sm:pb-16 lg:pb-24 ${className}`}>
       <div className="mx-auto w-[min(860px,calc(100%-40px))]">
-        <h2 className="section-title text-center">FAQs</h2>
+        <h2 className="section-title text-center">{title}</h2>
+        {description ? (
+          <p className="mx-auto mt-4 max-w-[680px] text-center text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">{description}</p>
+        ) : null}
         <div className="mt-12 border-t border-[#ececec]">
           {faqs.map((item, index) => {
             const expanded = open === index;

@@ -1,8 +1,10 @@
 import Image from "next/image";
+import { ServiceWorkflowScroll } from "@/components/service-workflow-scroll";
 
 export type WorkflowStep = {
   title: string;
   body?: string;
+  image?: { src: string; alt: string; width: number; height: number };
 };
 
 export function ServiceWorkflow({
@@ -25,6 +27,9 @@ export function ServiceWorkflow({
           <h2 className="text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">{title}</h2>
           <p className="mx-auto mt-4 max-w-[640px] text-[15px] leading-7 text-white/75 sm:text-[16px]">{description}</p>
         </div>
+        {steps.some((step) => step.image) ? (
+          <ServiceWorkflowScroll steps={steps} fallbackImage={image} />
+        ) : (
         <div className="mt-12 grid items-stretch gap-5 lg:grid-cols-2">
           <article className="rounded-[12px] bg-white p-6 text-[#111111] sm:p-8">
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#f4f5f7]">
@@ -52,6 +57,7 @@ export function ServiceWorkflow({
             />
           </div>
         </div>
+        )}
       </div>
     </section>
   );

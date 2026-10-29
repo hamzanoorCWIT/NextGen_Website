@@ -7,14 +7,14 @@ import { HeroBanner } from "@/components/hero-banner";
 export const metadata: Metadata = {
   title: "Industries | NextGen Contact Centre",
   description:
-    "CWIT EMS adapts to the way your organization operates, with configurable solutions for every industry, role, and use case.",
+    "Every industry has its own challenges, customer expectations, and operational priorities. NextGen brings customer service, work management, CRM, analytics, and governance into one connected platform, helping your teams work with greater clarity and control.",
 };
 
 const industries: FeatureSplitItem[] = [
   {
     id: "by-industry",
-    title: "By Industry",
-    body: "Every industry has unique challenges, workflows, and service expectations. CWIT EMS adapts to the way your organization operates with configurable solutions for customer service, business processes, compliance, and operational management.",
+    title: "Purpose-Built Solutions for Different Industries",
+    body: "Whether you manage customer enquiries, complex approvals, or day-to-day operations, NextGen adapts to your business processes. Connect teams and information in one workspace while supporting the workflows and service standards that matter to your industry.",
     image: "/figma/industry-1.png",
     imageAlt: "Industry solutions workspace",
     imageWidth: 719,
@@ -25,8 +25,8 @@ const industries: FeatureSplitItem[] = [
   },
   {
     id: "by-role",
-    title: "By Role",
-    body: "Different teams need different levels of visibility, control, and collaboration. CWIT EMS empowers support teams, managers, operations leaders, and executives with tools designed around their daily workflows and business goals.",
+    title: "Give Every Team the Tools They Need to Succeed",
+    body: "From frontline staff to team leaders and executives, every role needs a different view of the work. NextGen gives people relevant information, clear responsibilities, and shared visibility so they can make decisions, coordinate tasks, and move work forward.",
     image: "/figma/industry-2.png",
     imageAlt: "Role-based team workspace",
     imageWidth: 719,
@@ -37,8 +37,8 @@ const industries: FeatureSplitItem[] = [
   },
   {
     id: "use-cases",
-    title: "Use Cases",
-    body: "From managing customer conversations and service requests to automating approvals, tracking performance, and improving decision-making, CWIT EMS helps organizations streamline critical processes across every department.",
+    title: "Real-World Workflows, One Connected Platform",
+    body: "Bring everyday processes together, from Omnichannel Ticketing and WhatsApp & Chat Support to Outbound Campaigns, Multi-Level Approvals, and KYC & Risk Monitoring. NextGen helps teams reduce disconnected handoffs, track progress, and stay accountable from the first action to the final outcome.",
     image: "/figma/industry-3.png",
     imageAlt: "Use case workflows workspace",
     imageWidth: 719,
@@ -60,8 +60,8 @@ export default function IndustriesPage() {
   return (
     <div id="top" className="site">
       <HeroBanner
-        title="Solutions built for your industry"
-        description="Every industry has unique challenges, workflows, and service expectations. CWIT EMS adapts to the way your organization operates with configurable solutions for customer service, business processes, compliance, and operational management."
+        title="Solutions Built Around the Way Your Industry Works"
+        description="Every industry has its own challenges, customer expectations, and operational priorities. NextGen brings customer service, work management, CRM, analytics, and governance into one connected platform, helping your teams work with greater clarity and control."
         titleClassName="max-w-[1100px]"
         descriptionClassName="max-w-[860px]"
         actions={[
@@ -77,8 +77,8 @@ export default function IndustriesPage() {
       />
       <FeatureSplit items={industries} bandClassName="bg-[#FAFAFA]" />
       <CtaSection
-        title="Create a better way to manage customer service"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title="Bring Your People, Processes, and Customer Service Together"
+        description="Replace fragmented ways of working with a clearer view of what matters. NextGen connects customer conversations, projects, approvals, and reporting in one workspace, giving your organization a more coordinated way to operate and grow."
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={paymentImage}

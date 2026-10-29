@@ -10,7 +10,7 @@ import { Testimonials } from "@/components/testimonials";
 export const metadata: Metadata = {
   title: "Customer Service | NextGen Contact Centre",
   description:
-    "CWIT EMS connects customer requests, conversations, and channels in one platform, helping teams manage interactions with smarter workflows and better visibility.",
+    "Bring customer conversations, requests, and support teams together in one connected workspace. NextGen helps you respond faster, stay organized, and give every customer a more consistent experience.",
 };
 
 export default function CustomerServicePage() {
@@ -18,7 +18,7 @@ export default function CustomerServicePage() {
     <div id="top" className="site">
       <HeroBanner
         title="Deliver Better Customer Experiences"
-        description="CWIT EMS connects customer requests, conversations, and channels in one platform, helping teams manage interactions with smarter workflows and better visibility."
+        description="Bring customer conversations, requests, and support teams together in one connected workspace. NextGen helps you respond faster, stay organized, and give every customer a more consistent experience."
         titleClassName="max-w-[980px]"
         descriptionClassName="max-w-[760px]"
         actions={[
@@ -36,23 +36,23 @@ export default function CustomerServicePage() {
       <HighlightCards
         id="simplify"
         variant="numbered"
-        title="Simplify Customer Service"
-        description="CWIT EMS connects every customer interaction in one place, helping teams collaborate better and deliver faster, consistent support across all channels."
+        title="Make every customer interaction easier to manage"
+        description="Give your team the context and tools to handle customer requests without switching between disconnected systems. Keep conversations visible, workflows organized, and everyone working toward a faster resolution."
         items={[
           {
             label: "01",
             title: "Complete customer visibility",
-            body: "Access conversations, requests, and service history from one connected platform.",
+            body: "See customer details, conversation history, and service requests together, so your team understands the full picture before responding.",
           },
           {
             label: "02",
             title: "Streamlined workflows",
-            body: "Organize, assign, and manage customer requests with structured processes.",
+            body: "Turn incoming requests into clear, trackable work. Assign responsibility, follow progress, and keep service moving from first contact to resolution.",
           },
           {
             label: "03",
             title: "Better team coordination",
-            body: "Help agents and teams collaborate with the right context at every step.",
+            body: "Keep agents and departments aligned with shared information, clear ownership, and updates that help everyone deliver consistent support.",
           },
         ]}
       />
@@ -60,7 +60,7 @@ export default function CustomerServicePage() {
       <ProductModules
         id="products"
         title="Customer Service Products"
-        description="Everything your customer service team needs"
+        description="Bring your essential customer service tools into one connected platform, from managing support tickets to handling conversations and customer communications."
         actions={[
           { href: "/products", label: "Products Overview", tone: "ghost-dark" },
           { href: "#products", label: "All Modules" },
@@ -102,17 +102,34 @@ export default function CustomerServicePage() {
 
       <ServiceWorkflow
         frameClassName="content-1407"
-        title="Customer Service Workflow"
-        description="CWIT EMS helps teams manage the complete service journey by connecting customer communication, internal workflows, and operational visibility in one place."
+        title="From customer request to resolution, in one clear flow"
+        description="Keep every request moving through a consistent service process. Capture the issue, assign the right team, track its progress, and maintain visibility until the customer’s concern is resolved."
         steps={[
           {
             title: "Customer reaches out",
-            body: "Inbound requests are immediately ingested via email, live chat, or customer portal, creating a unique transaction token.",
+            body: "Bring incoming customer requests and conversations into a shared workspace where they can be reviewed and acted on.",
+            image: { src: "/figma/customer-products.png", alt: "A shared draft and customer conversation assigned to Aurora Miller", width: 685, height: 696 },
           },
-          { title: "Request is captured" },
-          { title: "Team takes action" },
-          { title: "Resolution is delivered" },
-          { title: "Performance is measured" },
+          {
+            title: "Request is captured",
+            body: "Record the issue, relevant customer details, and conversation context so the team has what it needs to proceed.",
+            image: { src: "/figma/work-management.png", alt: "A new ticket with customer, channel, priority, and department details", width: 685, height: 696 },
+          },
+          {
+            title: "Team takes action",
+            body: "Assign ownership, prioritize the request, and coordinate the necessary work across agents or departments.",
+            image: { src: "/figma/crm-sales.png", alt: "A conversation assigned to the Billing Support team", width: 685, height: 696 },
+          },
+          {
+            title: "Resolution is delivered",
+            body: "Track progress, communicate updates, and close the request with a clear record of the outcome.",
+            image: { src: "/figma/analytic-bi.png", alt: "Email confirming a billing issue has been resolved", width: 685, height: 696 },
+          },
+          {
+            title: "Performance is measured",
+            body: "Review activity and service trends to spot delays, understand workloads, and improve how the team responds.",
+            image: { src: "/figma/governance-compliance.png", alt: "Customer satisfaction score of 96 percent", width: 685, height: 696 },
+          },
         ]}
         image={{
           src: "/figma/customer-products.png",
@@ -124,24 +141,24 @@ export default function CustomerServicePage() {
 
       <HighlightCards
         variant="icon"
-        title="Built to improve every part of customer service"
-        description="CWIT EMS helps teams deliver faster, more consistent support by connecting customer interactions, workflows, and operational insights."
+        title="Better service starts with connected work"
+        description="Help teams respond with confidence by making customer information easier to find, responsibilities easier to track, and daily service operations easier to manage."
         items={[
           {
             title: "Faster response times",
-            body: "Give teams the information and workflows they need to respond.",
+            body: "Give agents the customer context and request details they need to respond without unnecessary searching or handoffs.",
           },
           {
             title: "Consistent customer experiences",
-            body: "Maintain customer context across channels and interactions.",
+            body: "Use shared histories and clear workflows to maintain service quality across conversations, teams, and channels.",
           },
           {
             title: "Operational visibility",
-            body: "Understand service performance through connected insights and reporting.",
+            body: "Understand open requests, workloads, priorities, and progress through information that teams can act on.",
           },
           {
             title: "Improved accountability",
-            body: "Assign ownership, track progress, and ensure every request moves forward.",
+            body: "Make ownership and next steps clear, so requests are followed through and fewer issues get overlooked.",
           },
         ]}
       />
@@ -150,7 +167,7 @@ export default function CustomerServicePage() {
 
       <CtaSection
         title="Create a better way to manage customer service"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        description="Bring your customer support, work management, CRM, and analytics together in one connected workspace. Help your team stay organized, act on customer needs, and build stronger service experiences."
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={{

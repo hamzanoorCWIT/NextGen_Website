@@ -2,21 +2,46 @@
 
 import { type SubmitEvent, useState } from "react";
 
-const companySizes = ["1-10", "11-50", "51-200", "201-1000", "1000+"];
+import { companySizes } from "@/lib/demo-fields";
 
 export function RequestDemoForm() {
   const [email, setEmail] = useState("");
   const [companySize, setCompanySize] = useState("");
   const [privacy, setPrivacy] = useState(true);
   const [sent, setSent] = useState(false);
-  function onSubmit(event: SubmitEvent<HTMLFormElement>) {
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState("");
+  async function onSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!privacy) return;
-    setSent(true);
+    if (!privacy || pending) return;
+    setSent(false);
+    setError(null);
+    setPending(true);
+    try {
+      const response = await fetch("/api/demo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ source: "request-demo", email, companySize, privacy, website: honeypot }),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.success) {
+        setError(result?.error || "Failed to send demo request. Please try again.");
+        return;
+      }
+      setSent(true);
+      setEmail("");
+      setCompanySize("");
+      setHoneypot("");
+    } catch {
+      setError("Failed to send demo request. Please try again.");
+    } finally {
+      setPending(false);
+    }
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form onSubmit={onSubmit} onChange={() => { setSent(false); setError(null); }} className="relative space-y-4" aria-busy={pending}>
       <label className="sr-only" htmlFor="request-demo-email">
         Email address
       </label>
@@ -24,6 +49,8 @@ export function RequestDemoForm() {
         id="request-demo-email"
         name="email"
         type="email"
+        maxLength={254}
+        disabled={pending}
         required
         autoComplete="email"
         placeholder="Email address"
@@ -39,6 +66,7 @@ export function RequestDemoForm() {
         <select
           id="request-demo-company-size"
           name="companySize"
+          disabled={pending}
           required
           value={companySize}
           onChange={(event) => setCompanySize(event.target.value)}
@@ -62,16 +90,22 @@ export function RequestDemoForm() {
         </span>
       </div>
 
+      <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={honeypot} onChange={(event) => setHoneypot(event.target.value)} className="absolute left-[-9999px] h-0 w-0 overflow-hidden opacity-0" />
+      {error ? <p role="alert" className="text-sm text-[#b42318]">{error}</p> : null}
+      <p role="status" className="text-sm text-[#027a48]">{sent ? "Demo request sent. Our team will be in touch soon." : ""}</p>
       <button
         type="submit"
+        disabled={pending}
         className="flex h-14 w-full cursor-pointer items-center justify-center rounded-full bg-black text-[15px] font-medium text-white"
       >
-        {sent ? "Submitted" : "Request Demo"}
+        {pending ? "Sending..." : sent ? "Submitted" : "Request Demo"}
       </button>
 
       <label className="flex cursor-pointer items-center gap-2.5 pt-2 text-[13px] text-[#667085]">
         <input
           type="checkbox"
+          name="privacy"
+          disabled={pending}
           required
           checked={privacy}
           onChange={(event) => setPrivacy(event.target.checked)}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full bg-white text-[#111111]">
         {children}
+        <SmoothScroll />
         <ScrollReveal />
       </body>
     </html>

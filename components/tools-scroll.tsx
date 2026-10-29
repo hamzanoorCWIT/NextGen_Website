@@ -87,7 +87,7 @@ export function ToolsScroll({ panels }: { panels: ToolsPanel[] }) {
 
   return (
     <>
-      <div className={`content-1442 mt-12 space-y-14 ${reduceMotion ? "block" : "lg:hidden"}`}>
+      <div className={`content-1442 mt-12 space-y-14 ${reduceMotion ? "block" : "hidden"}`}>
         {panels.map((panel) => (
           <div key={panel.title} className="grid items-center gap-8">
             <div>
@@ -120,12 +120,12 @@ export function ToolsScroll({ panels }: { panels: ToolsPanel[] }) {
       <div
         ref={trackRef}
         data-reveal-ignore
-        className={`relative mt-12 ${reduceMotion ? "hidden" : "hidden lg:block"}`}
+        className={`relative mt-12 ${reduceMotion ? "hidden" : "block"}`}
         style={{ height: `${Math.max(panels.length, 1) * 100}vh` }}
       >
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-          <div className="content-1442 grid w-full items-center gap-10 lg:grid-cols-[minmax(0,520px)_minmax(0,1fr)] xl:gap-16">
-            <div className="relative h-[340px] overflow-hidden xl:h-[380px]">
+          <div className="content-1442 grid w-full items-center gap-6 lg:gap-10 lg:grid-cols-[minmax(0,520px)_minmax(0,1fr)] xl:gap-16">
+            <div className="relative order-2 h-[400px] overflow-hidden sm:h-[340px] lg:order-none xl:h-[380px]">
               {panels.map((panel, index) => (
                 <div
                   key={panel.title}
@@ -153,7 +153,7 @@ export function ToolsScroll({ panels }: { panels: ToolsPanel[] }) {
               ))}
             </div>
 
-            <div className="relative mx-auto aspect-[780/478] w-full max-w-[780px] lg:ml-auto lg:mr-0">
+            <div className="relative order-1 mx-auto aspect-[780/478] w-full max-w-[780px] lg:order-none lg:ml-auto lg:mr-0">
               {panels.map((panel, index) => (
                 <div
                   key={panel.image.src + panel.title}

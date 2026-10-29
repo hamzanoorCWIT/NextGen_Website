@@ -1,6 +1,7 @@
 "use client";
 
 import { type SubmitEvent, useState } from "react";
+import { isValidPhone, PHONE_ERROR } from "@/lib/phone-validation";
 
 const field =
   "h-14 w-full rounded-[10px] border border-[#e6e8ee] bg-white px-4 text-[15px] text-[#111111] outline-none placeholder:text-[#b0b4bc] focus:border-black/25";
@@ -10,11 +11,12 @@ export function ContactForm() {
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
   const [honeypot, setHoneypot] = useState("");
+  const [phoneError, setPhoneError] = useState<string | null>(null);
 
   async function onSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
-    setPending(true);
+    setSent(false);
 
     const form = event.currentTarget;
     const data = new FormData(form);
@@ -28,6 +30,13 @@ export function ContactForm() {
       website: honeypot,
     };
 
+    if (!isValidPhone(payload.phone)) {
+      setPhoneError(PHONE_ERROR);
+      form.querySelector<HTMLInputElement>('[name="phone"]')?.focus();
+      return;
+    }
+    setPhoneError(null);
+    setPending(true);
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -59,7 +68,27 @@ export function ContactForm() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <input className={field} type="text" name="name" required placeholder="Name" autoComplete="name" maxLength={100} />
         <input className={field} type="email" name="email" required placeholder="Email" autoComplete="email" maxLength={254} />
-        <input className={field} type="tel" name="phone" required placeholder="Phone" autoComplete="tel" maxLength={40} />
+        <div>
+          <input
+            className={field}
+            type="tel"
+            name="phone"
+            aria-label="Phone number"
+            required
+            placeholder="Phone"
+            autoComplete="tel"
+            maxLength={40}
+            aria-invalid={Boolean(phoneError)}
+            aria-describedby={phoneError ? "contact-phone-error" : undefined}
+            onBlur={(event) => setPhoneError(isValidPhone(event.target.value) ? null : PHONE_ERROR)}
+            onChange={(event) => {
+              event.target.value = event.target.value.replace(/[^0-9+() -]/g, "");
+              setSent(false);
+              if (phoneError) setPhoneError(isValidPhone(event.target.value) ? null : PHONE_ERROR);
+            }}
+          />
+          {phoneError ? <p id="contact-phone-error" role="alert" className="mt-2 text-sm text-[#b42318]">{phoneError}</p> : null}
+        </div>
         <input
           className={field}
           type="text"

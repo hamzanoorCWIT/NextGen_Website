@@ -9,7 +9,7 @@ import { HighlightCards } from "@/components/highlight-cards";
 
 export const metadata: Metadata = {
   title: "How omnichannel ticketing reduces handoffs | Blog",
-  description: "Practical guidance for building connected customer service and operations with CWIT EMS.",
+  description: "Customer requests rarely stay in one channel. Omnichannel ticketing brings those touchpoints into one managed request, so teams can move work forward without losing context.",
 };
 
 const paymentImage = {
@@ -58,10 +58,13 @@ export default function BlogDetailsPage() {
           </div>
 
           <p className="mt-6 w-[min(1407px,100%)] text-[15px] leading-7 text-[#111111] sm:text-[16px]">
-            Keep conversations, ownership, and resolution history connected so teams resolve requests without losing context between channels.
+            Customer requests rarely stay in one channel. A conversation might start in WhatsApp, continue by email, and end with a call. When each interaction sits in a separate tool, teams waste time reconstructing what happened, customers repeat themselves, and responsibility becomes unclear.
+          </p>
+          <p className="mt-4 w-[min(1407px,100%)] text-[15px] leading-7 text-[#111111] sm:text-[16px]">
+            Omnichannel ticketing brings those touchpoints into one managed request. By keeping the conversation, owner, priority, and resolution history together, teams can move work forward without losing the context that makes a response useful.
           </p>
           <div className="mt-8 overflow-hidden rounded-[12px] sm:mt-10">
-            <Image src="/figma/hero-1.png" alt="NextGen workspace on a laptop" width={1266} height={584} preload className="h-auto w-full object-contain" />
+            <Image src="/figma/docs-detail-banner.png" alt="CWIT EMS dashboard on a tablet with task status, revenue, and compliance insights" width={1407} height={647} preload className="h-auto w-full object-contain" style={{ width: "min(100%, 1407px)", height: "auto" }} />
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-3 text-[14px] text-[#6b7280]">
             <span>Customer Service</span>
@@ -74,22 +77,22 @@ export default function BlogDetailsPage() {
       <HighlightCards
         variant="numbered"
         title="What connected ticketing looks like"
-        description="Bring every channel into one structured workflow with clear ownership and visibility."
+        description="A connected service workflow gives agents one place to understand an issue, act on it, and see what happens next. The value is not simply collecting messages; it is making sure every channel contributes to the same accountable resolution process."
         items={[
           {
             label: "01",
             title: "One inbox for every channel",
-            body: "Email, chat, WhatsApp, and calls land in the same structured workspace.",
+            body: "Bring email, chat, WhatsApp, and call-related requests into a structured ticketing workspace. Agents can find the latest interaction without jumping between disconnected systems.",
           },
           {
             label: "02",
             title: "Ownership that travels",
-            body: "Handoffs keep history, notes, and next actions attached to the request.",
+            body: "Keep assignments, internal notes, priorities, and follow-up actions attached to the request as it moves between agents or departments. The receiving team can continue from the last meaningful step.",
           },
           {
             label: "03",
             title: "Visibility for leaders",
-            body: "Track SLAs, workload, and resolution quality without switching tools.",
+            body: "Give team leaders a shared view of queues, ticket status, response times, SLAs, and unresolved work. Bottlenecks are easier to spot when everyone works from the same operational record.",
           },
         ]}
       />
@@ -99,7 +102,10 @@ export default function BlogDetailsPage() {
           {
             id: "context",
             title: "Keep full customer context with every handoff",
-            body: "When agents change channels or teams, the conversation history, priority, and customer profile stay attached to the ticket.",
+            body: [
+              "An effective handoff should transfer understanding, not just a ticket number. The next agent needs to know who the customer is, why they reached out, what has already been attempted, and what was promised.",
+              "With NextGen Contact Centre, teams can keep conversations and ticket activity connected to customer details. This reduces repeated questions, supports more consistent replies, and gives agents the information they need to continue the conversation with confidence.",
+            ],
             image: "/figma/ticket-details.png",
             imageAlt: "Detailed conversation and request context",
             imageWidth: 900,
@@ -111,7 +117,10 @@ export default function BlogDetailsPage() {
           {
             id: "route",
             title: "Route work without starting over",
-            body: "Structured fields and routing rules help the next owner pick up immediately with the right priority and ownership.",
+            body: [
+              "Not every request belongs to the first team that receives it. Billing issues, technical faults, account changes, and escalations often need different specialists. Without clear routing, the work can bounce between inboxes while the customer waits.",
+              "Structured categories, priorities, assignments, and workflow rules help direct requests to the appropriate team. Each reassignment can retain its conversation history, internal updates, and current status, so new owners focus on resolution rather than investigation from scratch.",
+            ],
             image: "/figma/ticket-route.png",
             imageAlt: "Conversation confirming a customer request",
             imageWidth: 520,
@@ -125,7 +134,7 @@ export default function BlogDetailsPage() {
 
       <CtaSection
         title="Build an omnichannel process that scales"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        description="As request volumes grow, disconnected tools create more manual work and make service quality harder to maintain. A unified ticketing process helps teams establish consistent ownership, preserve customer context, and monitor results across channels. NextGen Contact Centre connects customer service with the wider operational workspace, helping agents, managers, and departments work toward a shared outcome: resolving the right request with the right information, at the right time."
         titleClassName="max-w-[640px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={paymentImage}

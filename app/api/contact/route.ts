@@ -14,6 +14,7 @@ import {
   validateContactFieldLengths,
 } from "@/lib/contact-security";
 import { adminContactTemplate, userConfirmationTemplate } from "@/lib/contact-templates";
+import { isValidPhone, PHONE_ERROR } from "@/lib/phone-validation";
 
 export const runtime = "nodejs";
 
@@ -82,8 +83,9 @@ export async function POST(request: Request) {
     if (!lengths.email || !isValidEmail(lengths.email)) {
       return NextResponse.json({ error: "A valid email is required" }, { status: 400 });
     }
-    if (!lengths.phone) {
-      return NextResponse.json({ error: "Phone is required" }, { status: 400 });
+    // Validate the original value before sanitization or truncation can hide invalid input.
+    if (!isValidPhone(asString(body.phone))) {
+      return NextResponse.json({ error: PHONE_ERROR }, { status: 400 });
     }
     if (!lengths.company) {
       return NextResponse.json({ error: "Company is required" }, { status: 400 });

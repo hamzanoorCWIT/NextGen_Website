@@ -8,14 +8,14 @@ import { HeroBanner } from "@/components/hero-banner";
 export const metadata: Metadata = {
   title: "CWIT EMS vs Zendesk | Comparisons",
   description:
-    "Compare CWIT EMS and Zendesk across customer service, workflows, analytics, and governance.",
+    "Compare CWIT EMS and Zendesk across customer service, workflows, reporting, and operational management.",
 };
 
 const platforms = [
   {
     badge: "Connected Customer Operations",
     title: "CWIT EMS",
-    body: "Manage customer interactions and operational workflows from one connected workspace.",
+    body: "Bring customer conversations, tasks, projects, analytics, and governance into a connected operational workspace. Give teams shared context as requests move between departments and workflows.",
     image: {
       src: "/figma/platform-1.png",
       alt: "CWIT EMS connected customer operations workspace",
@@ -26,7 +26,7 @@ const platforms = [
   {
     badge: "Customer service and support platform",
     title: "Zendesk",
-    body: "A platform focused on helping organizations manage customer interactions across multiple channels — ticketing, messaging, email, voice, SMS, live chat.",
+    body: "A customer service platform focused on managing support conversations, requests, and agent workflows. Evaluate how its service capabilities align with the broader tools your organization uses.",
     image: {
       src: "/figma/platform-2-new.png",
       alt: "Zendesk customer service platform",
@@ -53,15 +53,15 @@ const tableRows = [
 const reasons = [
   {
     title: "One connected platform",
-    body: "Stop switching between tools. Manage customer service, workflows, communication, and reporting from a single workspace.",
+    body: "Manage customer service, work management, CRM, analytics, and governance in a shared workspace, reducing the need to switch between unrelated tools.",
   },
   {
     title: "Operational visibility",
-    body: "See the full picture — from customer interactions to workforce activity — with connected dashboards and analytics.",
+    body: "Understand queues, assignments, tasks, and team activity from a connected view, with information that helps managers identify where follow-up is needed.",
   },
   {
     title: "Built to grow with you",
-    body: "Start with what you need. Add capabilities, teams, and integrations as your operations evolve.",
+    body: "Start with the workflows your team needs today and expand across departments as responsibilities, reporting requirements, and operational processes evolve.",
   },
 ];
 
@@ -77,14 +77,8 @@ export default function ComparisonDetailsPage() {
   return (
     <div id="top" className="site">
       <HeroBanner
-        title={
-          <>
-            A clearer way to manage
-            <br />
-            customer operations.
-          </>
-        }
-        description="Compare CWIT EMS with Zendesk across customer service, workflows, communication, analytics, and operational management — all in one connected platform."
+        title="See the difference a connected platform makes"
+        description="Compare CWIT EMS and Zendesk across customer service, workflows, reporting, and operational management. Explore how each platform approaches everyday work so your team can evaluate the fit for its priorities."
         titleClassName="max-w-[1100px]"
         descriptionClassName="max-w-[860px]"
         actions={[
@@ -103,10 +97,10 @@ export default function ComparisonDetailsPage() {
         <div className="content-1442">
           <div className="mx-auto max-w-[820px] text-center">
             <h2 className="text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
-              Two platforms. Different approaches.
+              Two platforms. Two ways to support your teams.
             </h2>
             <p className="mx-auto mt-4 max-w-[720px] text-[15px] leading-7 text-[#111111] sm:text-[16px]">
-              CWIT EMS and Zendesk help organizations manage customer interactions and business operations. The difference is how those capabilities come together. CWIT EMS connects customer service, communication, workflows, workforce management, analytics, and governance within one platform.
+              Both platforms help organizations manage customer interactions, but the scope of work surrounding those interactions may differ. Review their core focus, day-to-day use cases, and how each fits alongside your existing operations.
             </p>
           </div>
 
@@ -142,10 +136,10 @@ export default function ComparisonDetailsPage() {
         <div className="content-1442">
           <div className="mx-auto max-w-[820px] text-center">
             <h2 className="text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
-              Everything you need to compare, in one view.
+              Compare the capabilities that matter to your business
             </h2>
             <p className="mx-auto mt-4 max-w-[680px] text-[15px] leading-7 text-[#111111] sm:text-[16px]">
-              See how the two platforms approach the capabilities that matter across customer service and day-to-day operations.
+              Review the same areas side by side—from ticket management and messaging to workforce activity, reporting, governance, and integration. Use this overview to identify which capabilities deserve a closer look in a product evaluation.
             </p>
           </div>
 
@@ -177,8 +171,11 @@ export default function ComparisonDetailsPage() {
         <div className="content-1442 grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div>
             <h2 className="max-w-[420px] text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
-              Why teams choose CWIT EMS.
+              Bring service and operations into one view
             </h2>
+            <p className="mt-5 max-w-[520px] text-[15px] leading-7 text-[#111111] sm:text-[16px]">
+              CWIT EMS is designed to connect the work behind each customer interaction. Help agents, managers, and operational teams follow requests, coordinate responsibilities, and see progress without losing context between departments.
+            </p>
             <ul className="mt-8 space-y-7">
               {reasons.map((reason) => (
                 <li key={reason.title}>
@@ -202,8 +199,8 @@ export default function ComparisonDetailsPage() {
       </section>
 
       <CtaSection
-        title="Create a better way to manage customer service"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title="Connect customer service with the work that follows"
+        description="Bring customer requests, team responsibilities, reporting, and governance into a more coordinated experience. Explore how CWIT EMS can support your organization’s day-to-day operations in one connected workspace."
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={{

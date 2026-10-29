@@ -3,7 +3,7 @@
   margin-inline: auto;
   padding-top: clamp(64px, 8.33vw, 160px);
   padding-bottom: clamp(64px, 6.04vw, 116px);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Inter, Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 28px;
   color: #222;
@@ -18,11 +18,11 @@
 }
 
 .content h1 {
-  font-size: 55.8px;
+  font-size: clamp(38px, 7vw, 72px);
 }
 
 .content h2 {
-  font-size: 50px;
+  font-size: clamp(30px, 4.6vw, 48px);
 }
 
 .content h3 {
@@ -35,21 +35,42 @@
 .content p,
 .content li {
   font-size: 18px;
+  line-height: 30px;
 }
 
-.intro p { margin-top: 4px; }
+.content li {
+  font-size: 16px;
+}
+
+.intro p {
+  margin-top: 4px;
+  max-width: 1352px;
+  font-size: 20px;
+}
+.intro .eyebrow {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #111;
+}
 .layers { margin-top: 22px; }
 .group { margin-top: 16px; }
 .section { margin-top: 44px; }
 .section > p { max-width: 1150px; }
 .protectionTitle { max-width: 1100px; }
 .operation { margin-top: 12px; }
+.operation h3 {
+  font-size: 22px;
+  font-weight: 700;
+}
 
 .bullets {
   margin-top: 6px;
   padding-left: 16px;
   list-style: disc;
-  line-height: 21px;
 }
 
 .bullets li::marker { color: #8457ff; }
@@ -73,13 +94,22 @@
   background: #8457ff;
 }
 
-@media (max-width: 767px) {
-  .content { line-height: 26px; }
-  .content h1 { font-size: 32px; }
-  .content h2 { font-size: 30px; }
-  .content h3 { font-size: 22px; line-height: 28px; }
-  .section { margin-top: 36px; }
-  .group { margin-top: 20px; }
-  .bullets { line-height: 24px; }
+@media (max-width: 1023px) {
+  .content h3,
+  .operation h3 { font-size: 24px; line-height: 30px; }
 }
 
+@media (max-width: 767px) {
+  .content { line-height: 26px; overflow-wrap: break-word; }
+  .content h1 { font-size: 38px; }
+  .content h2 { font-size: 30px; }
+  .content h3,
+  .operation h3 { font-size: 20px; line-height: 28px; }
+  .content p { font-size: 16px; line-height: 26px; }
+  .content li { font-size: 15px; line-height: 24px; }
+  .intro p { font-size: 17px; line-height: 27px; }
+  .intro .eyebrow { font-size: 12px; margin-bottom: 12px; }
+  .section { margin-top: 36px; }
+  .group { margin-top: 20px; }
+  .checks li { gap: 10px; }
+}

@@ -14,6 +14,7 @@ export type ProductModuleImage = {
 export type ProductModuleTab = {
   id?: string;
   label: string;
+  description?: string;
   href?: string;
   active?: boolean;
   image: ProductModuleImage;
@@ -108,6 +109,11 @@ export function ProductModules({
           })}
         </div>
         <div key={current.label} role="tabpanel" className="product-module-panel mt-8">
+          {current.description ? (
+            <p className="mx-auto mb-6 max-w-[680px] text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">
+              {current.description}
+            </p>
+          ) : null}
           <Image
             src={current.image.src}
             alt={current.image.alt}

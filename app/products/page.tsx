@@ -15,7 +15,7 @@ const products: FeatureSplitItem[] = [
     id: "customer-service",
     title: "Customer Service Products",
     ctaHref: "/products/customer-service",
-    body: "Bring tickets, chats, calls, and customer interactions together in a unified workspace designed for faster resolution and better collaboration. Give service teams complete visibility into every conversation, customer journey, and support activity from one connected platform.",
+    body: "Manage tickets, customer conversations, and support workflows in one place. Give your team the context they need to respond faster, collaborate across departments, and deliver a more consistent customer experience.",
     image: "/figma/product-1.png",
     imageAlt: "Customer service workspace",
     imageWidth: 677,
@@ -26,7 +26,7 @@ const products: FeatureSplitItem[] = [
     id: "work-management",
     title: "Work Management Products",
     ctaHref: "/products/work-management",
-    body: "Give teams a single place to organize tasks, projects, schedules, and daily operations. From individual assignments to large initiatives, keep work visible, track progress, and ensure teams stay aligned from planning to completion.",
+    body: "Keep tasks, projects, schedules, and timesheets connected to everyday work. Make responsibilities clear, track progress, and help teams stay aligned from planning through completion.",
     image: "/figma/product-2.png",
     imageAlt: "Work management workspace",
     imageWidth: 677,
@@ -37,7 +37,7 @@ const products: FeatureSplitItem[] = [
     id: "crm-sales",
     title: "CRM & Sales",
     ctaHref: "/products/crm-sales",
-    body: "Build stronger customer relationships with complete visibility into contacts, leads, opportunities, and interactions. Connect every customer touchpoint to sales workflows so teams can capture opportunities, follow progress, and make informed decisions.",
+    body: "Bring contacts, leads, and opportunities into one organized view. Follow every interaction, manage your pipeline, and give your sales team the visibility to build stronger relationships and keep deals moving.",
     image: "/figma/product-3.png",
     imageAlt: "CRM and sales workspace",
     imageWidth: 677,
@@ -48,7 +48,7 @@ const products: FeatureSplitItem[] = [
     id: "analytics",
     title: "Analytics & BI",
     ctaHref: "/products/analytics",
-    body: "Transform everyday business activity into meaningful insights with connected dashboards and reporting. Monitor performance, identify trends, and help teams make faster decisions using real-time operational visibility.",
+    body: "Turn operational data into a clearer picture of performance. Monitor tickets, workloads, response trends, and team activity through dashboards and reports that help you spot priorities and make informed decisions.",
     image: "/figma/product-4.png",
     imageAlt: "Analytics and BI workspace",
     imageWidth: 677,
@@ -59,7 +59,7 @@ const products: FeatureSplitItem[] = [
     id: "governance",
     title: "Governance & Compliance",
     ctaHref: "/products/governance",
-    body: "Create stronger operational control with structured permissions, approvals, compliance tracking, and policy management. Ensure every action has clear ownership, every process follows defined rules, and every decision remains traceable.",
+    body: "Support accountability with structured permissions, activity history, policies, and consistent processes. Help teams work within defined controls while keeping important information accessible to the right people.",
     image: "/figma/product-5.png",
     imageAlt: "Governance and compliance workspace",
     imageWidth: 677,
@@ -81,12 +81,12 @@ export default function ProductsPage() {
       <HeroBanner
         title={
           <>
-            Everything your teams need, connected
+            Everything Your Teams Need,
             <br />
-            in one platform.
+            Working Together
           </>
         }
-        description="Manage customer conversations, daily operations, sales pipelines, business intelligence, and governance workflows — all from one unified platform."
+        description="Bring customer conversations, daily operations, sales, and business insights into one connected workspace. NextGen helps your teams stay organized, collaborate confidently, and move work forward without switching between disconnected tools."
         titleClassName="max-w-[1100px]"
         descriptionClassName="max-w-[860px]"
         actions={[
@@ -102,8 +102,8 @@ export default function ProductsPage() {
       />
       <FeatureSplit items={products} bandClassName="bg-[#FAFAFA]" />
       <CtaSection
-        title="Create a better way to manage customer service"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title="One Connected Platform. A Better Way to Work."
+        description="From customer service to projects, sales, and reporting, NextGen connects the work your teams do every day. Reduce friction between departments and create a more coordinated experience for employees and customers."
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={paymentImage}
