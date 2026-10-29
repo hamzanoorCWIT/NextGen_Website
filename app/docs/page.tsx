@@ -21,8 +21,8 @@ export default function DocsPage() {
   return (
     <div id="top" className="site">
       <HeroBanner
-        title="Learn how to get the most from CWIT EMS"
-        description="Explore product guides, setup instructions, and resources to help your teams configure workflows, manage operations, and get the most value from CWIT EMS."
+        title="Everything you need to get started with CWIT EMS"
+        description="Find practical guides to set up your workspace, manage daily operations, and make the most of CWIT EMS. From your first configuration to connected workflows across teams, get clear instructions for the work that matters."
         titleClassName="max-w-[980px]"
         descriptionClassName="max-w-[820px]"
         actions={[
@@ -41,51 +41,51 @@ export default function DocsPage() {
         id="guides"
         variant="numbered"
         tone="dark"
-        title="Guides that help every team get started and stay aligned."
-        description="Use practical documentation to set up the platform, manage daily work, and keep customer service, workflows, and governance connected."
+        title="Guidance for every step of your work"
+        description="Explore straightforward documentation to configure the platform, support your teams, and manage customer service, workflows, CRM, analytics, and governance with greater confidence."
         items={[
           {
             label: "01",
             title: "Getting Started",
-            body: "Set up your workspace, invite teams, and configure the first customer service workflow.",
+            body: "Set up your workspace, invite your team, assign roles, and configure the essentials so everyone can begin working in one connected environment.",
             href: "/docs/details",
           },
           {
             label: "02",
             title: "Customer Service",
-            body: "Learn how tickets, chats, and calls come together in one connected workspace.",
+            body: "Learn how to manage Tickets, Chat & WhatsApp, and Calls & Campaigns with shared customer context, clear assignments, and consistent follow-ups.",
             href: "/docs/details",
           },
           {
             label: "03",
             title: "Workflows",
-            body: "Build routing, approvals, and daily processes that match how your organization works.",
+            body: "Understand how to organize everyday processes, define responsibilities, route work, and keep requests moving between the right people.",
             href: "/docs/details",
           },
           {
             label: "04",
             title: "CRM & Sales",
-            body: "Manage contacts, leads, and customer history from the same operational platform.",
+            body: "Bring contacts, leads, interactions, and follow-up activity together so your teams can maintain customer context throughout the relationship.",
             href: "/docs/details",
           },
           {
             label: "05",
             title: "Analytics",
-            body: "Read dashboards and reports that show service performance and team activity.",
+            body: "Learn to use Dashboards and Power BI to monitor activity, explore performance, and turn operational data into clearer decisions.",
             href: "/docs/details",
           },
           {
             label: "06",
             title: "Governance",
-            body: "Set permissions, policies, and compliance steps so every action stays accountable.",
+            body: "Find guidance for managing Permissions, Approvals, Policy Docs, Org Hierarchy, KYC, and API Bank within controlled, accountable workflows.",
             href: "/docs/details",
           },
         ]}
       />
 
       <CtaSection
-        title="Create a better way to manage customer service"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title="Build a more connected way to manage customer service"
+        description="CWIT EMS brings customer support, work management, CRM, analytics, and governance into one workspace. Give every team the visibility and tools to stay organized, coordinate work, and keep operations moving."
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={paymentImage}

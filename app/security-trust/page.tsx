@@ -59,8 +59,9 @@ export default function SecurityTrustPage() {
       <Header />
       <main className={styles.content}>
         <section className={styles.intro}>
+          <p className={styles.eyebrow}>Security &amp; Trust</p>
           <h1>Your data. Protected by design.</h1>
-          <p>CWIT EMS is built to help organizations manage customer interactions, operational workflows, and business information with security and control at every layer.<br />From access management and permissions to data protection, auditability, and operational governance, security is built into how the platform is designed and managed.</p>
+          <p>CWIT EMS is built to help organizations manage customer interactions, operational workflows, and business information with security and control at every layer. From access management and permissions to data protection, auditability, and operational governance, security is built into how the platform is designed and managed.</p>
         </section>
 
         <section className={styles.layers} aria-labelledby="security-layers">

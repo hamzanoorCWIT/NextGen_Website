@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 const cases = [
   {
     title: "Policy Acknowledgement",
-    body: "Simplify compliance management by distributing policies, tracking acknowledgements, and maintaining clear records across your organization.",
+    body: "Publish policies, track who has acknowledged them, and keep a visible record of follow-up and completion.",
     tags: ["Retail", "Rich SMS", "RCS"],
     stats: [
       { value: "79%", label: "read rate" },
@@ -20,7 +20,7 @@ const cases = [
   },
   {
     title: "Multi-level Approvals",
-    body: "Route requests through the right people, track every acknowledgement, and keep a clear record across your organization.",
+    body: "Route decisions through the right people, maintain approval history, and keep requests moving with clear ownership.",
     tags: ["Retail", "Rich SMS", "RCS"],
     stats: [
       { value: "79%", label: "read rate" },
@@ -201,17 +201,17 @@ export function UseCases() {
           {slides.map((item, slideIndex) => (
             <article
               key={`${item.title}-${slideIndex}`}
-              className="relative grid shrink-0 items-start gap-8 rounded-[12px] bg-[#f4f3ef] px-5 py-8 text-black sm:px-8 sm:py-10 min-[1400px]:h-[581px] min-[1400px]:grid-cols-[minmax(0,1fr)_735.5329px] min-[1400px]:items-center min-[1400px]:gap-10 min-[1400px]:overflow-hidden min-[1400px]:pl-14 min-[1400px]:pr-0 min-[1400px]:py-12"
+              className="relative grid shrink-0 items-start gap-5 rounded-[12px] bg-[#f4f3ef] px-5 py-6 text-black sm:gap-8 sm:py-10 sm:px-8 min-[1400px]:h-[581px] min-[1400px]:grid-cols-[minmax(0,1fr)_735.5329px] min-[1400px]:items-center min-[1400px]:gap-10 min-[1400px]:overflow-hidden min-[1400px]:pl-14 min-[1400px]:pr-0 min-[1400px]:py-12"
               style={{ width: cardWidth || "80%" }}
             >
               <div className="flex h-full flex-col items-start justify-center pt-1">
-                <h3 className="text-[clamp(32px,2.2vw,42px)] leading-[1.1] font-semibold tracking-[-0.035em]">
+                <h3 className="text-[26px] leading-[1.1] font-semibold sm:text-[clamp(32px,2.2vw,42px)] tracking-[-0.035em]">
                   {item.title}
                 </h3>
-                <p className="mt-4 w-full max-w-[575px] text-[16px] leading-7 text-black sm:text-[17px]">
+                <p className="mt-3 w-full max-w-[575px] text-[14px] leading-6 sm:mt-4 sm:leading-7 text-black sm:text-[17px]">
                   {item.body}
                 </p>
-                <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[14px] text-[#1a1a1a]">
+                <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5 sm:mt-6 sm:gap-x-6 sm:gap-y-2 text-[13px] text-[#1a1a1a] sm:text-[14px]">
                   {item.tags.map((tag) => (
                     <span key={tag} className="inline-flex items-center gap-2">
                       <TagIcon name={tag} />
@@ -219,19 +219,19 @@ export function UseCases() {
                     </span>
                   ))}
                 </div>
-                <div className="mt-8 grid w-[min(557px,100%)] grid-cols-1 items-start gap-6 min-[520px]:grid-cols-[auto_minmax(0,280px)] min-[520px]:justify-between min-[520px]:gap-x-8">
+                <div className="mt-5 grid w-[min(557px,100%)] grid-cols-1 items-start gap-4 sm:mt-8 sm:gap-6 min-[520px]:grid-cols-[auto_minmax(0,280px)] min-[520px]:justify-between min-[520px]:gap-x-8">
                   {item.stats.map((stat) => (
                     <div key={stat.label}>
-                      <p className="text-[clamp(40px,2.8vw,52px)] leading-none font-semibold tracking-[-0.045em]">
+                      <p className="text-[32px] leading-none sm:text-[clamp(40px,2.8vw,52px)] font-semibold tracking-[-0.045em]">
                         {stat.value}
                       </p>
-                      <p className="mt-4 text-[15px] leading-[1.35] text-[#546066]">{stat.label}</p>
+                      <p className="mt-1.5 text-[13px] leading-[1.35] text-[#546066] sm:mt-4 sm:text-[15px]">{stat.label}</p>
                     </div>
                   ))}
                 </div>
                 <a
                   href={item.href}
-                  className="mt-10 inline-flex h-12 items-center rounded-full bg-black px-6 text-[15px] font-medium text-white"
+                  className="mt-6 inline-flex h-10 items-center rounded-full bg-black px-5 text-[14px] sm:mt-10 sm:h-12 sm:px-6 sm:text-[15px] font-medium text-white"
                 >
                   Explore More
                 </a>

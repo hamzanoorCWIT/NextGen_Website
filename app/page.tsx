@@ -17,52 +17,52 @@ const logos = [
 
 const industries = [
   {
-    title: "Team Leader",
-    body: "Track performance, manage escalations, and ensure smooth daily operations.",
-    image: "/figma/industries-roles-1.png",
-    width: 480,
-    height: 270,
-    href: "/industries/by-role/team-leaders",
+    title: "Utilities",
+    body: "Connect service requests, field coordination, and operational follow-ups so teams can respond with the right context.",
+    image: "/figma/by-industry-1.png",
+    width: 706,
+    height: 234,
+    href: "/industries/by-industry/utilities",
   },
   {
-    title: "Banking & Financial Services",
-    body: "Enhance customer service and compliance while ensuring secure.",
-    image: "/figma/industries-roles-2.png",
-    width: 1536,
-    height: 1024,
+    title: "Banking & Financial",
+    body: "Support customer enquiries, internal approvals, and accountable workflows in a controlled workspace.",
+    image: "/figma/by-industry-2.png",
+    width: 706,
+    height: 234,
     href: "/industries/by-industry/banking-financial",
   },
   {
-    title: "BPO & Outsourcing",
-    body: "Manage customer operations efficiently with omnichannel support, SLA.",
-    image: "/figma/industries-roles-3.png",
-    width: 940,
-    height: 788,
+    title: "BPO & outsourcing",
+    body: "Coordinate high-volume customer interactions and agent workloads with shared service visibility.",
+    image: "/figma/by-industry-3.png",
+    width: 706,
+    height: 234,
     href: "/industries/by-industry/bpo-outsourcing",
   },
   {
     title: "Government",
-    body: "Streamline citizen services and internal operations with clear workflows.",
-    image: "/figma/industries-roles-4.png",
-    width: 480,
-    height: 270,
+    body: "Organize public requests, approvals, and interdepartmental responsibilities with traceable activity.",
+    image: "/figma/by-industry-4.png",
+    width: 706,
+    height: 234,
     href: "/industries/by-industry/government",
   },
   {
-    title: "Finance",
-    body: "Streamline approval workflows, handle requests, and improve financial control.",
-    image: "/figma/industries-roles-5.png",
-    width: 2000,
-    height: 1318,
-    href: "/industries/by-role/finance",
+    title: "Telecom",
+    body: "Bring customer issues, service teams, and escalation activity together for more consistent follow-through.",
+    image: "/figma/by-industry-5.png",
+    width: 706,
+    height: 234,
+    href: "/industries/by-industry/telecom",
   },
   {
-    title: "IT and Administration",
-    body: "Handle support, service requests, user access, and operations from.",
-    image: "/figma/industries-roles-6.png",
-    width: 480,
-    height: 320,
-    href: "/industries/by-role/it-administration",
+    title: "Professional services",
+    body: "Connect client communication, tasks, projects, and time tracking to maintain clear delivery ownership.",
+    image: "/figma/by-industry-6.png",
+    width: 706,
+    height: 234,
+    href: "/industries/by-industry/professional-services",
   },
 ];
 
@@ -70,8 +70,7 @@ const toolsPanels: ToolsPanel[] = [
   {
     title: "Customer Service",
     body: [
-      "Manage customer requests, conversations, and service operations with structured workflows, clear ownership, and complete interaction history.",
-      "Organize tickets, chats, and calls while giving teams visibility into every conversation and support activity.",
+      "Bring tickets, customer conversations, and follow-ups into a shared workspace. Help agents understand the issue, find its history, and move requests toward resolution.",
     ],
     href: "/products/customer-service",
     image: {
@@ -145,7 +144,7 @@ export default function Home() {
       <HeroBanner
         className="border-b border-black/20"
         title="Everything Connected. One Platform."
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        description="Bring customer service, work management, CRM, analytics, and governance into one connected workspace. Give every team the context, tools, and visibility to work together without switching between disconnected systems."
         actions={[
           { href: "#tools", label: "Explore Platform", tone: "light" },
           { href: "/request-demo", label: "Request Demo" },
@@ -229,19 +228,22 @@ export default function Home() {
         </div>
         <div className="wrap">
           <h2 className="mx-auto mt-14 max-w-[1200px] text-center text-[clamp(26px,2.15vw,42px)] leading-[1.28] font-medium tracking-[-0.03em] sm:mt-20">
-            CWIT EMS connects customer support, work management,
-            <br className="hidden min-[1400px]:block" /> CRM, analytics, and governance into one unified platform.
-            <br className="hidden min-[1400px]:block" /> Empower your teams with smarter.
+            Your teams work better when everything works together.
           </h2>
+          <p className="mx-auto mt-5 max-w-[860px] text-center text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">
+            Keep conversations, responsibilities, customer records, and operational information connected across
+            departments. NextGen helps teams coordinate everyday work with clearer ownership and less manual follow-up.
+          </p>
         </div>
       </section>
 
       <section id="industries" className="bg-white py-16 sm:py-24">
         <div className="content-1442">
           <div className="text-center">
-            <h2 className="section-title">Industries & Roles</h2>
-            <p className="mt-3 text-[15px] text-[#111111] sm:text-[16px]">
-              CWIT EMS adapts to different industries, teams, and operational models.
+            <h2 className="section-title">Built around the way your organization works.</h2>
+            <p className="mx-auto mt-3 max-w-[760px] text-[15px] text-[#111111] sm:text-[16px]">
+              Different industries face different service expectations, approval processes, and operational demands.
+              NextGen brings flexible workflows and shared visibility to the teams responsible for delivering results.
             </p>
             <a
               href="/industries"
@@ -294,11 +296,11 @@ export default function Home() {
             </div>
             <div className="flex flex-col justify-center px-5 py-5 sm:px-8 sm:py-6">
               <h3 className="text-[22px] font-semibold tracking-[-0.03em] sm:text-[28px]">
-                Manage Your Entire Global Workforce
+                Manage your entire workforce with greater clarity.
               </h3>
               <p className="mt-2 max-w-xl text-[15px] leading-6 text-[#5c6370] sm:text-[16px] sm:leading-7">
-                Onboard, pay and manage employees and contractors around the world, all on one
-                platform, without the manual work or complexity.
+                From frontline agents to team leaders and operations managers, give every role a clear view of
+                assigned work, priorities, and progress. Connect people and processes without losing accountability.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2 px-5 pb-5 sm:px-8 sm:pb-6 xl:py-6 xl:pr-6 xl:pl-4">
@@ -312,13 +314,13 @@ export default function Home() {
       </section>
 
       <section id="tools" className="bg-black py-16 text-white sm:py-24">
-        <div className="content-1442 text-center">
+        <div className="content-1442 text-left sm:text-center">
           <h2 className="section-title">Tools Built Around Your Business</h2>
           <p className="lede mx-auto mt-4 max-w-[820px] text-white">
-            CWIT EMS brings together service management, customer relationships, team collaboration,
-            business workflows, and operational intelligence into one flexible platform.
+            Bring the essential parts of daily operations into one platform, so your teams can manage customer
+            conversations, coordinate work, and make informed decisions with less friction.
           </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-6 flex flex-wrap items-center justify-start sm:justify-center gap-3">
             <Pill href="/products" tone="light">
               Products Overview
             </Pill>
@@ -333,8 +335,8 @@ export default function Home() {
         <div className="content-1442 mt-[clamp(72px,12.292vw,236px)] text-center">
           <h2 className="section-title">Where Business Meets Possibility</h2>
           <p className="lede mx-auto mt-4 max-w-[760px] text-white">
-            Discover how CWIT empowers teams with intelligent tools designed to simplify operations,
-            improve efficiency, and deliver measurable business outcomes.
+            See how connected processes can make everyday work easier to manage. From policy acknowledgement to
+            multi-level approvals, NextGen gives teams a clearer path from request to completion.
           </p>
           <div className="mt-6">
             <Pill href="/industries/use-cases" tone="light">
@@ -355,8 +357,8 @@ export default function Home() {
             Intelligent Operations
           </h2>
           <p className="lede mx-auto mt-4 w-[min(732px,100%)] text-[#111111]">
-            CWIT EMS connects customer support, work management, CRM, analytics, and governance into
-            one intelligent workspace.
+            Give teams a connected view of conversations, tasks, and operational activity. With Dolphin AI and
+            structured workflows, make important information easier to find and everyday decisions easier to support.
           </p>
           <a
             href="/industries"
@@ -380,8 +382,8 @@ export default function Home() {
       <Testimonials />
 
       <CtaSection
-        title="Bring your customers, teams, and workflows together"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title="Bring your customers, teams, and workflows together."
+        description="One workspace for customer service, work management, CRM, analytics, and governance. Build a more connected way to manage daily operations while keeping teams aligned on what matters."
         actions={[
           { href: "#tools", label: "Explore Platform", tone: "ghost-dark" },
           { href: "/request-demo", label: "Request Demo" },

@@ -25,7 +25,7 @@ export function QuoteForm() {
       <input className={field} type="text" name="company" required placeholder="Company name" autoComplete="organization" />
       <Select name="headquarters" placeholder="Headquarters" options={headquarters} />
       <Select name="teamSize" placeholder="No of employees + contractors" options={teamSizes} />
-      <div className="flex h-14 items-center rounded-[10px] border border-[#e6e8ee] bg-white focus-within:border-black/25">
+      <div className="form-field-group flex h-14 items-center rounded-[10px] border border-[#e6e8ee] bg-white">
         <span className="shrink-0 px-4 text-[15px] text-[#111111]">+92</span>
         <span className="h-6 w-px bg-[#e6e8ee]" aria-hidden="true" />
         <input

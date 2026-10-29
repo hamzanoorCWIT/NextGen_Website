@@ -174,10 +174,35 @@ function LinkGroup({
 
 export function Footer() {
   const [sent, setSent] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSent(true);
+    if (pending) return;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setPending(true);
+    setSent(false);
+    setError(null);
+    try {
+      const response = await fetch("/api/demo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: data.get("email"), website: data.get("website") }),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.success) {
+        setError(result?.error || "Failed to send demo request. Please try again.");
+        return;
+      }
+      setSent(true);
+      form.reset();
+    } catch {
+      setError("Failed to send demo request. Please try again.");
+    } finally {
+      setPending(false);
+    }
   }
 
   return (
@@ -185,29 +210,39 @@ export function Footer() {
       <div className="footer-desktop mx-auto grid w-[min(1760px,calc(100%-40px))] gap-12 py-12 sm:py-16">
         <div className="w-full lg:max-w-none">
           <h2 className="footer-heading text-[clamp(32px,2.708333vw,40px)] leading-[1.12] font-medium tracking-[-0.035em]">
-            Request a demo to
+            See NextGen in Action
           </h2>
           <div className="w-fit max-w-full">
-            <p className="footer-heading text-[clamp(32px,2.708333vw,40px)] leading-[1.12] font-medium tracking-[-0.035em]">see EMS in action</p>
+            <p className="mt-4 text-[15px] leading-7 font-normal text-white/80 sm:text-[16px]">
+              Discover how one connected platform can support your teams, simplify daily workflows, and give you clearer visibility across your business
+            </p>
             <form onSubmit={onSubmit} className="footer-form mt-8 flex h-12 w-full items-center rounded-full bg-white p-1 sm:h-14">
-            <label className="sr-only" htmlFor="email">
+            <label className="sr-only" htmlFor="footer-demo-email">
               Email address
             </label>
             <input
-              id="email"
+              id="footer-demo-email"
               name="email"
               type="email"
               required
+              maxLength={254}
+              autoComplete="email"
+              disabled={pending}
+              onChange={() => { setSent(false); setError(null); }}
               placeholder="Email address"
               className="h-full min-w-0 flex-1 bg-transparent px-4 text-[14px] text-black outline-none placeholder:text-[#b0b0b0]"
             />
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden opacity-0" />
             <button
               type="submit"
+              disabled={pending}
               className="footer-submit h-11 shrink-0 cursor-pointer rounded-full bg-[#2a2a2a] px-5 text-[14px] font-medium text-white"
             >
-              {sent ? "Sent" : "Submit"}
+              {pending ? "Sending..." : sent ? "Sent" : "Submit"}
             </button>
             </form>
+            {error ? <p role="alert" className="mt-3 text-sm text-red-300">{error}</p> : null}
+            <p role="status" className="mt-3 text-sm text-white/80">{sent ? "Demo request sent. Our team will be in touch soon." : ""}</p>
           </div>
         </div>
 

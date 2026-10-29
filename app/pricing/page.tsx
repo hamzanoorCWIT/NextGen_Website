@@ -15,33 +15,16 @@ export default function PricingPage() {
   return (
     <div id="top" className="site">
       <HeroBanner
-        title={
-          <>
-            Transform the way your teams manage
-            <br />
-            work and customer operations
-          </>
-        }
-        description="Tell us about your business needs and discover how NextGen can help you connect customer service, workflows, communication, and intelligent automation in one unified platform."
+        title="One connected platform. A plan that fits your team."
+        description="Tell us what your organization needs and explore a more connected way to manage customer service, workflows, communication, and operations with NextGen."
         titleClassName="w-[min(1016px,100%)]"
         descriptionClassName="w-[min(920px,100%)]"
         media={<QuoteForm />}
       />
       <PricingDetails />
       <CtaSection
-        title={
-          <>
-            Build a ticket management
-            <br className="hidden lg:block" /> process that works for your
-            <br className="hidden lg:block" /> organization
-          </>
-        }
-        description={
-          <>
-            CWIT EMS connects customer support, work management, CRM, analytics, and
-            <br className="hidden lg:block" /> governance into one intelligent workspace.
-          </>
-        }
+        title="Bring your customer service and operations together"
+        description="NextGen connects customer support, work management, CRM, analytics, and governance in one workspace, helping teams stay aligned without switching between disconnected tools."
         titleClassName="max-w-[640px]"
         descriptionClassName="max-w-[640px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}

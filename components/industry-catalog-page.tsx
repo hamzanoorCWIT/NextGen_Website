@@ -23,6 +23,10 @@ type Props = {
   highlightDescription: string;
   highlightItems: { label: string; title: string; body: string }[];
   cards: IndustryCatalogCard[];
+  cardsTitle?: string;
+  cardsDescription?: string;
+  ctaTitle?: string;
+  ctaDescription?: string;
   cardsId?: string;
   baseHref?: string;
 };
@@ -48,6 +52,10 @@ export function IndustryCatalogPageView({
   highlightDescription,
   highlightItems,
   cards,
+  cardsTitle,
+  cardsDescription,
+  ctaTitle = "Create a better way to manage customer service",
+  ctaDescription = "CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace.",
   cardsId = "industries",
   baseHref = "/industries/by-industry",
 }: Props) {
@@ -74,6 +82,12 @@ export function IndustryCatalogPageView({
       />
 
       <section id={cardsId} className="bg-[#FAFAFA] py-8 sm:py-16">
+        {cardsTitle || cardsDescription ? (
+          <div className="content-1426 mb-10 text-center">
+            {cardsTitle ? <h2 className="mx-auto max-w-[820px] text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">{cardsTitle}</h2> : null}
+            {cardsDescription ? <p className="mx-auto mt-4 max-w-[680px] text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">{cardsDescription}</p> : null}
+          </div>
+        ) : null}
         <div className="content-1426 grid gap-5 sm:grid-cols-2 sm:gap-6">
           {cards.map((item) => (
             <article
@@ -106,8 +120,8 @@ export function IndustryCatalogPageView({
       </section>
 
       <CtaSection
-        title="Create a better way to manage customer service"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title={ctaTitle}
+        description={ctaDescription}
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={ctaImage}

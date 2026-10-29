@@ -7,7 +7,7 @@ import { Pill } from "@/components/pill";
 export const metadata: Metadata = {
   title: "Comparisons | NextGen Contact Centre",
   description:
-    "Compare CWIT EMS with leading platforms across features, pricing, and capabilities.",
+    "Compare CWIT EMS with familiar business platforms and explore how customer service, work management, CRM, analytics, and governance can come together in one connected workspace.",
 };
 
 const paymentImage = {
@@ -20,27 +20,27 @@ const paymentImage = {
 const platforms = [
   {
     title: "Zendesk",
-    body: "Customer service and support platform",
+    body: "Explore how CWIT EMS and Zendesk approach customer requests, ticket management, agent workflows, and support visibility. Consider whether your teams need primarily customer support tools or a broader connected operations workspace.",
   },
   {
     title: "Salesforce",
-    body: "CRM and customer engagement suite",
+    body: "Compare approaches to managing customer relationships, sales activity, service processes, and cross-team information. Explore how each platform fits your organization’s CRM and operational requirements.",
   },
   {
     title: "ServiceNow",
-    body: "IT and enterprise service management",
+    body: "Review how CWIT EMS and ServiceNow support structured requests, service workflows, approvals, and operational control. Identify the capabilities and level of process complexity that fit your team.",
   },
   {
     title: "Freshworks",
-    body: "Customer and employee engagement",
+    body: "Explore customer engagement, support workflows, and team productivity across CWIT EMS and Freshworks. Assess how each solution connects everyday service activity with wider business operations.",
   },
   {
     title: "Dynamics 365",
-    body: "Microsoft business applications",
+    body: "Compare customer information, business processes, reporting, and team collaboration across CWIT EMS and Dynamics 365. Evaluate the platform approach that best suits your current systems and future plans.",
   },
   {
     title: "Other Platforms",
-    body: "Request a custom comparison",
+    body: "Considering a different platform? Start with the services and workflows your teams depend on, then build a focused comparison around the features, integrations, control, and reporting you require.",
   },
 ];
 
@@ -64,14 +64,8 @@ export default function ComparisonsPage() {
   return (
     <div id="top" className="site">
       <HeroBanner
-        title={
-          <>
-            Compare CWIT EMS with the
-            <br />
-            platforms your teams already know.
-          </>
-        }
-        description="See how CWIT EMS stacks up across customer service, workflows, CRM, analytics, and governance so you can choose the right platform with confidence."
+        title="Find the right platform for the way your teams work"
+        description="Compare CWIT EMS with familiar business platforms and explore how customer service, work management, CRM, analytics, and governance can come together in one connected workspace. Choose a platform below to examine the areas that matter most to your organization."
         titleClassName="max-w-[1100px]"
         descriptionClassName="max-w-[860px]"
         actions={[
@@ -90,10 +84,12 @@ export default function ComparisonsPage() {
         <div className="content-1442">
           <div className="mx-auto max-w-[820px] text-center">
             <h2 className="text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
-              Compare CWIT EMS with leading platforms
+              See how CWIT EMS compares with leading platforms
             </h2>
             <p className="mx-auto mt-4 max-w-[680px] text-[15px] leading-7 text-[#111111] sm:text-[16px]">
-              Choose a platform to see a detailed comparison across features, pricing, and capabilities.
+              Explore comparisons organized around different platform strengths and business needs. Review
+              capabilities, workflows, and deployment considerations to understand which solution aligns with your
+              teams and operational priorities.
             </p>
           </div>
 
@@ -120,8 +116,8 @@ export default function ComparisonsPage() {
       </section>
 
       <CtaSection
-        title="Create a better way to manage customer service"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title="Bring customer service and business operations together"
+        description="CWIT EMS connects customer conversations, tasks, projects, CRM activity, analytics, and governance in one workspace. Explore how a more connected approach can give teams clearer ownership, more consistent workflows, and better visibility across the organization."
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={paymentImage}

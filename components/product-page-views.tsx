@@ -52,7 +52,7 @@ export function ProductCategoryPageView({ page }: { page: ProductCategory }) {
         ]}
         tabs={modules.map((module, index) => ({
           id: module.id,
-          label: module.label,
+          label: page.moduleLabels?.[module.id] ?? module.label,
           active: index === 0,
           image: module.image,
         }))}
@@ -71,8 +71,8 @@ export function ProductCategoryPageView({ page }: { page: ProductCategory }) {
       <Testimonials />
 
       <CtaSection
-        title={`Create a better way to manage ${page.title.toLowerCase()}`}
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title={page.ctaTitle ?? `Create a better way to manage ${page.title.toLowerCase()}`}
+        description={page.ctaDescription ?? "CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."}
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={ctaImage}
@@ -155,19 +155,24 @@ export function ProductSubcategoryPageView({ page }: { page: ProductSubcategoryP
               {page.checklistTitle}
             </h2>
             <p className="mt-4 max-w-[520px] text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">{page.checklistDescription}</p>
-            <ul className="mt-6 space-y-3">
+            {page.checklist.length > 0 ? <ul className="mt-6 space-y-3">
               {page.checklist.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[15px] sm:text-[16px]">
+                <li key={typeof item === "string" ? item : item.title} className="flex items-start gap-3 text-[15px] sm:text-[16px]">
                   <span
                     className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black text-[11px] text-white"
                     aria-hidden="true"
                   >
                     ✓
                   </span>
-                  {item}
+                  {typeof item === "string" ? item : (
+                    <div>
+                      <h3 className="font-semibold">{item.title}</h3>
+                      <p className="mt-1 text-[15px] leading-7 text-[#3a3a3a]">{item.body}</p>
+                    </div>
+                  )}
                 </li>
               ))}
-            </ul>
+            </ul> : null}
             <div className="mt-8 flex flex-wrap gap-3">
               <Pill href="/request-demo" tone="ghost-dark">
                 See pricing
@@ -207,8 +212,8 @@ export function ProductSubcategoryPageView({ page }: { page: ProductSubcategoryP
       ) : null}
 
       <CtaSection
-        title={`Build a ${page.title.toLowerCase()} process that works for your organization`}
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title={page.ctaTitle ?? `Build a ${page.title.toLowerCase()} process that works for your organization`}
+        description={page.ctaDescription ?? "CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."}
         titleClassName="max-w-[640px]"
         descriptionClassName="max-w-[640px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}

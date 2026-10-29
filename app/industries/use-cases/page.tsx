@@ -11,34 +11,32 @@ export const metadata: Metadata = {
 export default function UseCasesPage() {
   return (
     <IndustryCatalogPageView
-      heroTitle={
-        <>
-          Use cases that drive
-          <br />
-          daily operations.
-        </>
-      }
-      heroDescription="From managing customer conversations and service requests to automating approvals, tracking performance, and improving decision-making, CWIT EMS helps organizations streamline critical processes across every department."
-      highlightTitle="Everything your organization needs to operate smarter"
-      highlightDescription="CWIT EMS brings customer service, workflows, analytics, and governance together so teams can run high-impact use cases in one connected platform."
+      heroTitle="Bring Every Use Case Into One Connected Workflow"
+      heroDescription="From customer conversations and sales opportunities to time tracking, approvals, and compliance, NextGen connects the everyday processes that keep your business moving. Give teams a shared workspace to manage work, stay accountable, and deliver consistent results."
+      highlightTitle="One Platform for the Work That Matters"
+      highlightDescription="Bring customer service, workforce operations, and governance together without losing visibility between teams. NextGen helps people move from one task to the next with the context, ownership, and information they need."
       highlightItems={[
         {
           label: "01",
           title: "Customer Engagement",
-          body: "Unify ticketing, chat, and campaigns in one workspace.",
+          body: "Keep customer requests, conversations, and opportunities connected so teams can respond with context and follow through with confidence.",
         },
         {
           label: "02",
           title: "Workforce Control",
-          body: "Track time, attendance, and billable work with clarity.",
+          body: "Coordinate daily responsibilities, attendance, timesheets, and costs with clear ownership and better visibility into team activity.",
         },
         {
           label: "03",
           title: "Governance & Risk",
-          body: "Run approvals, policies, and KYC with accountability.",
+          body: "Support controlled decisions with structured approvals, policy acknowledgements, and documented compliance checks.",
         },
       ]}
       cards={useCaseCards}
+      cardsTitle="Practical Solutions for Everyday Operations"
+      cardsDescription="Explore how NextGen brings common business workflows together, from the first customer interaction to the final approval, update, or completed task."
+      ctaTitle="Build a Better Way to Manage Customer Service"
+      ctaDescription="Connect customer support, workforce coordination, CRM, analytics, and governance in one workspace. With shared information and clearer processes, your teams can spend less time navigating tools and more time moving work forward."
       cardsId="use-cases"
       baseHref="/industries/use-cases"
     />

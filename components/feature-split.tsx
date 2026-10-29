@@ -4,7 +4,7 @@ import { Pill } from "@/components/pill";
 export type FeatureSplitItem = {
   id: string;
   title: string;
-  body: string;
+  body: string | string[];
   image: string;
   imageAlt: string;
   imageWidth: number;
@@ -39,7 +39,14 @@ export function FeatureSplit({
                 <h2 className="product-title text-[clamp(28px,5vw,36px)] leading-[1.12] font-semibold tracking-[-0.035em]">
                   {item.title}
                 </h2>
-                <p className="product-body mt-4 text-[15px] leading-7 text-[#1a1a1a] sm:mt-5 sm:text-[16px]">{item.body}</p>
+                {(Array.isArray(item.body) ? item.body : [item.body]).map((paragraph, paragraphIndex) => (
+                  <p
+                    key={paragraphIndex}
+                    className="product-body mt-4 text-[15px] leading-7 text-[#1a1a1a] sm:mt-5 sm:text-[16px]"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
                 <div className="mt-8">
                   <Pill href={item.ctaHref ?? "/request-demo"}>{item.ctaLabel ?? "Explore More"}</Pill>
                 </div>

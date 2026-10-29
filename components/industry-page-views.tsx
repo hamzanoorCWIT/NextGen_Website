@@ -39,13 +39,13 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
   return (
     <div id="top" className="site">
       <HeroBanner
-        title={
+        title={heroRest === undefined ? page.heroTitle : (
           <>
             {heroLead} with
             <br />
             {heroRest}
           </>
-        }
+        )}
         description={page.heroDescription}
         titleClassName="max-w-[980px]"
         descriptionClassName="max-w-[860px]"
@@ -61,7 +61,7 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
         variant="numbered"
         title={page.highlightTitle}
         description={page.highlightDescription}
-        items={[
+        items={page.highlightItems ?? [
           {
             label: "01",
             title: "Workforce Operations",
@@ -84,7 +84,7 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
         items={[
           {
             id: "channels",
-            title: "Deliver better customer experiences across every channel",
+            title: page.experienceTitle ?? "Deliver better customer experiences across every channel",
             body: page.experienceBody,
             image: experience.src,
             imageAlt: experience.alt,
@@ -96,7 +96,7 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
           },
           {
             id: "workflows",
-            title: "Turn complex processes into simple, connected workflows",
+            title: page.workflowTitle ?? "Turn complex processes into simple, connected workflows",
             body: page.workflowBody,
             image: workflow.src,
             imageAlt: workflow.alt,
@@ -108,7 +108,7 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
           },
           {
             id: "insights",
-            title: "Understand performance with insights that drive action",
+            title: page.insightsTitle ?? "Understand performance with insights that drive action",
             body: page.insightsBody,
             image: insights.src,
             imageAlt: insights.alt,
@@ -127,16 +127,22 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
             <h2 className="max-w-[560px] text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">
               {page.connectedTitle}
             </h2>
+            {page.connectedDescription ? <p className="mt-4 text-[15px] leading-7 text-white/75 sm:text-[16px]">{page.connectedDescription}</p> : null}
             <ul className="mt-8 space-y-3">
-              {connectedPoints.map((point) => (
-                <li key={point} className="flex items-start gap-3 text-[15px] text-white/90 sm:text-[16px]">
+              {(page.connectedPoints ?? connectedPoints).map((point) => (
+                <li key={typeof point === "string" ? point : point.title} className="flex items-start gap-3 text-[15px] text-white/90 sm:text-[16px]">
                   <span
                     className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-[11px] text-black"
                     aria-hidden="true"
                   >
                     ✓
                   </span>
-                  {point}
+                  {typeof point === "string" ? point : (
+                    <div>
+                      <h3 className="font-semibold">{point.title}</h3>
+                      <p className="mt-1 leading-7 text-white/75">{point.body}</p>
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
@@ -163,8 +169,8 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
       </section>
 
       <CtaSection
-        title="Create a better way to manage customer service"
-        description="CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."
+        title={page.ctaTitle ?? "Create a better way to manage customer service"}
+        description={page.ctaDescription ?? "CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace."}
         titleClassName="max-w-[620px]"
         actions={[{ href: "/request-demo", label: "Request Demo" }]}
         image={ctaImage}

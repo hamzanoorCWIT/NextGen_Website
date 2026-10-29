@@ -70,7 +70,7 @@ function Arrow({ direction }: { direction: "left" | "right" }) {
   );
 }
 
-export function Testimonials() {
+export function Testimonials({ title = "Trusted by teams building better operations" }: { title?: string }) {
   const [index, setIndex] = useState(0);
   const visible = [0, 1, 2].map((offset) => quotes[(index + offset) % quotes.length]);
 
@@ -78,7 +78,7 @@ export function Testimonials() {
     <section className="bg-[#fafafa] py-14 sm:py-20">
       <div className="content-1760">
         <div className="mb-8 flex items-end justify-between gap-4 sm:mb-10 sm:items-center sm:gap-6">
-          <h2 className="section-title min-w-0 flex-1 max-w-[829px]">Trusted by teams building better operations</h2>
+          <h2 className="section-title min-w-0 flex-1 max-w-[829px]">{title}</h2>
           <div className="flex shrink-0 gap-2 sm:gap-3">
             <button
               type="button"
