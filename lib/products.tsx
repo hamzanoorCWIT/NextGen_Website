@@ -23,7 +23,7 @@ export type ProductCategory = {
   modulesDescription: string;
   workflowTitle: string;
   workflowDescription: string;
-  workflowSteps: { title: string; body?: string }[];
+  workflowSteps: { title: string; body?: string; image?: ProductImage }[];
   workflowImage: ProductImage;
   builtTitle: string;
   builtDescription: string;
@@ -32,6 +32,7 @@ export type ProductCategory = {
   ctaDescription?: string;
   children: string[];
   moduleLabels?: Record<string, string>;
+  moduleImages?: Record<string, ProductImage>;
 };
 
 export type ProductSubcategoryPage = {
@@ -272,11 +273,11 @@ export const productCategories: Record<string, ProductCategory> = {
     workflowDescription:
       "Turn incoming work into a structured process. Set ownership, track time, follow progress, and keep a reliable record of activity as tasks and projects move toward completion.",
     workflowSteps: [
-      { title: "Work is planned", body: "Create tasks and projects with clear scope and owners." },
-      { title: "Teams take action" },
-      { title: "Time is captured" },
-      { title: "Progress is tracked" },
-      { title: "Delivery is measured" },
+      { title: "Work is planned", body: "Create tasks and projects with clear scope and owners.", image: { src: "/figma/work-management-1.png", alt: "Project plan email confirming the next step", width: 685, height: 696 } },
+      { title: "Teams take action", image: { src: "/figma/work-management-2.png", alt: "Task details with assignee, priority, team, and sprint", width: 685, height: 696 } },
+      { title: "Time is captured", image: { src: "/figma/work-management-3.png", alt: "Team chat about development work and time captured", width: 685, height: 696 } },
+      { title: "Progress is tracked", image: { src: "/figma/work-management-4.png", alt: "Kanban overview of the Q4 sprint", width: 685, height: 696 } },
+      { title: "Delivery is measured", image: { src: "/figma/work-management-5.png", alt: "Feature velocity score based on sprint deliverables", width: 685, height: 696 } },
     ],
     workflowImage: {
       src: "/figma/work-management.png",
@@ -295,6 +296,12 @@ export const productCategories: Record<string, ProductCategory> = {
     ctaTitle: "Make everyday work easier to manage",
     ctaDescription: "Bring tasks, projects, schedules, and time tracking together in NextGen. Give your people a clearer way to organize work, collaborate, and keep progress moving.",
     children: ["tasks", "projects", "timesheets", "attendance"],
+    moduleImages: {
+      tasks: { src: "/figma/work-management-tab-1.png", alt: "Task list with assignees, priorities, and due dates", width: 948, height: 617 },
+      projects: { src: "/figma/work-management-tab-2.png", alt: "Project overview with milestones and progress", width: 948, height: 617 },
+      timesheets: { src: "/figma/work-management-tab-3.png", alt: "Timesheet with time logged against tasks", width: 948, height: 617 },
+      attendance: { src: "/figma/work-management-tab-4.png", alt: "Attendance record for team members", width: 948, height: 617 },
+    },
   },
   "crm-sales": {
     type: "category",
@@ -318,11 +325,11 @@ export const productCategories: Record<string, ProductCategory> = {
     workflowTitle: "A clearer path from first contact to the next opportunity",
     workflowDescription: "Keep the sales journey organized with shared records, defined ownership, and visible progress from initial interest through follow-up and outcomes.",
     workflowSteps: [
-      { title: "Leads captured", body: "Record incoming interest and assign an owner so new opportunities are not missed." },
-      { title: "Contact is enriched", body: "Bring relevant details, interactions, and notes into the customer record." },
-      { title: "Opportunity is tracked", body: "Keep status, next steps, and follow-up activity visible as the relationship develops." },
-      { title: "Teams collaborate", body: "Give sales and service teams the context to coordinate actions and handovers." },
-      { title: "Outcome is measured", body: "Review pipeline activity and results to identify what is working and where to improve." },
+      { title: "Leads captured", body: "Record incoming interest and assign an owner so new opportunities are not missed.", image: { src: "/figma/crm-sales-1.png", alt: "Email inquiry about a new project from Mark Davis", width: 685, height: 696 } },
+      { title: "Contact is enriched", body: "Bring relevant details, interactions, and notes into the customer record.", image: { src: "/figma/crm-sales-2.png", alt: "Contact record enriched with company, title, and channel details", width: 685, height: 696 } },
+      { title: "Opportunity is tracked", body: "Keep status, next steps, and follow-up activity visible as the relationship develops.", image: { src: "/figma/crm-sales-3.png", alt: "Opportunity timeline with deal value and team", width: 685, height: 696 } },
+      { title: "Teams collaborate", body: "Give sales and service teams the context to coordinate actions and handovers.", image: { src: "/figma/crm-sales-4.png", alt: "Teammates collaborating on a drafted proposal", width: 685, height: 696 } },
+      { title: "Outcome is measured", body: "Review pipeline activity and results to identify what is working and where to improve.", image: { src: "/figma/crm-sales-5.png", alt: "Pipeline value and win rate with quarterly performance", width: 685, height: 696 } },
     ],
     workflowImage: {
       src: "/figma/crm-sales.png",
@@ -341,6 +348,10 @@ export const productCategories: Record<string, ProductCategory> = {
     ctaTitle: "Bring your customer relationships and sales work together",
     ctaDescription: "Connect customer records, lead management, follow-ups, and operational activity in one workspace, helping your teams build lasting relationships and move work forward with greater clarity.",
     children: ["contacts-crm", "leads"],
+    moduleImages: {
+      "contacts-crm": { src: "/figma/crm-sales-tab-1.png", alt: "Contacts list with customer records", width: 948, height: 617 },
+      "leads": { src: "/figma/crm-sales-tab-2.png", alt: "Opportunities pipeline board", width: 948, height: 617 },
+    },
   },
   analytics: {
     type: "category",
@@ -364,11 +375,11 @@ export const productCategories: Record<string, ProductCategory> = {
     workflowTitle: "From connected data to informed action",
     workflowDescription: "Bring activity together, review what matters, and turn trends into clear next steps. A straightforward reporting process helps teams understand performance and follow through.",
     workflowSteps: [
-      { title: "Data is connected", body: "Bring relevant operational activity into a common reporting picture." },
-      { title: "Dashboards update", body: "Review changing workload and performance through current dashboard views." },
-      { title: "Teams review trends", body: "Compare patterns, identify bottlenecks, and discuss what needs attention." },
-      { title: "Actions are prioritized", body: "Use the findings to focus effort on the issues with the greatest impact." },
-      { title: "Outcomes improve", body: "Track results over time and refine the decisions behind your day-to-day work." },
+      { title: "Data is connected", body: "Bring relevant operational activity into a common reporting picture.", image: { src: "/figma/analytic-bi-1.png", alt: "Project plan email confirming the next step", width: 685, height: 696 } },
+      { title: "Dashboards update", body: "Review changing workload and performance through current dashboard views.", image: { src: "/figma/analytic-bi-2.png", alt: "Task details with assignee, priority, team, and sprint", width: 685, height: 696 } },
+      { title: "Teams review trends", body: "Compare patterns, identify bottlenecks, and discuss what needs attention.", image: { src: "/figma/analytic-bi-3.png", alt: "Team chat about development work and time captured", width: 685, height: 696 } },
+      { title: "Actions are prioritized", body: "Use the findings to focus effort on the issues with the greatest impact.", image: { src: "/figma/analytic-bi-4.png", alt: "Kanban overview of the Q4 sprint", width: 685, height: 696 } },
+      { title: "Outcomes improve", body: "Track results over time and refine the decisions behind your day-to-day work.", image: { src: "/figma/analytic-bi-5.png", alt: "Feature velocity score based on sprint deliverables", width: 685, height: 696 } },
     ],
     workflowImage: {
       src: "/figma/analytic-bi.png",
@@ -387,6 +398,10 @@ export const productCategories: Record<string, ProductCategory> = {
     ctaTitle: "Make better decisions with connected Analytics & BI",
     ctaDescription: "Bring customer service, work management, and operational reporting into one connected experience. Give your people the context they need to understand performance and improve the way work gets done.",
     children: ["dashboard", "power-bi"],
+    moduleImages: {
+      "dashboard": { src: "/figma/analytic-bi-tab-1.png", alt: "Dashboard with workload and activity overview", width: 948, height: 617 },
+      "power-bi": { src: "/figma/analytic-bi-tab-2.png", alt: "Detailed ticket view for reporting and analysis", width: 948, height: 617 },
+    },
   },
   governance: {
     type: "category",
@@ -411,11 +426,11 @@ export const productCategories: Record<string, ProductCategory> = {
     workflowTitle: "Governance Workflow",
     workflowDescription: "From assigning access to recording decisions, give each governance activity a clear owner, a defined next step, and a history your team can follow.",
     workflowSteps: [
-      { title: "Access is defined", body: "Set roles and permissions so individuals can work within clear, appropriate boundaries." },
-      { title: "Requests are approved", body: "Route access and operational requests to the people authorized to review and decide." },
-      { title: "Policies are shared", body: "Make current policies available to the relevant teams and support acknowledgement where needed." },
-      { title: "Compliance is tracked", body: "Track completion, exceptions, and outstanding actions to maintain visibility over required work." },
-      { title: "Activity is auditable", body: "Keep a record of relevant actions and decisions to support internal reviews and accountability." },
+      { title: "Access is defined", body: "Set roles and permissions so individuals can work within clear, appropriate boundaries.", image: { src: "/figma/governance-compliance-1.png", alt: "Email inquiry about a new project from Mark Davis", width: 685, height: 696 } },
+      { title: "Requests are approved", body: "Route access and operational requests to the people authorized to review and decide.", image: { src: "/figma/governance-compliance-2.png", alt: "Contact record enriched with company, title, and channel details", width: 685, height: 696 } },
+      { title: "Policies are shared", body: "Make current policies available to the relevant teams and support acknowledgement where needed.", image: { src: "/figma/governance-compliance-3.png", alt: "Opportunity timeline with deal value and team", width: 685, height: 696 } },
+      { title: "Compliance is tracked", body: "Track completion, exceptions, and outstanding actions to maintain visibility over required work.", image: { src: "/figma/governance-compliance-4.png", alt: "Teammates collaborating on a drafted proposal", width: 685, height: 696 } },
+      { title: "Activity is auditable", body: "Keep a record of relevant actions and decisions to support internal reviews and accountability.", image: { src: "/figma/governance-compliance-5.png", alt: "Pipeline value and win rate with quarterly performance", width: 685, height: 696 } },
     ],
     workflowImage: {
       src: "/figma/governance-compliance.png",
@@ -434,6 +449,14 @@ export const productCategories: Record<string, ProductCategory> = {
     ctaTitle: "Create a better way to manage governance & compliance",
     ctaDescription: "Bring permissions, approvals, policy management, and operational oversight into a more connected workflow. Give your organization the structure to work confidently and the visibility to stay accountable.",
     children: ["permissions", "approvals", "policy-docs", "org-hierarchy", "kyc", "api-bank"],
+    moduleImages: {
+      "permissions": { src: "/figma/governance-compliance-tab-1.png", alt: "Role permissions settings", width: 948, height: 617 },
+      "approvals": { src: "/figma/governance-compliance-tab-2.png", alt: "Approvals queue", width: 948, height: 617 },
+      "policy-docs": { src: "/figma/governance-compliance-tab-3.png", alt: "Policy documents library", width: 948, height: 617 },
+      "org-hierarchy": { src: "/figma/governance-compliance-tab-4.png", alt: "Reporting hierarchy", width: 948, height: 617 },
+      "kyc": { src: "/figma/governance-compliance-tab-5.png", alt: "Customer KYC verification", width: 948, height: 617 },
+      "api-bank": { src: "/figma/governance-compliance-tab-6.png", alt: "API Bank endpoint registry", width: 948, height: 617 },
+    },
   },
 };
 
@@ -1825,7 +1848,7 @@ export function getSiblingModules(slug: string) {
       id: child,
       label: page?.menuTitle ?? page?.title ?? child,
       href: productPageHref(child),
-      image: page?.heroImage ?? studio,
+      image: category.moduleImages?.[child] ?? page?.heroImage ?? studio,
       active: false,
     };
   });

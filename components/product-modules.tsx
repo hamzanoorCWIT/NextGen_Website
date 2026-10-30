@@ -66,10 +66,10 @@ export function ProductModules({
 
   return (
     <section id={id} className="bg-white pb-16 sm:pb-24">
-      <div className={`${frameClassName} text-center`}>
+      <div className={`${frameClassName} text-left sm:text-center`}>
         <h2 className="text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">{title}</h2>
         <p className="mt-3 text-[15px] text-[#1a1a1a] sm:text-[16px]">{description}</p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-6 flex flex-wrap items-center justify-start gap-3 sm:justify-center">
           {actions.map((action) => (
             <Pill key={action.label} href={action.href} tone={action.tone}>
               {action.label}

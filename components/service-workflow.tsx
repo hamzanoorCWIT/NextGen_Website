@@ -23,7 +23,7 @@ export function ServiceWorkflow({
   return (
     <section className="bg-black py-16 text-white sm:py-24">
       <div className={frameClassName}>
-        <div className="mx-auto max-w-[760px] text-center">
+        <div className="mx-auto max-w-[760px] text-left sm:text-center">
           <h2 className="text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">{title}</h2>
           <p className="mx-auto mt-4 max-w-[640px] text-[15px] leading-7 text-white/75 sm:text-[16px]">{description}</p>
         </div>

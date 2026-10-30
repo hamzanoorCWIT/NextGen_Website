@@ -59,7 +59,7 @@ export function HighlightCards({
   return (
     <section id={id} className="bg-white py-12 sm:py-16 lg:py-24">
       <div className={frame}>
-        <div className="mx-auto max-w-[820px] text-center">
+        <div className="mx-auto max-w-[820px] text-left sm:text-center">
           <h2 className="text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">{title}</h2>
           {description ? (
             <p className="mx-auto mt-4 max-w-[680px] text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">{description}</p>
