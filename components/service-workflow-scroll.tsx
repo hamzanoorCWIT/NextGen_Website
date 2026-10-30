@@ -76,7 +76,7 @@ export function ServiceWorkflowScroll({
   return (
     <>
       {/* Small screens / reduced motion: static card and image */}
-      <div className={`mt-12 grid items-stretch gap-5 ${reduceMotion ? "" : "lg:hidden"} lg:grid-cols-2`}>
+      <div className={`mt-12 grid items-stretch gap-5 ${reduceMotion ? "" : "hidden"} lg:grid-cols-2`}>
         <article className="rounded-[12px] bg-white p-6 text-[#111111] sm:p-8">
           <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#dcdcdc] bg-white">
             <Bolt />
@@ -106,11 +106,11 @@ export function ServiceWorkflowScroll({
       <div
         ref={trackRef}
         data-reveal-ignore
-        className={`relative mt-12 ${reduceMotion ? "hidden" : "hidden lg:block"}`}
+        className={`relative mt-12 ${reduceMotion ? "hidden" : "block"}`}
         style={{ height: `${steps.length * 80}vh` }}
       >
         <div className="sticky top-0 flex h-screen items-center">
-          <div className="grid w-full grid-cols-2 items-stretch gap-5 h-[clamp(620px,84vh,696px)]">
+          <div className="hidden h-[clamp(620px,84vh,696px)] w-full grid-cols-2 items-stretch gap-5 lg:grid">
             <article className="flex flex-col overflow-hidden rounded-[12px] bg-white p-8 text-[#111111] xl:p-10">
               <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[#dcdcdc] bg-white">
                 <Bolt />
@@ -171,6 +171,41 @@ export function ServiceWorkflowScroll({
                   </div>
                 );
               })}
+            </div>
+          </div>
+
+          <div className="flex w-full flex-col gap-4 lg:hidden">
+            <div className="relative aspect-[685/696] max-h-[46svh] w-full overflow-hidden rounded-[12px]">
+              {steps.map((step, index) => {
+                const image = step.image ?? fallbackImage;
+                return (
+                  <div
+                    key={step.title}
+                    aria-hidden={index !== active}
+                    className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+                    style={{ opacity: index === active ? 1 : 0 }}
+                  >
+                    <Image src={image.src} alt={image.alt} fill sizes="100vw" className="object-cover" />
+                  </div>
+                );
+              })}
+            </div>
+            <div className="grid rounded-[12px] bg-white p-5 text-[#111111]">
+              {steps.map((step, index) => (
+                <div
+                  key={step.title}
+                  aria-hidden={index !== active}
+                  aria-current={index === active ? "step" : undefined}
+                  className="col-start-1 row-start-1 transition-[opacity,transform] duration-500 ease-out"
+                  style={{
+                    opacity: index === active ? 1 : 0,
+                    transform: index === active ? "translate3d(0,0,0)" : "translate3d(0,14px,0)",
+                  }}
+                >
+                  <p className="text-[20px] leading-7 font-medium">{step.title}</p>
+                  {step.body ? <p className="mt-2 text-[15px] leading-6">{step.body}</p> : null}
+                </div>
+              ))}
             </div>
           </div>
         </div>
