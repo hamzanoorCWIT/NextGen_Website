@@ -30,7 +30,6 @@ const connectedPoints = [
 ];
 
 export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
-  const [heroLead, heroRest] = page.heroTitle.split(" with ");
   const experience = page.experienceImage ?? defaultImages.experience;
   const workflow = page.workflowImage ?? defaultImages.workflow;
   const insights = page.insightsImage ?? defaultImages.insights;
@@ -39,15 +38,9 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
   return (
     <div id="top" className="site">
       <HeroBanner
-        title={heroRest === undefined ? page.heroTitle : (
-          <>
-            {heroLead} with
-            <br />
-            {heroRest}
-          </>
-        )}
+        title={page.heroTitle}
         description={page.heroDescription}
-        titleClassName="max-w-[980px]"
+        titleClassName="max-w-[980px] text-balance"
         descriptionClassName="max-w-[860px]"
         actions={[
           { href: "#operate", label: "Explore the Platform", tone: "light" },

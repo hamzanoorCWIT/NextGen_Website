@@ -59,6 +59,7 @@ export default function CustomerServicePage() {
 
       <ProductModules
         id="products"
+        className="bg-white pt-4 pb-16 sm:pt-8 sm:pb-24 lg:pt-0"
         title="Customer Service Products"
         description="Bring your essential customer service tools into one connected platform, from managing support tickets to handling conversations and customer communications."
         actions={[
@@ -71,30 +72,30 @@ export default function CustomerServicePage() {
             label: "Tickets",
             active: true,
             image: {
-              src: "/figma/product-tab-1.png",
+              src: "/figma/customer-tab-1.png",
               alt: "Ticket inbox with an open conversation about a battery that is not charging",
-              width: 1013,
-              height: 683,
+              width: 1010,
+              height: 679,
             },
           },
           {
             id: "chat-whatsapp",
             label: "Chat & WhatsApp",
             image: {
-              src: "/figma/product-tab-2.png",
+              src: "/figma/customer-tab-2.png",
               alt: "A chat message confirming a suspicious charge",
-              width: 948,
-              height: 617,
+              width: 1010,
+              height: 679,
             },
           },
           {
             id: "calls-campaigns",
             label: "Calls & Campaigns",
             image: {
-              src: "/figma/product-tab-3.png",
+              src: "/figma/customer-tab-3.png",
               alt: "A campaign workspace for creating a customer message",
-              width: 948,
-              height: 617,
+              width: 1010,
+              height: 679,
             },
           },
         ]}

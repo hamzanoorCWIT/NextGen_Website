@@ -38,6 +38,7 @@ export function ProductModules({
   tabs,
   indicator = "radio",
   frameClassName = "content-940",
+  className = "bg-white pb-16 sm:pb-24",
 }: {
   id?: string;
   title: string;
@@ -46,6 +47,7 @@ export function ProductModules({
   tabs: ProductModuleTab[];
   indicator?: "radio" | "check";
   frameClassName?: string;
+  className?: string;
 }) {
   const initial = tabs.findIndex((tab) => tab.active);
   const [active, setActive] = useState(initial < 0 ? 0 : initial);
@@ -65,7 +67,7 @@ export function ProductModules({
   }, [tabs]);
 
   return (
-    <section id={id} className="bg-white pb-16 sm:pb-24">
+    <section id={id} className={className}>
       <div className={`${frameClassName} text-left sm:text-center`}>
         <h2 className="text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">{title}</h2>
         <p className="mt-3 text-[15px] text-[#1a1a1a] sm:text-[16px]">{description}</p>

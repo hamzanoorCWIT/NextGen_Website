@@ -20,6 +20,8 @@ export function SmoothScroll() {
         duration: 1.15,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         anchors: true,
+        // Header dropdowns lock page scrolling while open.
+        prevent: () => document.documentElement.dataset.scrollLock === "true",
       });
       lenisRef.current = lenis;
 
