@@ -268,6 +268,7 @@ export default function TicketsPage() {
 
       <ProductModules
         id="modules"
+        className="bg-white pt-8 pb-16 sm:pt-8 sm:pb-24"
         indicator="check"
         title="More Customer Service Products"
         description="Connect Tickets with other customer service capabilities in NextGen to manage conversations and requests through a more consistent team workflow."

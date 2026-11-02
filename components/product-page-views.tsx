@@ -44,6 +44,7 @@ export function ProductCategoryPageView({ page }: { page: ProductCategory }) {
 
       <ProductModules
         id="products"
+        className="bg-white pt-4 pb-16 sm:pt-8 sm:pb-24 lg:pt-0"
         title={page.modulesTitle}
         description={page.modulesDescription}
         actions={[
@@ -195,6 +196,7 @@ export function ProductSubcategoryPageView({ page }: { page: ProductSubcategoryP
       {modules.length > 0 ? (
         <ProductModules
           id="modules"
+          className="bg-white pt-8 pb-16 sm:pt-8 sm:pb-24"
           indicator="check"
           title={page.modulesTitle}
           description={page.modulesDescription}

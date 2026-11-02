@@ -81,11 +81,11 @@ const studio: ProductImage = {
   height: 427,
 };
 
-const create: ProductImage = {
-  src: "/figma/product-create.png",
-  alt: "Workspace for choosing what to create",
-  width: 730,
-  height: 456,
+const callsCampaignsTab: ProductImage = {
+  src: "/figma/customer-tab-3.png",
+  alt: "Calls and campaigns workspace",
+  width: 1010,
+  height: 679,
 };
 
 const ticketRoute: ProductImage = {
@@ -123,6 +123,52 @@ const categoryBanner: ProductImage = {
   height: 677,
 };
 
+const subHeroFiles: Record<string, [string, string]> = {
+  "chat-whatsapp": ["chats-and-whatsapp", "Chat and WhatsApp conversations in the NextGen workspace"],
+  "calls-campaigns": ["call-and-campaigns", "Calls and campaigns in the NextGen workspace"],
+  tasks: ["tasks", "Task management in the NextGen workspace"],
+  projects: ["projects", "Project management in the NextGen workspace"],
+  timesheets: ["timesheet", "Timesheets in the NextGen workspace"],
+  attendance: ["attendance", "Attendance tracking in the NextGen workspace"],
+  "contacts-crm": ["contact-and-crm", "Contacts and CRM in the NextGen workspace"],
+  leads: ["leads", "Leads and opportunities in the NextGen workspace"],
+  dashboard: ["dashboard", "Dashboards in the NextGen workspace"],
+  "power-bi": ["power-bi", "Power BI reporting in the NextGen workspace"],
+  permissions: ["permissions", "Roles and permissions in the NextGen workspace"],
+  approvals: ["approvals", "Approvals in the NextGen workspace"],
+  "policy-docs": ["policy-docs", "Policy documents in the NextGen workspace"],
+  "org-hierarchy": ["org-hierarchy", "Organization hierarchy in the NextGen workspace"],
+  kyc: ["kyc", "KYC verification in the NextGen workspace"],
+  "api-bank": ["api-bank", "API Bank in the NextGen workspace"],
+};
+
+function subHero(slug: string): ProductImage {
+  const file = subHeroFiles[slug];
+  if (!file) return hero1;
+  return { src: `/figma/${file[0]}-banner.png`, alt: file[1], width: 1136, height: 524 };
+}
+
+const workManagementBanner: ProductImage = {
+  src: "/figma/Work-Management-Banner.png",
+  alt: "Work management dashboards on a tablet with task and project status",
+  width: 1663,
+  height: 677,
+};
+
+const crmSalesBanner: ProductImage = {
+  src: "/figma/CRM-and-Sales-Banner.png",
+  alt: "CRM and sales customer record on a tablet",
+  width: 1663,
+  height: 677,
+};
+
+const analyticsBanner: ProductImage = {
+  src: "/figma/Analytics-and-BI-Banner.png",
+  alt: "Analytics and BI dashboard on a tablet",
+  width: 1663,
+  height: 677,
+};
+
 const hero1: ProductImage = {
   src: "/figma/hero-1.png",
   alt: "NextGen workspace on a laptop",
@@ -152,7 +198,7 @@ function sub(config: {
     description: config.description,
     heroTitle: config.heroTitle,
     heroDescription: config.heroDescription,
-    heroImage: hero1,
+    heroImage: subHero(config.slug),
     viewsTitle: `Every ${name.toLowerCase()} workflow, organized the way your team works.`,
     viewsDescription: `Manage ${name.toLowerCase()} from a single workspace with flexible views built for different teams. Keep ownership, progress, and outcomes visible at every step.`,
     viewsItems: [
@@ -258,7 +304,7 @@ export const productCategories: Record<string, ProductCategory> = {
     heroTitle: "Give teams one place to manage daily work",
     heroDescription:
       "CWIT EMS helps teams plan, assign, and track operational work with clear ownership, schedules, and progress across tasks, projects, timesheets, and attendance.",
-    heroImage: categoryBanner,
+    heroImage: workManagementBanner,
     simplifyTitle: "Bring clarity to every workday",
     simplifyDescription:
       "Keep your team aligned from planning to delivery. Organize responsibilities, connect schedules, and make progress visible without switching between disconnected tools.",
@@ -297,10 +343,10 @@ export const productCategories: Record<string, ProductCategory> = {
     ctaDescription: "Bring tasks, projects, schedules, and time tracking together in NextGen. Give your people a clearer way to organize work, collaborate, and keep progress moving.",
     children: ["tasks", "projects", "timesheets", "attendance"],
     moduleImages: {
-      tasks: { src: "/figma/work-management-tab-1.png", alt: "Task list with assignees, priorities, and due dates", width: 948, height: 617 },
-      projects: { src: "/figma/work-management-tab-2.png", alt: "Project overview with milestones and progress", width: 948, height: 617 },
-      timesheets: { src: "/figma/work-management-tab-3.png", alt: "Timesheet with time logged against tasks", width: 948, height: 617 },
-      attendance: { src: "/figma/work-management-tab-4.png", alt: "Attendance record for team members", width: 948, height: 617 },
+      tasks: { src: "/figma/work-tab-1.png", alt: "Task list with assignees, priorities, and due dates", width: 1010, height: 679 },
+      projects: { src: "/figma/work-tab-2.png", alt: "Project overview with milestones and progress", width: 1010, height: 679 },
+      timesheets: { src: "/figma/work-tab-3.png", alt: "Timesheet with time logged against tasks", width: 1010, height: 679 },
+      attendance: { src: "/figma/work-tab-4.png", alt: "Attendance record for team members", width: 1010, height: 679 },
     },
   },
   "crm-sales": {
@@ -312,7 +358,7 @@ export const productCategories: Record<string, ProductCategory> = {
     heroTitle: "Build stronger customer relationships, from first contact to next opportunity",
     heroDescription:
       "Bring contacts, leads, and sales activity into one connected workspace. Give your teams the context they need to follow up consistently, understand every interaction, and move opportunities forward.",
-    heroImage: categoryBanner,
+    heroImage: crmSalesBanner,
     simplifyTitle: "Keep customer relationships and sales activity connected",
     simplifyDescription: "Give sales and service teams a shared view of customer history, follow-ups, and opportunities so important details stay visible and next steps are clear.",
     simplifyItems: [
@@ -349,8 +395,8 @@ export const productCategories: Record<string, ProductCategory> = {
     ctaDescription: "Connect customer records, lead management, follow-ups, and operational activity in one workspace, helping your teams build lasting relationships and move work forward with greater clarity.",
     children: ["contacts-crm", "leads"],
     moduleImages: {
-      "contacts-crm": { src: "/figma/crm-sales-tab-1.png", alt: "Contacts list with customer records", width: 948, height: 617 },
-      "leads": { src: "/figma/crm-sales-tab-2.png", alt: "Opportunities pipeline board", width: 948, height: 617 },
+      "contacts-crm": { src: "/figma/crm-tab-1.png", alt: "Contacts list with customer records", width: 1010, height: 679 },
+      "leads": { src: "/figma/crm-tab-2.png", alt: "Opportunities pipeline board", width: 1010, height: 679 },
     },
   },
   analytics: {
@@ -362,7 +408,7 @@ export const productCategories: Record<string, ProductCategory> = {
     heroTitle: "Turn everyday activity into clearer business decisions",
     heroDescription:
       "Bring service, team, and operational performance into a clearer view. NextGen Analytics & BI helps you follow activity, spot patterns, and make informed decisions using information from across your workspace.",
-    heroImage: categoryBanner,
+    heroImage: analyticsBanner,
     simplifyTitle: "See what is happening across your operations",
     simplifyDescription: "Move beyond disconnected reports. Give teams a shared view of current work, performance, and opportunities for improvement without losing the context behind the numbers.",
     simplifyItems: [
@@ -399,8 +445,8 @@ export const productCategories: Record<string, ProductCategory> = {
     ctaDescription: "Bring customer service, work management, and operational reporting into one connected experience. Give your people the context they need to understand performance and improve the way work gets done.",
     children: ["dashboard", "power-bi"],
     moduleImages: {
-      "dashboard": { src: "/figma/analytic-bi-tab-1.png", alt: "Dashboard with workload and activity overview", width: 948, height: 617 },
-      "power-bi": { src: "/figma/analytic-bi-tab-2.png", alt: "Detailed ticket view for reporting and analysis", width: 948, height: 617 },
+      "dashboard": { src: "/figma/analytics-tab-1.png", alt: "Dashboard with workload and activity overview", width: 1010, height: 679 },
+      "power-bi": { src: "/figma/analytics-tab-2.png", alt: "Detailed ticket view for reporting and analysis", width: 1010, height: 679 },
     },
   },
   governance: {
@@ -450,12 +496,12 @@ export const productCategories: Record<string, ProductCategory> = {
     ctaDescription: "Bring permissions, approvals, policy management, and operational oversight into a more connected workflow. Give your organization the structure to work confidently and the visibility to stay accountable.",
     children: ["permissions", "approvals", "policy-docs", "org-hierarchy", "kyc", "api-bank"],
     moduleImages: {
-      "permissions": { src: "/figma/governance-compliance-tab-1.png", alt: "Role permissions settings", width: 948, height: 617 },
-      "approvals": { src: "/figma/governance-compliance-tab-2.png", alt: "Approvals queue", width: 948, height: 617 },
-      "policy-docs": { src: "/figma/governance-compliance-tab-3.png", alt: "Policy documents library", width: 948, height: 617 },
-      "org-hierarchy": { src: "/figma/governance-compliance-tab-4.png", alt: "Reporting hierarchy", width: 948, height: 617 },
+      "permissions": { src: "/figma/governance-tab-1.png", alt: "Role permissions settings", width: 1010, height: 679 },
+      "approvals": { src: "/figma/governance-tab-2.png", alt: "Approvals queue", width: 1010, height: 679 },
+      "policy-docs": { src: "/figma/governance-tab-3.png", alt: "Policy documents library", width: 1010, height: 679 },
+      "org-hierarchy": { src: "/figma/governance-tab-4.png", alt: "Reporting hierarchy", width: 1010, height: 679 },
       "kyc": { src: "/figma/governance-compliance-tab-5.png", alt: "Customer KYC verification", width: 948, height: 617 },
-      "api-bank": { src: "/figma/governance-compliance-tab-6.png", alt: "API Bank endpoint registry", width: 948, height: 617 },
+      "api-bank": { src: "/figma/governance-tab-6.png", alt: "API Bank endpoint registry", width: 1010, height: 679 },
     },
   },
 };
@@ -1796,20 +1842,32 @@ export function allProductSlugsForParent(parent: string) {
   return category?.children ?? [];
 }
 
+const customerServiceModules = [
+  {
+    id: "tickets",
+    label: "Tickets",
+    href: productPageHref("tickets"),
+    image: {
+      src: "/figma/customer-tab-1.png",
+      alt: "Ticket inbox with an open conversation about a battery that is not charging",
+      width: 1010,
+      height: 679,
+    },
+  },
+  {
+    id: "chat-whatsapp",
+    label: "Chat & WhatsApp",
+    href: productPageHref("chat-whatsapp"),
+    image: { src: "/figma/customer-tab-2.png", alt: "A chat message confirming a suspicious charge", width: 1010, height: 679 },
+  },
+  { id: "calls-campaigns", label: "Calls & Campaigns", href: productPageHref("calls-campaigns"), image: callsCampaignsTab },
+];
+
 export function getSiblingModules(slug: string) {
   const subPage = productSubcategories[slug];
   if (subPage) {
     if (subPage.parent === "customer-service") {
-      return [
-        {
-          id: "tickets",
-          label: "Tickets",
-          href: productPageHref("tickets"),
-          image: { src: "/figma/cs-tickets.png", alt: "Tickets", width: 471, height: 298 },
-        },
-        { id: "chat-whatsapp", label: "Chat & WhatsApp", href: productPageHref("chat-whatsapp"), image: ticketRoute },
-        { id: "calls-campaigns", label: "Calls & Campaigns", href: productPageHref("calls-campaigns"), image: create },
-      ].filter((item) => item.id !== slug);
+      return customerServiceModules.filter((item) => item.id !== slug);
     }
     const parent = productCategories[subPage.parent];
     if (!parent) return [];
@@ -1821,24 +1879,13 @@ export function getSiblingModules(slug: string) {
           id: child,
           label: page?.menuTitle ?? page?.title ?? child,
           href: productPageHref(child),
-          image: page?.heroImage ?? studio,
+          image: parent.moduleImages?.[child] ?? page?.heroImage ?? studio,
         };
       });
   }
 
   // Category modules (including customer-service static page calling with synthetic siblings)
-  if (slug === "customer-service") {
-    return [
-      {
-        id: "tickets",
-        label: "Tickets",
-        href: productPageHref("tickets"),
-        image: { src: "/figma/cs-tickets.png", alt: "Tickets", width: 471, height: 298 },
-      },
-      { id: "chat-whatsapp", label: "Chat & WhatsApp", href: productPageHref("chat-whatsapp"), image: ticketRoute },
-      { id: "calls-campaigns", label: "Calls & Campaigns", href: productPageHref("calls-campaigns"), image: create },
-    ];
-  }
+  if (slug === "customer-service") return customerServiceModules;
 
   const category = productCategories[slug];
   if (!category) return [];

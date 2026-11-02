@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState, type ReactNode } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
-function Chevron({ direction = "down" }: { direction?: "down" | "right" }) {
+function Chevron({ direction = "down", open = false }: { direction?: "down" | "right"; open?: boolean }) {
   return (
-    <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" className={direction === "right" ? "-rotate-90" : undefined}>
+    <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" className={`transition-transform duration-300 ease-out ${direction === "right" ? "-rotate-90" : open ? "rotate-180" : ""}`}>
       <path
         d="M2.5 4.5 6 8l3.5-3.5"
         fill="none"
@@ -145,11 +146,17 @@ const promo =
 
 type MenuId = "product" | "industries" | "resources";
 
+const CLOSE_MS = 220;
+
+const currentClass = "font-semibold underline decoration-2 underline-offset-4";
+
 function MenuLink({ href, children, light = false }: { href: string; children: ReactNode; light?: boolean }) {
+  const current = usePathname() === href;
   return (
     <a
       href={href}
-      className={`block py-2 text-[15px] leading-5 ${light ? "text-white hover:text-white/70" : "text-[#1a1a1a] hover:underline"}`}
+      aria-current={current ? "page" : undefined}
+      className={`block py-2 text-[15px] leading-5 ${light ? "text-white hover:text-white/70" : "text-[#1a1a1a] hover:underline"} ${current ? currentClass : ""}`}
     >
       {children}
     </a>
@@ -205,12 +212,98 @@ function Promo({
   );
 }
 
+const sectionPaths: Record<MenuId | "dolphin" | "pricing", string[]> = {
+  product: ["/products"],
+  industries: ["/industries"],
+  dolphin: ["/dolphin-ai"],
+  pricing: ["/pricing"],
+  resources: ["/docs", "/case-studies", "/comparisons", "/blog", "/security-trust"],
+};
+
+function inSection(pathname: string, id: keyof typeof sectionPaths) {
+  return sectionPaths[id].some((path) => pathname === path || pathname.startsWith(`${path}/`));
+}
+
+// The bold copy reserves the wider width, so the centered nav does not shift when a label turns bold.
+function NavLabel({ active, children }: { active: boolean; children: string }) {
+  return (
+    <span className="inline-flex flex-col items-center">
+      <span className={active ? "font-semibold underline decoration-2 underline-offset-[10px]" : undefined}>{children}</span>
+      <span aria-hidden="true" className="invisible h-0 overflow-hidden font-semibold select-none">
+        {children}
+      </span>
+    </span>
+  );
+}
+
 export function Header({ className = "" }: { className?: string }) {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState<MenuId | null>(null);
+  // Stays mounted briefly after closing so the panel can animate out.
+  const [rendered, setRendered] = useState<MenuId | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (menu) {
+      setRendered(menu);
+      return;
+    }
+    const timer = window.setTimeout(() => setRendered(null), CLOSE_MS);
+    return () => window.clearTimeout(timer);
+  }, [menu]);
+
+  function toggle(id: MenuId) {
+    setMenu((value) => (value === id ? null : id));
+  }
+
+  // Collapse the dropdown first, then navigate, so closing is visible.
+  function onPanelClick(event: React.MouseEvent<HTMLElement>) {
+    const link = (event.target as HTMLElement).closest("a");
+    if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const href = link.getAttribute("href");
+    if (!href || link.target === "_blank" || !href.startsWith("/")) return;
+    event.preventDefault();
+    setMenu(null);
+    window.setTimeout(() => router.push(href), CLOSE_MS);
+  }
+
+  // Dropdowns open on click: close on outside click, Escape, or navigation, and keep the page from scrolling while open.
+  useEffect(() => {
+    setMenu(null);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!menu) return;
+
+    const root = document.documentElement;
+    const body = document.body;
+    const scrollbar = window.innerWidth - root.clientWidth;
+    root.style.overflow = "hidden";
+    root.dataset.scrollLock = "true";
+    if (scrollbar > 0) body.style.paddingRight = `${scrollbar}px`;
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) setMenu(null);
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenu(null);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      root.style.removeProperty("overflow");
+      delete root.dataset.scrollLock;
+      body.style.removeProperty("padding-right");
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menu]);
 
   return (
-    <header className={`relative z-30 ${className}`} onMouseLeave={() => setMenu(null)}>
+    <header ref={headerRef} className={`relative z-30 ${className}`}>
       <div className="wrap relative flex h-16 items-center justify-between gap-4 sm:h-[84px]">
         <a href="/" className="shrink-0">
           <Image
@@ -227,36 +320,36 @@ export function Header({ className = "" }: { className?: string }) {
         <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 text-[15px] text-[#1c1c1c] xl:flex">
           <button
             type="button"
-            className="flex items-center gap-1 py-6"
+            className="flex cursor-pointer items-center gap-1 py-6"
             aria-expanded={menu === "product"}
-            onMouseEnter={() => setMenu("product")}
-            onClick={() => setMenu((value) => (value === "product" ? null : "product"))}
+            aria-haspopup="true"
+            onClick={() => toggle("product")}
           >
-            Product <Chevron />
+            <NavLabel active={menu === "product" || inSection(pathname, "product")}>Product</NavLabel> <Chevron open={menu === "product"} />
           </button>
           <button
             type="button"
-            className="flex items-center gap-1 py-6"
+            className="flex cursor-pointer items-center gap-1 py-6"
             aria-expanded={menu === "industries"}
-            onMouseEnter={() => setMenu("industries")}
-            onClick={() => setMenu((value) => (value === "industries" ? null : "industries"))}
+            aria-haspopup="true"
+            onClick={() => toggle("industries")}
           >
-            Industries <Chevron />
+            <NavLabel active={menu === "industries" || inSection(pathname, "industries")}>Industries</NavLabel> <Chevron open={menu === "industries"} />
           </button>
-          <a href="/dolphin-ai" className="py-6" onMouseEnter={() => setMenu(null)}>
-            Dolphin AI
+          <a href="/dolphin-ai" className="py-6" aria-current={inSection(pathname, "dolphin") ? "page" : undefined}>
+            <NavLabel active={inSection(pathname, "dolphin")}>Dolphin AI</NavLabel>
           </a>
-          <a href="/pricing" className="py-6" onMouseEnter={() => setMenu(null)}>
-            Pricing
+          <a href="/pricing" className="py-6" aria-current={inSection(pathname, "pricing") ? "page" : undefined}>
+            <NavLabel active={inSection(pathname, "pricing")}>Pricing</NavLabel>
           </a>
           <button
             type="button"
-            className="flex items-center gap-1 py-6"
+            className="flex cursor-pointer items-center gap-1 py-6"
             aria-expanded={menu === "resources"}
-            onMouseEnter={() => setMenu("resources")}
-            onClick={() => setMenu((value) => (value === "resources" ? null : "resources"))}
+            aria-haspopup="true"
+            onClick={() => toggle("resources")}
           >
-            Resources <Chevron />
+            <NavLabel active={menu === "resources" || inSection(pathname, "resources")}>Resources</NavLabel> <Chevron open={menu === "resources"} />
           </button>
         </nav>
 
@@ -277,7 +370,7 @@ export function Header({ className = "" }: { className?: string }) {
 
         <button
           type="button"
-          className="inline-flex h-10 items-center rounded-full border border-black/10 px-4 text-sm xl:hidden"
+          className="inline-flex h-10 cursor-pointer items-center rounded-full border border-black/10 px-4 text-sm xl:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
         >
@@ -285,8 +378,12 @@ export function Header({ className = "" }: { className?: string }) {
         </button>
       </div>
 
-      {menu === "product" ? (
-        <div className="absolute top-full right-0 left-0 z-40 hidden bg-white shadow-[0_22px_50px_rgba(16,24,40,0.08)] xl:block">
+      {rendered === "product" ? (
+        <div
+          className="dropdown-panel absolute top-full right-0 left-0 z-40 hidden bg-white shadow-[0_22px_50px_rgba(16,24,40,0.08)] xl:block"
+          data-state={menu === "product" ? "open" : "closing"}
+          onClick={onPanelClick}
+        >
           <div className="wrap grid items-start gap-10 py-10 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-16 lg:py-12">
             <Promo title="Product" image />
             <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 xl:grid-cols-5 xl:gap-x-6">
@@ -294,7 +391,8 @@ export function Header({ className = "" }: { className?: string }) {
                 <div key={column.title}>
                   <a
                     href={column.href}
-                    className="mb-3 block text-[16px] font-semibold tracking-[-0.01em] text-[#1a1a1a] hover:underline"
+                    aria-current={pathname === column.href && column.title !== "Resources" ? "page" : undefined}
+                    className={`mb-3 block text-[16px] font-semibold tracking-[-0.01em] text-[#1a1a1a] hover:underline ${pathname === column.href && column.title !== "Resources" ? "underline decoration-2 underline-offset-4" : ""}`}
                   >
                     {column.title}
                   </a>
@@ -310,8 +408,12 @@ export function Header({ className = "" }: { className?: string }) {
         </div>
       ) : null}
 
-      {menu === "industries" ? (
-        <div className="absolute top-full right-0 left-0 z-40 hidden bg-white shadow-[0_22px_50px_rgba(16,24,40,0.08)] xl:block">
+      {rendered === "industries" ? (
+        <div
+          className="dropdown-panel absolute top-full right-0 left-0 z-40 hidden bg-white shadow-[0_22px_50px_rgba(16,24,40,0.08)] xl:block"
+          data-state={menu === "industries" ? "open" : "closing"}
+          onClick={onPanelClick}
+        >
           <div className="wrap grid items-start gap-10 py-10 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-16 lg:py-12">
             <Promo title="Industries" image href="/industries" cta="Explore Industries" />
             <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 xl:grid-cols-4 xl:gap-x-10">
@@ -320,7 +422,8 @@ export function Header({ className = "" }: { className?: string }) {
                   {column.title ? (
                     <a
                       href={column.href}
-                      className="mb-3 block text-[16px] font-semibold tracking-[-0.01em] text-[#1a1a1a] hover:underline"
+                      aria-current={pathname === column.href ? "page" : undefined}
+                      className={`mb-3 block text-[16px] font-semibold tracking-[-0.01em] text-[#1a1a1a] hover:underline ${pathname === column.href ? "underline decoration-2 underline-offset-4" : ""}`}
                     >
                       {column.title}
                     </a>
@@ -341,8 +444,12 @@ export function Header({ className = "" }: { className?: string }) {
         </div>
       ) : null}
 
-      {menu === "resources" ? (
-        <div className="absolute top-full right-0 left-0 z-40 hidden bg-white shadow-[0_22px_50px_rgba(16,24,40,0.08)] xl:block">
+      {rendered === "resources" ? (
+        <div
+          className="dropdown-panel absolute top-full right-0 left-0 z-40 hidden bg-white shadow-[0_22px_50px_rgba(16,24,40,0.08)] xl:block"
+          data-state={menu === "resources" ? "open" : "closing"}
+          onClick={onPanelClick}
+        >
           <div className="wrap grid items-start gap-10 py-10 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-16 lg:py-12">
             <Promo title="Resources" image href="/docs" cta="Explore Resources" />
             <div className="w-full max-w-[240px]">
@@ -350,7 +457,8 @@ export function Header({ className = "" }: { className?: string }) {
                 <div key={column.title}>
                   <a
                     href={column.href}
-                    className="mb-3 block text-[16px] font-semibold tracking-[-0.01em] text-[#1a1a1a] hover:underline"
+                    aria-current={pathname === column.href && column.title !== "Resources" ? "page" : undefined}
+                    className={`mb-3 block text-[16px] font-semibold tracking-[-0.01em] text-[#1a1a1a] hover:underline ${pathname === column.href && column.title !== "Resources" ? "underline decoration-2 underline-offset-4" : ""}`}
                   >
                     {column.title}
                   </a>
