@@ -226,7 +226,7 @@ export const byIndustryCards: IndustryCatalogCard[] = [
   },
 ];
 
-export const byRoleCards: IndustryCatalogCard[] = [
+const byRoleBase: IndustryCatalogCard[] = [
   card("support-agents", "Support Agents", "Handle customer requests with conversation history, contact details, priorities, and next actions together. Spend less time switching screens and more time resolving issues.", 0),
   card("team-leaders", "Team Leaders", "Monitor open work, review assignments, spot overdue items, and support agents before delays become escalations. Keep the team coordinated throughout the day.", 1),
   card("operations-managers", "Operations Managers", "Oversee projects, service workflows, resource allocation, and cross-team dependencies. Track operational progress and address gaps with clearer accountability.", 2),
@@ -237,7 +237,15 @@ export const byRoleCards: IndustryCatalogCard[] = [
   card("executives", "Executives", "View organizational performance, service priorities, and areas needing attention without digging through individual workflows. Turn connected information into better strategic decisions.", 2),
 ];
 
-export const useCaseCards: IndustryCatalogCard[] = [
+export const byRoleCards: IndustryCatalogCard[] = byRoleBase.map((item, index) => ({
+  ...item,
+  image: `/figma/industries-by-role-${index + 1}.png`,
+  imageAlt: `${item.title} workspace`,
+  width: 706,
+  height: 234,
+}));
+
+const useCaseBase: IndustryCatalogCard[] = [
   card("omnichannel-ticketing", "Omnichannel Ticketing", "Bring service requests from different channels into one ticket workspace. Track conversations, ownership, status, and resolution without losing the history behind each issue.", 0),
   card("whatsapp-chat-support", "WhatsApp & Chat Support", "Manage WhatsApp and chat conversations alongside your service workflows. Give agents the context they need to respond quickly and keep every interaction organized.", 1),
   card("outbound-campaigns", "Outbound Campaigns", "Plan and manage outbound conversations with clearer campaign activity, follow-ups, and customer records. Keep outreach connected to the teams responsible for next steps.", 2),
@@ -249,6 +257,18 @@ export const useCaseCards: IndustryCatalogCard[] = [
   card("kyc-risk-monitoring", "KYC & Risk Monitoring", "Organize identity verification, risk reviews, and supporting evidence within a controlled process. Keep checks and review outcomes easier to track and revisit.", 3),
   card("replace-your-stack", "Replace Your Stack", "Reduce the need to switch between disconnected tools. Bring customer service, work management, CRM, analytics, and governance into a more connected operational workspace.", 4),
 ];
+
+export const useCaseCards: IndustryCatalogCard[] = useCaseBase.map((item, index) =>
+  index < 9
+    ? {
+        ...item,
+        image: `/figma/industries-use-case-${index + 1}.png`,
+        imageAlt: `${item.title} workspace`,
+        width: 706,
+        height: 234,
+      }
+    : item,
+);
 
 export const industryVerticals: Record<string, IndustryVertical> = {
   utilities: {
@@ -1116,6 +1136,60 @@ const parentChildren: Record<IndustryVertical["parent"], readonly string[]> = {
   "use-cases": useCaseChildren,
 };
 
+// Per-page images for the three feature sections (1-3) and the connected-operations ("context") section.
+// Files are `<parent>-<slug>-N.png` / `<parent>-<slug>-context.png`; only listed ones are replaced.
+const verticalImageFiles: Record<string, { sections: number[]; context: boolean }> = {
+  "banking-financial": { sections: [1, 2, 3], context: true },
+  "bpo-outsourcing": { sections: [1, 2, 3], context: true },
+  government: { sections: [1, 2, 3], context: true },
+  telecom: { sections: [1, 2, 3], context: true },
+  "professional-services": { sections: [1, 2, 3], context: true },
+  construction: { sections: [1, 2, 3], context: true },
+  "support-agents": { sections: [1, 2, 3], context: true },
+  executives: { sections: [1, 2, 3], context: true },
+  "omnichannel-ticketing": { sections: [1, 2, 3], context: true },
+  "whatsapp-chat-support": { sections: [1, 2, 3], context: true },
+  "outbound-campaigns": { sections: [1, 2, 3], context: true },
+  "lead-to-opportunity": { sections: [1, 2, 3], context: true },
+  "billable-time-cost": { sections: [1, 2, 3], context: true },
+  "attendance-shifts-cost": { sections: [1, 2, 3], context: true },
+  "multi-level-approvals": { sections: [1, 2, 3], context: true },
+  "policy-acknowledgement": { sections: [1, 2, 3], context: true },
+  "kyc-risk-monitoring": { sections: [1, 2, 3], context: true },
+  "replace-your-stack": { sections: [1, 2, 3], context: true },
+  "team-leaders": { sections: [1, 2, 3], context: true },
+  "operations-managers": { sections: [1, 2, 3], context: true },
+  "hr-workforce": { sections: [1, 2, 3], context: true },
+  finance: { sections: [1, 2, 3], context: true },
+  "compliance-risk": { sections: [1, 2, 3], context: true },
+  "it-administration": { sections: [1, 2, 3], context: true },
+};
+
+// Files that are not exactly 719x474.
+const verticalImageHeights: Record<string, number> = {
+  "banking-financial-3": 466,
+  "construction-3": 479,
+};
+
+const sectionKeys = ["experienceImage", "workflowImage", "insightsImage"] as const;
+
+for (const [slug, files] of Object.entries(verticalImageFiles)) {
+  const page = industryVerticals[slug];
+  if (!page) continue;
+  const base = `/figma/${page.parent === "use-cases" ? "industries-use-cases" : page.parent}-${slug}`;
+  for (const number of files.sections) {
+    page[sectionKeys[number - 1]] = {
+      src: `${base}-${number}.png`,
+      alt: `${page.title} ${["customer conversations", "workflow", "performance insights"][number - 1]}`,
+      width: 719,
+      height: verticalImageHeights[`${slug}-${number}`] ?? 474,
+    };
+  }
+  if (files.context) {
+    page.connectedImage = { src: `${base}-context.png`, alt: `Connected operations for ${page.title}`, width: 719, height: 474 };
+  }
+}
+
 export const parentHref: Record<IndustryVertical["parent"], string> = {
   "by-industry": "/industries/by-industry",
   "by-role": "/industries/by-role",
@@ -1142,6 +1216,26 @@ export function getIndustryPageForParent(parent: IndustryVertical["parent"], slu
   const page = industryVerticals[slug];
   if (!page || page.parent !== parent) return null;
   return page;
+}
+
+/** How many numbered `industries-<prefix>-N-details.png` banners exist for each parent, in listing order. */
+const detailBannerFiles: Record<IndustryVertical["parent"], { prefix: string; children: readonly string[]; count: number }> = {
+  "by-industry": { prefix: "industries-by-industry", children: byIndustryChildren, count: 7 },
+  "by-role": { prefix: "industries-by-role", children: byRoleChildren, count: 8 },
+  "use-cases": { prefix: "industries-use-case", children: useCaseChildren, count: 9 },
+};
+
+/** The banner image for a detail page: its dedicated `-details` banner if there is one, else the image its listing card shows, else the hero image. */
+export function getListingImage(page: IndustryPage): ProductImage {
+  const files = detailBannerFiles[page.parent];
+  const position = files.children.indexOf(page.slug);
+  if (position >= 0 && position < files.count) {
+    return { src: `/figma/${files.prefix}-${position + 1}-details.png`, alt: `${page.title} workspace`, width: 1407, height: 647 };
+  }
+  const cards = page.parent === "by-industry" ? byIndustryCards : page.parent === "by-role" ? byRoleCards : useCaseCards;
+  const found = cards.find((item) => item.id === page.slug);
+  if (!found) return page.heroImage;
+  return { src: found.image, alt: found.imageAlt, width: found.width, height: found.height };
 }
 
 export function getIndustrySiblingModules(slug: string) {

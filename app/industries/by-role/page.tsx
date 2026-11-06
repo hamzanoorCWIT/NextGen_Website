@@ -33,12 +33,11 @@ export default function ByRolePage() {
         },
       ]}
       cards={byRoleCards}
-      cardsTitle="The right workspace for the way you work"
-      cardsDescription="Each role works toward a different outcome. NextGen connects their activities without forcing everyone to use the same view or follow disconnected processes."
       ctaTitle="Bring every team together in one connected workspace"
       ctaDescription="Help your people work with clearer ownership, shared information, and less operational friction. NextGen connects customer service, workforce management, CRM, analytics, and governance so teams can move in the same direction."
       cardsId="roles"
       baseHref="/industries/by-role"
+      listingFirst
     />
   );
 }

@@ -256,10 +256,10 @@ export default function TicketsPage() {
           </div>
           <div className="mx-auto w-full max-w-[560px] lg:mx-0 lg:max-w-none">
             <Image
-              src="/figma/capture-complete.png"
+              src="/figma/tickets-context.png"
               alt="Ticket statistics and delivery rate dashboard"
-              width={810}
-              height={514}
+              width={719}
+              height={474}
               className="h-auto w-full"
             />
           </div>

@@ -168,31 +168,33 @@ export default function ComparisonDetailsPage() {
       <ComparisonScores />
 
       <section className="bg-[#FAFAFA] py-16 sm:py-24">
-        <div className="content-1442 grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-          <div>
-            <h2 className="max-w-[420px] text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
+        <div className="content-1442 grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-16">
+          <div className="lg:order-2">
+            <h2 className="max-w-[560px] text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
               Bring service and operations into one view
             </h2>
-            <p className="mt-5 max-w-[520px] text-[15px] leading-7 text-[#111111] sm:text-[16px]">
+            <p className="mt-4 text-[15px] leading-7 text-[#111111] sm:text-[16px]">
               CWIT EMS is designed to connect the work behind each customer interaction. Help agents, managers, and operational teams follow requests, coordinate responsibilities, and see progress without losing context between departments.
             </p>
             <ul className="mt-8 space-y-7">
               {reasons.map((reason) => (
                 <li key={reason.title}>
                   <h3 className="text-[18px] font-semibold tracking-[-0.02em] text-[#111111]">{reason.title}</h3>
-                  <p className="mt-2 max-w-[420px] text-[15px] leading-7 text-[#111111]">{reason.body}</p>
+                  <p className="mt-2 text-[15px] leading-7 text-[#111111]">{reason.body}</p>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="flex justify-center lg:justify-end">
+          <div
+            className="relative aspect-(--ratio) w-full overflow-hidden rounded-[24px] lg:order-1 lg:aspect-auto lg:min-h-[320px] lg:rounded-[32px]"
+            style={{ "--ratio": "1545 / 1018" } as React.CSSProperties}
+          >
             <Image
               src="/figma/why-teams.png"
               alt="CWIT EMS ticket workspace with customer conversations and Dolphin AI analysis"
-              width={1545}
-              height={1018}
-              className="h-auto w-full rounded-[12px] object-contain"
-              style={{ width: "min(100%, 730px)", height: "auto" }}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover object-left"
             />
           </div>
         </div>

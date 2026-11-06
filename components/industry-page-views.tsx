@@ -2,10 +2,10 @@ import Image from "next/image";
 import { CtaSection } from "@/components/cta-section";
 import { FeatureSplit } from "@/components/feature-split";
 import { Footer } from "@/components/footer";
-import { HeroBanner } from "@/components/hero-banner";
+import { Header } from "@/components/header";
 import { HighlightCards } from "@/components/highlight-cards";
 import { Pill } from "@/components/pill";
-import type { IndustryVertical } from "@/lib/industries";
+import { getListingImage, type IndustryVertical } from "@/lib/industries";
 
 const ctaImage = {
   src: "/figma/cta-new.png",
@@ -34,46 +34,32 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
   const workflow = page.workflowImage ?? defaultImages.workflow;
   const insights = page.insightsImage ?? defaultImages.insights;
   const connected = page.connectedImage ?? defaultImages.connected;
+  const listing = getListingImage(page);
 
   return (
     <div id="top" className="site">
-      <HeroBanner
-        title={page.heroTitle}
-        description={page.heroDescription}
-        titleClassName="max-w-[980px] text-balance"
-        descriptionClassName="max-w-[860px]"
-        actions={[
-          { href: "#operate", label: "Explore the Platform", tone: "light" },
-          { href: "/request-demo", label: "Request Demo" },
-        ]}
-        image={page.heroImage}
-      />
-
-      <HighlightCards
-        id="operate"
-        variant="numbered"
-        title={page.highlightTitle}
-        description={page.highlightDescription}
-        items={page.highlightItems ?? [
-          {
-            label: "01",
-            title: "Workforce Operations",
-            body: "Coordinate teams, assignments, schedules, and operational activities.",
-          },
-          {
-            label: "02",
-            title: "Workflow Automation",
-            body: "Create structured processes that reduce manual work and improve response times.",
-          },
-          {
-            label: "03",
-            title: "Operational Intelligence",
-            body: "Monitor performance with dashboards, reports, and real-time insights.",
-          },
-        ]}
-      />
+      <Header className="border-b border-black/20" />
+      <section className="bg-white pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-24">
+        <div className="content-1426">
+          <h1 className="max-w-[860px] text-[clamp(32px,3.2vw,48px)] leading-[1.1] font-medium tracking-[-0.04em] text-balance text-[#111111]">
+            {page.heroTitle}
+          </h1>
+          <p className="mt-5 max-w-[860px] text-[15px] leading-7 text-[#111111] sm:text-[16px]">{page.heroDescription}</p>
+          <div className="relative mt-8 aspect-[1407/647] overflow-hidden rounded-[12px] sm:mt-10">
+            <Image
+              src={listing.src}
+              alt={listing.alt}
+              fill
+              priority
+              sizes="(min-width: 1426px) 1426px, 100vw"
+              className="object-cover object-center"
+            />
+          </div>
+        </div>
+      </section>
 
       <FeatureSplit
+        titleClassName="font-medium"
         items={[
           {
             id: "channels",
@@ -114,9 +100,33 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
         ]}
       />
 
+      <HighlightCards
+        id="operate"
+        variant="numbered"
+        title={page.highlightTitle}
+        description={page.highlightDescription}
+        items={page.highlightItems ?? [
+          {
+            label: "01",
+            title: "Workforce Operations",
+            body: "Coordinate teams, assignments, schedules, and operational activities.",
+          },
+          {
+            label: "02",
+            title: "Workflow Automation",
+            body: "Create structured processes that reduce manual work and improve response times.",
+          },
+          {
+            label: "03",
+            title: "Operational Intelligence",
+            body: "Monitor performance with dashboards, reports, and real-time insights.",
+          },
+        ]}
+      />
+
       <section className="bg-black py-16 text-white sm:py-24">
-        <div className="content-1426 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
+        <div className="content-1426 grid items-center gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-16">
+          <div className="lg:order-2">
             <h2 className="max-w-[560px] text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">
               {page.connectedTitle}
             </h2>
@@ -148,14 +158,16 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
               </Pill>
             </div>
           </div>
-          <div className="flex justify-center lg:justify-end">
+          <div
+            className="relative aspect-(--ratio) w-full overflow-hidden rounded-[24px] lg:order-1 lg:rounded-[32px] lg:aspect-auto lg:min-h-[320px]"
+            style={{ "--ratio": `${connected.width} / ${connected.height}` } as React.CSSProperties}
+          >
             <Image
               src={connected.src}
               alt={connected.alt}
-              width={connected.width}
-              height={connected.height}
-              className="h-auto w-full object-contain"
-              style={{ width: `min(100%, ${connected.width}px)`, height: "auto" }}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover object-left"
             />
           </div>
         </div>

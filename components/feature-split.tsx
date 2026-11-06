@@ -18,10 +18,12 @@ export function FeatureSplit({
   items,
   className = "bg-white",
   bandClassName,
+  titleClassName = "font-semibold",
 }: {
   items: FeatureSplitItem[];
   className?: string;
   bandClassName?: string;
+  titleClassName?: string;
 }) {
   return (
     <div>
@@ -36,7 +38,7 @@ export function FeatureSplit({
               }`}
             >
               <div className={`min-w-0 ${imageOnLeft ? "lg:order-2" : "lg:order-1"}`}>
-                <h2 className="product-title text-[clamp(28px,5vw,36px)] leading-[1.12] font-semibold tracking-[-0.035em]">
+                <h2 className={`product-title text-[clamp(28px,5vw,36px)] leading-[1.12] tracking-[-0.035em] ${titleClassName}`}>
                   {item.title}
                 </h2>
                 {(Array.isArray(item.body) ? item.body : [item.body]).map((paragraph, paragraphIndex) => (
