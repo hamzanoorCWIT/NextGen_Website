@@ -33,12 +33,11 @@ export default function ByIndustryPage() {
         },
       ]}
       cards={byIndustryCards}
-      cardsTitle="Solutions for the teams and challenges you know"
-      cardsDescription="Different sectors work differently. Explore how NextGen connects the operational details that matter to each industry without fragmenting teams across separate systems."
       ctaTitle="Bring your industry’s work together"
       ctaDescription="Whether your priority is responsive service, stronger coordination, or greater operational control, NextGen helps connect the people, processes, and information your organization relies on."
       cardsId="industries"
       baseHref="/industries/by-industry"
+      listingFirst
     />
   );
 }

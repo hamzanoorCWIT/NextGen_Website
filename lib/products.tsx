@@ -1811,6 +1811,42 @@ export const productSubcategories: Record<string, ProductSubcategoryPage> = {
   }),
 };
 
+// Slug -> which of the three split images (1-3) have a dedicated file; the rest keep the default.
+const subPageImages: Record<string, number[]> = {
+  "chat-whatsapp": [1, 2, 3],
+  "calls-campaigns": [1, 2, 3],
+  tasks: [1, 2, 3],
+  projects: [1, 2, 3],
+  timesheets: [1, 2, 3],
+  attendance: [1, 2, 3],
+  "contacts-crm": [1, 2, 3],
+  leads: [1, 2, 3],
+  dashboard: [1, 2, 3],
+  "power-bi": [1, 2, 3],
+  permissions: [1, 2, 3],
+  approvals: [1, 2, 3],
+  "policy-docs": [1, 2, 3],
+  "org-hierarchy": [1, 2, 3],
+  kyc: [1, 2, 3],
+  "api-bank": [1, 2, 3],
+};
+
+// Files that are not exactly 719x474.
+const subPageImageHeights: Record<string, number> = { "kyc-1": 465, "api-bank-2": 467 };
+// Files re-exported with rounded corners; renamed so browsers do not serve the cached square versions.
+const roundedFiles = new Set(["kyc-1", "kyc-context", "api-bank-2", "api-bank-3", "api-bank-context"]);
+const subPageFile = (name: string) => `/figma/${name}${roundedFiles.has(name) ? "-r" : ""}.png`;
+
+for (const [slug, available] of Object.entries(subPageImages)) {
+  const page = productSubcategories[slug];
+  page.splits = page.splits.map((split, index) =>
+    available.includes(index + 1)
+      ? { ...split, image: subPageFile(`${slug}-${index + 1}`), imageWidth: 719, imageHeight: subPageImageHeights[`${slug}-${index + 1}`] ?? 474 }
+      : split,
+  );
+  page.checklistImage = { src: subPageFile(`${slug}-context`), alt: page.checklistImage.alt, width: 719, height: 474 };
+}
+
 export const customerServiceChildren = ["tickets", "chat-whatsapp", "calls-campaigns"];
 
 export function productPageHref(slug: string) {

@@ -29,6 +29,8 @@ type Props = {
   ctaDescription?: string;
   cardsId?: string;
   baseHref?: string;
+  /** Text-only hero (no banner image) with the listing directly below it, ahead of the highlights. */
+  listingFirst?: boolean;
 };
 
 const heroImage = {
@@ -58,10 +60,22 @@ export function IndustryCatalogPageView({
   ctaDescription = "CWIT EMS connects customer support, work management, CRM, analytics, and governance into one intelligent workspace.",
   cardsId = "industries",
   baseHref = "/industries/by-industry",
+  listingFirst = false,
 }: Props) {
+  const highlights = (
+    <HighlightCards
+      id="operate"
+      variant="numbered"
+      title={highlightTitle}
+      description={highlightDescription}
+      items={highlightItems}
+    />
+  );
+
   return (
     <div id="top" className="site">
       <HeroBanner
+        className={listingFirst ? "blog-hero" : ""}
         title={heroTitle}
         description={heroDescription}
         titleClassName="max-w-[980px]"
@@ -70,16 +84,10 @@ export function IndustryCatalogPageView({
           { href: `#${cardsId}`, label: "Explore Solutions", tone: "light" },
           { href: "/request-demo", label: "Request Demo" },
         ]}
-        image={heroImage}
+        image={listingFirst ? undefined : heroImage}
       />
 
-      <HighlightCards
-        id="operate"
-        variant="numbered"
-        title={highlightTitle}
-        description={highlightDescription}
-        items={highlightItems}
-      />
+      {listingFirst ? null : highlights}
 
       <section id={cardsId} className="bg-[#FAFAFA] py-8 sm:py-16">
         {cardsTitle || cardsDescription ? (
@@ -118,6 +126,8 @@ export function IndustryCatalogPageView({
           ))}
         </div>
       </section>
+
+      {listingFirst ? highlights : null}
 
       <CtaSection
         title={ctaTitle}

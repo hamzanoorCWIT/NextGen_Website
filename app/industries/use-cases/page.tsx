@@ -33,12 +33,11 @@ export default function UseCasesPage() {
         },
       ]}
       cards={useCaseCards}
-      cardsTitle="Practical Solutions for Everyday Operations"
-      cardsDescription="Explore how NextGen brings common business workflows together, from the first customer interaction to the final approval, update, or completed task."
       ctaTitle="Build a Better Way to Manage Customer Service"
       ctaDescription="Connect customer support, workforce coordination, CRM, analytics, and governance in one workspace. With shared information and clearer processes, your teams can spend less time navigating tools and more time moving work forward."
       cardsId="use-cases"
       baseHref="/industries/use-cases"
+      listingFirst
     />
   );
 }

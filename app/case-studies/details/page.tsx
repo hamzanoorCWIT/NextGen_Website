@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { CountUp } from "@/components/count-up";
 import { CtaSection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -32,41 +33,22 @@ const challengePoints = [
   },
 ];
 
-const approachSteps = [
-  {
-    title: "Capture and organize requests",
-    body: "Create a consistent record for incoming requests, including customer context, status, priorities, and relevant conversation history.",
-  },
-  {
-    title: "Route work with ownership",
-    body: "Assign requests to the appropriate team or agent, maintain a clear handoff trail, and keep follow-up actions attached to the same record.",
-  },
-  {
-    title: "Track performance in context",
-    body: "Use Dashboards to monitor service activity, open work, ageing items, and operational bottlenecks across teams.",
-  },
-  {
-    title: "Support accountable operations",
-    body: "Maintain recorded activity, role-based access, and consistent workflows so managers can review how work moves from start to resolution.",
-  },
-];
-
 const measurementAreas = [
   {
+    stat: 40,
     title: "Request handling speed",
-    body: "Measure changes in the time needed to register, route, and progress incoming requests.",
   },
   {
+    stat: 60,
     title: "Workflow visibility",
-    body: "Measure how consistently managers can identify request status, ownership, and outstanding actions.",
   },
   {
+    stat: 50,
     title: "Manual processing effort",
-    body: "Compare repetitive administrative steps and manual handoffs before and after workflow consolidation.",
   },
   {
+    stat: 95,
     title: "Operational tracking accuracy",
-    body: "Assess the completeness and consistency of request histories, assignments, timestamps, and performance records.",
   },
 ];
 
@@ -222,22 +204,24 @@ export default function CaseStudyDetailsPage() {
       </section>
 
       <section className="bg-white py-16 sm:py-24">
-        <div className="content-1442 grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-          <div className="flex justify-center lg:justify-start">
+        <div className="content-1442 grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-16">
+          <div
+            className="relative aspect-(--ratio) w-full overflow-hidden rounded-[24px] lg:aspect-auto lg:h-full lg:min-h-[320px] lg:rounded-[32px]"
+            style={{ "--ratio": "719 / 474" } as React.CSSProperties}
+          >
             <Image
               src="/figma/managin-complexity.png"
               alt="Customer contacts workspace with a complete view of interactions, tickets, projects, and follow-ups"
-              width={719}
-              height={474}
-              className="h-auto w-full object-contain"
-              style={{ width: "min(100%, 640px)", height: "auto" }}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover object-left"
             />
           </div>
           <div>
-            <h2 className="max-w-[520px] text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
+            <h2 className="max-w-[560px] text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
               Managing complexity across growing operations
             </h2>
-            <p className="mt-5 max-w-[480px] text-[15px] leading-7 text-[#111111] sm:text-[16px]">
+            <p className="mt-4 text-[15px] leading-7 text-[#111111] sm:text-[16px]">
               With requests arriving through different channels and work passing between teams, disconnected processes made daily operations harder to manage. The organization aimed to create one reliable workflow without losing the context behind each customer interaction.
             </p>
             <ul className="mt-8 space-y-5">
@@ -246,30 +230,11 @@ export default function CaseStudyDetailsPage() {
                   <Tick />
                   <span>
                     <span className="block font-semibold">{point.title}</span>
-                    <span className="mt-1 block max-w-[480px]">{point.body}</span>
+                    <span className="mt-1 block">{point.body}</span>
                   </span>
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-16 sm:py-24">
-        <div className="content-1442">
-          <h2 className="mx-auto max-w-[760px] text-center text-[clamp(32px,2.8vw,44px)] leading-[1.15] font-medium tracking-[-0.03em] text-[#111111]">
-            Bringing service delivery into one connected workflow
-          </h2>
-          <p className="mx-auto mt-5 max-w-[820px] text-center text-[15px] leading-7 text-[#111111] sm:text-[16px]">
-            The proposed approach brings customer interactions into Tickets, connects requests to responsible teams, and uses defined workflows to guide each case forward. Dashboards provide operational visibility while Permissions and governance controls help maintain clear access and accountability.
-          </p>
-          <div className="mt-12 grid gap-8 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {approachSteps.map((item) => (
-              <div key={item.title}>
-                <h3 className="text-[18px] font-semibold tracking-[-0.02em] text-[#111111]">{item.title}</h3>
-                <p className="mt-3 text-[15px] leading-6 text-[#111111]">{item.body}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -285,8 +250,8 @@ export default function CaseStudyDetailsPage() {
           <div className="mt-12 grid gap-8 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {measurementAreas.map((item) => (
               <div key={item.title}>
-                <h3 className="text-[18px] font-semibold tracking-[-0.02em] text-[#111111]">{item.title}</h3>
-                <p className="mt-3 text-[15px] leading-6 text-[#111111]">{item.body}</p>
+                <p className="text-[clamp(40px,4vw,56px)] leading-none font-medium tracking-[-0.04em] text-[#111111]"><CountUp value={item.stat} suffix="%" /></p>
+                <h3 className="mt-4 text-[18px] font-semibold tracking-[-0.02em] text-[#111111]">{item.title}</h3>
               </div>
             ))}
           </div>
