@@ -41,7 +41,7 @@ form :is(input, select, textarea):not([type="hidden"]):not([aria-hidden="true"])
 }
 
 form .form-field-group input:focus,
-.footer-form input[type="email"]:focus {
+.footer-form #footer-demo-email:focus {
   outline: none;
 }
 
