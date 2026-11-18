@@ -15,6 +15,7 @@ export function CtaSection({
   image,
   titleClassName = "max-w-[760px]",
   descriptionClassName = "max-w-[580px]",
+  imageSide = "right",
 }: {
   title: ReactNode;
   description: ReactNode;
@@ -22,11 +23,13 @@ export function CtaSection({
   image: { src: string; alt: string; width: number; height: number };
   titleClassName?: string;
   descriptionClassName?: string;
+  imageSide?: "left" | "right";
 }) {
+  const imageLeft = imageSide === "left";
   return (
     <section className="bg-[#f7f8fb] py-12 sm:py-16 lg:py-24">
       <div className="content-1442 grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-        <div>
+        <div className={imageLeft ? "lg:order-2" : undefined}>
           <h2
             className={`${titleClassName} text-[clamp(28px,2.7vw,52px)] leading-[1.12] font-medium tracking-[-0.04em]`}
           >
@@ -41,7 +44,7 @@ export function CtaSection({
             ))}
           </div>
         </div>
-        <div className="flex justify-center lg:justify-end">
+        <div className={`flex justify-center ${imageLeft ? "lg:order-1 lg:justify-start" : "lg:justify-end"}`}>
           <Image
             src={image.src}
             alt={image.alt}

@@ -150,45 +150,49 @@ export function ProductSubcategoryPageView({ page }: { page: ProductSubcategoryP
       <HighlightCards variant="icon" title={page.pathTitle} description={page.pathDescription} items={page.pathItems} />
 
       <section className="bg-white py-8 sm:py-16">
-        <div className="content-1426 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
+        <div className="content-1426">
+          <div className="grid items-start gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
             <h2 className="max-w-[520px] text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">
               {page.checklistTitle}
             </h2>
-            <p className="mt-4 max-w-[520px] text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">{page.checklistDescription}</p>
-            {page.checklist.length > 0 ? <ul className="mt-6 space-y-3">
-              {page.checklist.map((item) => (
-                <li key={typeof item === "string" ? item : item.title} className="flex items-start gap-3 text-[15px] sm:text-[16px]">
-                  <span
-                    className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black text-[11px] text-white"
-                    aria-hidden="true"
-                  >
-                    ✓
-                  </span>
-                  {typeof item === "string" ? item : (
-                    <div>
-                      <h3 className="font-semibold">{item.title}</h3>
-                      <p className="mt-1 text-[15px] leading-7 text-[#3a3a3a]">{item.body}</p>
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul> : null}
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Pill href="/request-demo" tone="ghost-dark">
-                See pricing
-              </Pill>
-              <Pill href="/request-demo">Request Demo</Pill>
-            </div>
+            <p className="text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">{page.checklistDescription}</p>
           </div>
-          <div className="flex justify-center lg:justify-end">
-            <Image
-              src={page.checklistImage.src}
-              alt={page.checklistImage.alt}
-              width={page.checklistImage.width}
-              height={page.checklistImage.height}
-              className="h-auto w-full max-w-[560px] object-contain"
-            />
+          <div className="mt-10 grid items-center gap-10 sm:mt-14 lg:grid-cols-2 lg:gap-16">
+            <div className="flex justify-center lg:justify-start">
+              <Image
+                src={page.checklistImage.src}
+                alt={page.checklistImage.alt}
+                width={page.checklistImage.width}
+                height={page.checklistImage.height}
+                className="h-auto w-full max-w-[560px] object-contain"
+              />
+            </div>
+            <div>
+              {page.checklist.length > 0 ? <ul className="space-y-3">
+                {page.checklist.map((item) => (
+                  <li key={typeof item === "string" ? item : item.title} className="flex items-start gap-3 text-[15px] sm:text-[16px]">
+                    <span
+                      className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black text-[11px] text-white"
+                      aria-hidden="true"
+                    >
+                      ✓
+                    </span>
+                    {typeof item === "string" ? item : (
+                      <div>
+                        <h3 className="font-semibold">{item.title}</h3>
+                        <p className="mt-1 text-[15px] leading-7 text-[#3a3a3a]">{item.body}</p>
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul> : null}
+              <div className={`flex flex-wrap gap-3 ${page.checklist.length > 0 ? "mt-8" : ""}`}>
+                <Pill href="/request-demo" tone="ghost-dark">
+                  See pricing
+                </Pill>
+                <Pill href="/request-demo">Request Demo</Pill>
+              </div>
+            </div>
           </div>
         </div>
       </section>

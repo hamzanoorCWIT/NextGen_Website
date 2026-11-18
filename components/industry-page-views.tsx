@@ -35,6 +35,47 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
   const insights = page.insightsImage ?? defaultImages.insights;
   const connected = page.connectedImage ?? defaultImages.connected;
   const listing = getListingImage(page);
+  const connectedList = (
+    <ul className="mt-8 space-y-3 ">
+      {(page.connectedPoints ?? connectedPoints).map((point) => (
+        <li key={typeof point === "string" ? point : point.title} className="flex items-start gap-3 text-[15px] text-white/90 sm:text-[16px]">
+          <span
+            className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-[11px] text-black"
+            aria-hidden="true"
+          >
+            ✓
+          </span>
+          {typeof point === "string" ? point : (
+            <div>
+              <h3 className="font-semibold">{point.title}</h3>
+              <p className="mt-1 leading-7 text-white/75">{point.body}</p>
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+  const connectedActions = (
+    <div className="mt-8 flex flex-wrap gap-3">
+      <Pill href="/pricing" tone="light">
+        See pricing
+      </Pill>
+      <Pill href="/request-demo" tone="ghost">
+        Request Demo
+      </Pill>
+    </div>
+  );
+  const connectedImage = (
+    <div className="flex justify-center lg:justify-start">
+      <Image
+        src={connected.src}
+        alt={connected.alt}
+        width={connected.width}
+        height={connected.height}
+        className="h-auto w-full max-w-[560px] object-contain"
+      />
+    </div>
+  );
 
   return (
     <div id="top" className="site">
@@ -125,50 +166,19 @@ export function IndustryVerticalPageView({ page }: { page: IndustryVertical }) {
       />
 
       <section className="bg-black py-16 text-white sm:py-24">
-        <div className="content-1426 grid items-center gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-16">
-          <div className="lg:order-2">
+        <div className="content-1426">
+          <div className="grid items-start gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
             <h2 className="max-w-[560px] text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">
               {page.connectedTitle}
             </h2>
-            {page.connectedDescription ? <p className="mt-4 text-[15px] leading-7 text-white/75 sm:text-[16px]">{page.connectedDescription}</p> : null}
-            <ul className="mt-8 space-y-3">
-              {(page.connectedPoints ?? connectedPoints).map((point) => (
-                <li key={typeof point === "string" ? point : point.title} className="flex items-start gap-3 text-[15px] text-white/90 sm:text-[16px]">
-                  <span
-                    className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-[11px] text-black"
-                    aria-hidden="true"
-                  >
-                    ✓
-                  </span>
-                  {typeof point === "string" ? point : (
-                    <div>
-                      <h3 className="font-semibold">{point.title}</h3>
-                      <p className="mt-1 leading-7 text-white/75">{point.body}</p>
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Pill href="/pricing" tone="light">
-                See pricing
-              </Pill>
-              <Pill href="/request-demo" tone="ghost">
-                Request Demo
-              </Pill>
-            </div>
+            {page.connectedDescription ? <p className="text-[15px] leading-7 text-white/75 sm:text-[16px]">{page.connectedDescription}</p> : null}
           </div>
-          <div
-            className="relative aspect-(--ratio) w-full overflow-hidden rounded-[24px] lg:order-1 lg:rounded-[32px] lg:aspect-auto lg:min-h-[320px]"
-            style={{ "--ratio": `${connected.width} / ${connected.height}` } as React.CSSProperties}
-          >
-            <Image
-              src={connected.src}
-              alt={connected.alt}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover object-left"
-            />
+          <div className="mt-10 grid items-center gap-10 sm:mt-14 lg:grid-cols-2 lg:gap-16">
+            {connectedImage}
+            <div className="[&>ul]:mt-0">
+              {connectedList}
+              {connectedActions}
+            </div>
           </div>
         </div>
       </section>
