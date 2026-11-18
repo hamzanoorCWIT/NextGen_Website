@@ -226,42 +226,46 @@ export default function TicketsPage() {
       />
 
       <section className="bg-white py-8 sm:py-16">
-        <div className="content-1426 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
+        <div className="content-1426">
+          <div className="grid items-start gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
             <h2 className="max-w-[520px] text-[clamp(32px,2.6vw,44px)] leading-[1.15] font-semibold tracking-[-0.03em]">
               Complete context. Clearer ownership. Better resolution.
             </h2>
-            <p className="mt-4 max-w-[520px] text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">
+            <p className="text-[15px] leading-7 text-[#1a1a1a] sm:text-[16px]">
               Make every ticket easier to understand and manage with connected conversations, structured details, visible priorities, and a complete activity history.
             </p>
-            <ul className="mt-6 space-y-3">
-              {checklist.map((item) => (
-                <li key={item.title} className="flex items-start gap-3 text-[15px] sm:text-[16px]">
-                  <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black text-[11px] text-white" aria-hidden="true">
-                    ✓
-                  </span>
-                  <div>
-                    <h3 className="font-semibold">{item.title}</h3>
-                    <p className="mt-1 text-[15px] leading-7 text-[#3a3a3a]">{item.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Pill href="/request-demo" tone="ghost-dark">
-                See pricing
-              </Pill>
-              <Pill href="/request-demo">Request Demo</Pill>
-            </div>
           </div>
-          <div className="mx-auto w-full max-w-[560px] lg:mx-0 lg:max-w-none">
-            <Image
-              src="/figma/tickets-context.png"
-              alt="Ticket statistics and delivery rate dashboard"
-              width={719}
-              height={474}
-              className="h-auto w-full"
-            />
+          <div className="mt-10 grid items-center gap-10 sm:mt-14 lg:grid-cols-2 lg:gap-16">
+            <div className="flex justify-center lg:justify-start">
+              <Image
+                src="/figma/tickets-context.png"
+                alt="Ticket statistics and delivery rate dashboard"
+                width={719}
+                height={474}
+                className="h-auto w-full max-w-[560px] object-contain"
+              />
+            </div>
+            <div>
+              <ul className="space-y-3">
+                {checklist.map((item) => (
+                  <li key={item.title} className="flex items-start gap-3 text-[15px] sm:text-[16px]">
+                    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black text-[11px] text-white" aria-hidden="true">
+                      ✓
+                    </span>
+                    <div>
+                      <h3 className="font-semibold">{item.title}</h3>
+                      <p className="mt-1 text-[15px] leading-7 text-[#3a3a3a]">{item.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Pill href="/request-demo" tone="ghost-dark">
+                  See pricing
+                </Pill>
+                <Pill href="/request-demo">Request Demo</Pill>
+              </div>
+            </div>
           </div>
         </div>
       </section>
